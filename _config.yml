@@ -1,14 +1,14 @@
 # Site settings
-title:          Tale
-description:    "Minimal Jekyll theme for storytellers"
+title:          yobs0814 기억저장소
+description:    ""
 baseurl:        ""
 url:            "https://yobs0814.github.io"
 
 # Author
 author:
-  name:         Chester How
-  url:          https://chester.how
-  email:        chesterhow@gmail.com
+  name:         Yoseph Noh
+  url:
+  email:        yobs0814@gmail.com
 
 # Build settings
 markdown:       kramdown
