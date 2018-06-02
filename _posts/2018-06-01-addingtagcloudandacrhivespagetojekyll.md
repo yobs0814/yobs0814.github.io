@@ -54,10 +54,12 @@ permalink: /tags/
 
 ## 2. 태그를 포스트에 보여주기
 포스트에 추가될 include 파일을 만듭니다.
+
 ```
 $ touch _includes/post-tags.html
 ```
 아래의 내용으로:
+
 ```
 <div class="post-tags">
   Tags:
@@ -73,26 +75,28 @@ $ touch _includes/post-tags.html
 ```
 
 그리고
+
 ```
 _layouts/post.html 파일을 오픈해서
 ```
-적당한 곳에 inclue해줍니다.
+
+적당한 곳에 include해줍니다.
+
 ```
 <div class="post">
   <div class="post-info">
     ...
   </div>
 
-  <h1 class="post-title">{{ page.title }}</h1>
+  <h1 class="post-title"> ...
 
   {% include post-tags.html %} // <- here
 
-  <div class="post-line"></div>
-
-  {{ content }}
+  <div class="post-line"> ...
 
 </div>
 ```
+
 ------
 
 ## 3. 태그 클라우드랑 아카이브를 꾸며줄 css file 생성 기존테마 폴더에 styles.css 파일이 있으면 생성하지말고 사용하세요.
@@ -157,29 +161,21 @@ _layouts/default.html 들어간 다음
 ```
 
 ```
-<!DOCTYPE html>
-<html lang="ko">
-
-  {% include head.html %}
-
+...
   <body>
     <nav class="nav">
         ...
         <ul>
-          <li><a href="{{ '/about' | prepend: site.baseurl }}">About me</a></li>
+          <li><a href="{{ ... }}">About</a></li>
           <li><a href="{{ site.baseurl }}/tags">Tags</a></li>  <!-- <-here yo go -->
-          <li><a href="{{ site.baseurl }}/">Posts</a></li>
+          <li><a href="{{ ...}}/">Posts</a></li>
         </ul>
       </div>
     </nav>
-
-    <main>
-      {{ content }}
-    </main>
 
     <footer>
       ...
     </footer>
   </body>
-</html>
+
 ```
