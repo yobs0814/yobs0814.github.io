@@ -3,9 +3,9 @@ layout: post
 title: "Jekyll에 태그랑 아카이브 페이지 추가하기"
 author: "yobs0814"
 tags:
---- jeykll
---- githubpage
---- tags
+- jeykll
+- githubpage
+- tags
 ---
 
 # 목표: jekyll 테마로 만든 깃헙블로그에 태그 기능추가하기
@@ -18,7 +18,8 @@ tags:
 ## 1. 로컬 깃허브블로그 페이지를 만든다.
 tags.md 파일 블로그폴더 루트 디렉토리에 만듭니다.
 
-```
+{% highlight liquid %}
+{% raw %}
 ---
 layout: page
 permalink: /tags/
@@ -42,13 +43,15 @@ permalink: /tags/
     <a name="{{ tag_name | slugize }}"></a>
     {% for post in site.tags[tag_name] %}
     <article class="archive-item">
-      <h4><a href="{{ root_url }}{{ post.url }}">{{post.title}}</a></h4>
+      <h4><a href="{{ root_url }}{{ post.url }}">{{ post.title }}</a></h4>
     </article>
     {% endfor %}
   </div>
 {% endfor %}
 </div>
-```
+
+{% endraw %}
+{% endhighlight %}
 
 ------
 
@@ -58,9 +61,12 @@ permalink: /tags/
 ```
 $ touch _includes/post-tags.html
 ```
+
 아래의 내용으로:
 
-```
+{% highlight liquid %}
+{% raw %}
+
 <div class="post-tags">
   Tags:
   {% if post %}
@@ -71,8 +77,11 @@ $ touch _includes/post-tags.html
   {% for tag in tags %}
   <a href="/tags/#{{tag|slugize}}">{{tag}}</a>{% unless forloop.last %},{% endunless %}
   {% endfor %}
-</div>
-```
+</div
+
+{% endraw %}
+{% endhighlight %}
+
 
 그리고
 
@@ -82,7 +91,8 @@ _layouts/post.html 파일을 오픈해서
 
 적당한 곳에 include해줍니다.
 
-```
+{% highlight liquid %}
+{% raw %}
 <div class="post">
   <div class="post-info">
     ...
@@ -95,7 +105,8 @@ _layouts/post.html 파일을 오픈해서
   <div class="post-line"> ...
 
 </div>
-```
+{% endraw %}
+{% endhighlight %}
 
 ------
 
@@ -108,7 +119,8 @@ $touch styles.css
 $vi styles.css
 ```
 
-```
+{% highlight liquid %}
+{% raw %}
 / for tag cloud and archives
 .tag-cloud {
   list-style: none;
@@ -133,13 +145,15 @@ $vi styles.css
 .post-tags {
   text-align: right;
 }
-```
-
+{% endraw %}
+{% endhighlight %}
 ------
 
 ## 4. 포스팅할때 태그붙이기
 이것은 예입니다:
-```
+
+{% highlight liquid %}
+{% raw %}
 ---
 layout: post
 title: This is an example.
@@ -150,17 +164,19 @@ published: true
 ---
 
 This is a post for an example.
-```
+{% endraw %}
+{% endhighlight %}
 
 
 ------
 
-##5. 메인화면에 Tags 보여주기
+## 5. 메인화면에 Tags 보여주기
 ```
 _layouts/default.html 들어간 다음
 ```
 
-```
+{% highlight liquid %}
+{% raw %}
 ...
   <body>
     <nav class="nav">
@@ -177,5 +193,5 @@ _layouts/default.html 들어간 다음
       ...
     </footer>
   </body>
-
-```
+{% endraw %}
+{% endhighlight %}
