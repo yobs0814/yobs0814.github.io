@@ -1,6 +1,7 @@
 ---
-layout: page
+layout: post
 permalink: /tags/
+author: "yobs0814"
 ---
 
 <ul class="tag-cloud">
