@@ -1,6 +1,7 @@
 ---
 layout: post
-title: "on the way to the Web developer"
+title: "on the way
+to the Web developer"
 author: "yobs0814"
 
 ---
