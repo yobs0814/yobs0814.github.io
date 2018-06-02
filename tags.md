@@ -1,5 +1,6 @@
 ---
 layout: post
+title: Tags
 permalink: /tags/
 author: "yobs0814"
 ---
