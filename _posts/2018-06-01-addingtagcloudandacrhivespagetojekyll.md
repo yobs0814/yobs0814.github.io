@@ -15,7 +15,7 @@ tags:
 
 참조한 사이트를 그대로 따라했습니다.
 
-1. 로컬 깃허브블로그 페이지를 만든다.
+## 1. 로컬 깃허브블로그 페이지를 만든다.
 tags.md 파일 블로그폴더 루트 디렉토리에 만듭니다.
 
 ```
@@ -50,12 +50,9 @@ permalink: /tags/
 </div>
 ```
 
-
-
-
 ------
 
-2. 태그를 포스트에 보여주기
+## 2. 태그를 포스트에 보여주기
 포스트에 추가될 include 파일을 만듭니다.
 ```
 $ touch _includes/post-tags.html
@@ -73,14 +70,14 @@ $ touch _includes/post-tags.html
   <a href="/tags/#{{tag|slugize}}">{{tag}}</a>{% unless forloop.last %},{% endunless %}
   {% endfor %}
 </div>
-'''
+```
 
 그리고
-'''
+```
 _layouts/post.html 파일을 오픈해서
-'''
+```
 적당한 곳에 inclue해줍니다.
-'''
+```
 <div class="post">
   <div class="post-info">
     ...
@@ -98,8 +95,8 @@ _layouts/post.html 파일을 오픈해서
 ```
 ------
 
-3. 태그 클라우드랑 아카이브를 꾸며줄 css file 생성
-기존테마 폴더에 styles.css 파일이 있으면 생성하지말고 사용하세요.
+## 3. 태그 클라우드랑 아카이브를 꾸며줄 css file 생성 기존테마 폴더에 styles.css 파일이 있으면 생성하지말고 사용하세요.
+
 ```
 $touch styles.css
 
@@ -136,7 +133,7 @@ $vi styles.css
 
 ------
 
-4. 포스팅할때 태그붙이기
+## 4. 포스팅할때 태그붙이기
 이것은 예입니다:
 ```
 ---
@@ -153,7 +150,8 @@ This is a post for an example.
 
 
 ------
-5. 메인화면에 Tags 보여주기
+
+##5. 메인화면에 Tags 보여주기
 ```
 _layouts/default.html 들어간 다음
 ```
