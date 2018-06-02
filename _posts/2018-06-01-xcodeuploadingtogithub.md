@@ -30,7 +30,7 @@ create <프로젝트이름> remote on github...
 
 깃헙 계정 설정은
 
-![img3](./img/2018-06-02-1.40.19.png)
+![img3](./img/2018-06-02-1-40-19.png)
 
 
 Preferences..  클릭후 Account탭에서 github 계정 넣고, Clone using HTTP...
