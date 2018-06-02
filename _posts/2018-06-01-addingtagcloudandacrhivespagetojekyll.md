@@ -18,7 +18,7 @@ tags:
 1. 로컬 깃허브블로그 페이지를 만든다.
 tags.md 파일 블로그폴더 루트 디렉토리에 만듭니다.
 
-'''
+₩₩₩
 ---
 layout: page
 permalink: /tags/
@@ -48,7 +48,7 @@ permalink: /tags/
   </div>
 {% endfor %}
 </div>
-'''
+₩₩₩
 
 
 
@@ -154,11 +154,11 @@ This is a post for an example.
 
 ------
 5. 메인화면에 Tags 보여주기
-'''
+₩₩₩
 _layouts/default.html 들어간 다음
-'''
+₩₩₩
 
-'''
+₩₩₩
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -184,4 +184,4 @@ _layouts/default.html 들어간 다음
     </footer>
   </body>
 </html>
-'''
+₩₩₩
