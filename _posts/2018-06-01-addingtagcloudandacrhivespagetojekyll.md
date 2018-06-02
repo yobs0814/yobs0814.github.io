@@ -2,6 +2,10 @@
 layout: post
 title: "Jekyll에 태그랑 아카이브 페이지 추가하기"
 author: "yobs0814"
+tags:
+--- jeykll
+--- githubpage
+--- tags
 ---
 
 # 목표: jekyll 테마로 만든 깃헙블로그에 태그 기능추가하기
@@ -12,7 +16,7 @@ author: "yobs0814"
 참조한 사이트를 그대로 따라했습니다.
 
 1. 로컬 깃허브블로그 페이지를 만든다.
-tags.md 파일 블로그폴더 최상단에 만듭니다.
+tags.md 파일 블로그폴더 루트 디렉토리에 만듭니다.
 ~~~
 ---
 layout: page
