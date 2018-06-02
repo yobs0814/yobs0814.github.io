@@ -2,6 +2,9 @@
 layout: post
 title: "텐서플로우를 주피터 노트북에서 실행"
 author: "yobs0814"
+tags:
+- jupyternotebook
+- tensorflow
 ---
 
 # 목표: 텐서플로우를 주피터 노트북에서 실행
