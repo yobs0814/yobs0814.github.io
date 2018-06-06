@@ -35,7 +35,7 @@ $ exit
 
 파일이동
 |  <center>명령어</center> |  <center>설명</center> |  <center>예제</center> |
-|:--------|:--------:|--------:|
+|:---|:---:|---:|
 |**pwd** | <center>디렉토리 이동</center> | /Users/사용자명/Documents/IOSLab/firstProject |
 |**cd ..** | <center>현재 디렉토리의 상위 디렉토리로 이동</center> | /Users/사용자명/Downloads/IOSLab |
-|**cd ~** | <center>사용자의 홈 디렉토리로 이동 </center> | |
+|**cd ~** | <center>사용자의 홈 디렉토리로 이동 </center> | /Users/사용자명 |
