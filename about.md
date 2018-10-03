@@ -1,7 +1,6 @@
 ---
 layout: post
-title: "on the way
-to the Web developer"
+title: " 되자. 개발자"
 author: "yobs0814"
 
 ---

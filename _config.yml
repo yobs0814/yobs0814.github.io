@@ -13,6 +13,9 @@ author:
 # Build settings
 markdown:       kramdown
 
+language: 'ko-KR'
+
+
 # Assets
 sass:
   sass_dir:     _sass
