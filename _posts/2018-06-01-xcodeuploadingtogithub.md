@@ -7,8 +7,8 @@ tags:
 - github
 ---
 
-목표: xcode로 github소스올리기
-버전 : xcode 9.3.1
+#목표: xcode로 github소스올리기
+##버전 : xcode 9.3.1
 
 xcode new project를 만드는 과정에서 경로지정하는 탭에서
 
