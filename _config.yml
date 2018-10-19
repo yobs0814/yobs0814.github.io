@@ -1,13 +1,14 @@
 # Site settings
 title:          yobs0814 기억저장소
-description:    ""
+title_separator : " : "
+description:    "yobs0814 Personal Website"
 baseurl:        ""
 url:            https://yobs0814.github.io/
 
 # Author
 author:
   name:         Yoseph Noh
-  url:
+  url:          https://yobs0814.github.io/
   email:        yobs0814@gmail.com
 
 # Build settings
@@ -20,6 +21,9 @@ language: 'ko-KR'
 sass:
   sass_dir:     _sass
   style:        compressed
+
+# Google Analutics
+google_analytics: UA-127764295-1
 
 # Gems
 plugins:
