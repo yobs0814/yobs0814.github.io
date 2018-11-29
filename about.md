@@ -1,6 +1,6 @@
 ---
 layout: post
-title: " 되자. 개발자"
+title: ""
 author: "yobs0814"
 
 ---
