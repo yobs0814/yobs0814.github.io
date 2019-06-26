@@ -1,11 +1,23 @@
 body{
-	font-family: 'Jua', sans-serif;
+	font-family: $jua;
 }
 
 .post-title{
-	font-family: 'Jua', sans-serif;
+	font-family: $jua;
 }
 
 .post-tags h1, h3, h5{
-	font-family: 'Jua', sans-serif;
+	font-family: $jua;
+}
+
+.catalogue-title, .catalogue-time{
+	font-family: $jua;
+}
+
+.nav-title{
+	font-family: $jua;
+}
+
+.nav-container a{
+	font-family: $jua;
 }
