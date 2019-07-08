@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "xCode에서 여러개의 main 메서드를 사용하기"
-author: yobs0814
+author: "leaveittogod0123"
 tags:
 - Xcode9
 - c

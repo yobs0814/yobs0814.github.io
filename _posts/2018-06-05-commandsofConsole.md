@@ -1,7 +1,7 @@
 ---
 layout: post
 title: " 자주 사용하는 콘솔 명령어 정리"
-author: "yobs0814"
+author: "leaveittogod0123"
 tags:
 - mac
 - console

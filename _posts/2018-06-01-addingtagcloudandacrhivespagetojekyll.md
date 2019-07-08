@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Jekyll에 태그랑 아카이브 페이지 추가하기"
-author: "yobs0814"
+author: "leaveittogod0123"
 tags:
 - jeykll
 - githubpage

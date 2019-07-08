@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "swift4, xcode9 에서 외부라이브러리 연동하기"
-author: yobs0814
+author: "leaveittogod0123"
 tags:
 - Xcode9
 - FSCalendar

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Sublime Text 서브라임 텍스트를 터미널에서 실행하기"
-author: yobs0814
+author: "leaveittogod0123"
 tags:
 - SublimeText
 - Terminal

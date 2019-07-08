@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "ios xcode에서 github에 소스 올리기"
-author: "yobs0814"
+author: "leaveittogod0123"
 tags:
 - xcode
 - github

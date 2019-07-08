@@ -1,7 +1,7 @@
 ---
 layout: post
 title: ""
-author: "yobs0814"
+author: "leaveittogod0123"
 
 ---
-email : <yobs0814@gmail.com>
+email : <leaveittogod0123@gmail.com>

@@ -1,15 +1,15 @@
 # Site settings
-title:          yobs0814's blog
+title:          leaveittogod0123's blog
 title_separator : " : "
-description:    "yobs0814 Personal Website"
+description:    "leaveittogod0123 Personal Website"
 baseurl:        ""
-url:            https://yobs0814.github.io/
+url:            https://leaveittogod0123.github.io/
 
 # Author
 author:
   name:         Yoseph Noh
-  url:          https://yobs0814.github.io/
-  email:        yobs0814@gmail.com
+  url:          https://leaveittogod0123.github.io/
+  email:        leaveittogod0123@gmail.com
 
 # Build settings
 markdown:       kramdown
