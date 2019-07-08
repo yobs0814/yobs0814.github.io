@@ -34,4 +34,6 @@ plugins:
 permalink:      /:year-:month-:day/:title
 paginate:       5
 
+# for Disqus
+disqus_shortname: disqus_leaveittogod0123
 
