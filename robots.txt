@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://yobs0814.github.io/sitemap.xml
+Sitemap: https://leaveittogod0123.github.io/sitemap.xml
