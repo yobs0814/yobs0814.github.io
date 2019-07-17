@@ -2,7 +2,7 @@
 layout: post
 title: tags
 permalink: /tags/
-
+comments: false
 author: "leaveittogod0123"
 ---
 

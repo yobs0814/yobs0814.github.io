@@ -2,6 +2,7 @@
 layout: post
 title: " 분할정복 알고리즘 :: 가장 가까운 두 점 찾기 문제"
 author: "leaveittogod0123"
+comments: true
 tags:
 - 분할정복
 - 알고리즘
