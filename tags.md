@@ -1,7 +1,8 @@
 ---
 layout: post
-title: Tags
+title: tags
 permalink: /tags/
+
 author: "leaveittogod0123"
 ---
 
