@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+       백준 3184 양  &middot; leaveittogod0123's blog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+</head>
+
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">leaveittogod0123's blog</h2>
+        </a>
+        <ul>
+          <!--<li><a href="/about">About me</a></li>-->
+          <li><a href="/tags">Tags</a></li>
+          <li><a href="/">Posts</a></li>
+          <li><a href="/search/">Search</a></li>
+
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        leaveittogod0123
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2018-11-04 00:00:00 +0900">November 04, 2018</time>
+    
+  </div>
+
+  <h1 class="post-title"> 백준 3184 양 </h1>
+
+  <div class="post-line"></div>
+
+  <div class="post-tags">
+  
+  
+  <a href="/tags/#SW 역량테스트">SW 역량테스트</a>,
+  
+  <a href="/tags/#백준 온라인 저지">백준 온라인 저지</a>
+  
+</div>
+
+
+  <h1 id="목표-백준-온라인-저지-3184-양-문제-풀기">목표: 백준 온라인 저지 3184 양 문제 풀기</h1>
+<h3 id="환경-mac-os-mojave-1014-clion">환경: mac OS Mojave 10.14, CLion</h3>
+
+<h3 id="로직">로직</h3>
+<p><a href="https://www.acmicpc.net/problem/3184">양</a> 문제는
+울타리(#)와 배열의 범위내에서 구분된 영역을 동서남북 방향으로 탐색한다.
+탐색하면서 알아낸 늑대 수와 양의 수를 비교하여 둘중 하나를 제거해주면서
+최종적으로 남은 늑대 수 와 양의 수를 출력한다.</p>
+
+<p>BFS 정의: 연결된 정점을 한 번씩 방문한다. 단 인접한 노드들을 우선 모두 방문하면서 뻗어나간다.</p>
+
+<p>입력범위 3&lt;= 행, 열 &lt;= 250</p>
+
+<p>우리는 2중 for문을 통해 2차원 배열(행,열) (0,0) 인덱스부터 (249, 249)까지 반복하면서
+빈칸일때마다 BFS를 통해 연결된 정점을 한 번씩 방문한다.</p>
+
+<p>시간복잡도: O(N^2) + O(V+E)
+250^2 * 결국 2차원 배열 전체를 방문할 것이기 때문에 250^2
+총 30억이라는 큰 시간복잡도가 나옵니다. 
+실제로는 2차원 배열 전체 중 벽은 제외해야되며, 방문했던 곳은 또 방문하지 않기 때문에 
+이것보다 훨씬 적은 시간복잡도가 나올 것입니다.</p>
+
+<p>시간복잡도를 줄이기 위해서 
+BFS를 시작하기 위한 조건을 방문하려는 칸에 늑대 또는 양이 있어야함으로 바꿈으로서 시간복잡도를 줄일 수 있다고 생각했습니다.</p>
+
+<p><a href="https://github.com/yobs0814/problemSolving/blob/master/SWExpert/BOJ3184/main.cpp">SourceCode</a></p>
+
+
+  <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://leaveittogod0123blog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</div>
+
+<div class="pagination">
+  
+    <a href="/2018-11-07/BOJ5373" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2018-10-20/SWEA2112" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2019-07-22 00:51:18 +0900">2019</time> Yoseph Noh. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+    <script id="dsq-count-scr" src="//leaveittogod0123blog.disqus.com/count.js" async></script>
+  </body>
+</html>

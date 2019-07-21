@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+       분할정복 알고리즘 :: 가장 가까운 두 점 찾기 문제 &middot; leaveittogod0123's blog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+</head>
+
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">leaveittogod0123's blog</h2>
+        </a>
+        <ul>
+          <!--<li><a href="/about">About me</a></li>-->
+          <li><a href="/tags">Tags</a></li>
+          <li><a href="/">Posts</a></li>
+          <li><a href="/search/">Search</a></li>
+
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        leaveittogod0123
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2018-09-28 00:00:00 +0900">September 28, 2018</time>
+    
+  </div>
+
+  <h1 class="post-title"> 분할정복 알고리즘 :: 가장 가까운 두 점 찾기 문제</h1>
+
+  <div class="post-line"></div>
+
+  <div class="post-tags">
+  
+  
+  <a href="/tags/#분할정복">분할정복</a>,
+  
+  <a href="/tags/#알고리즘">알고리즘</a>
+  
+</div>
+
+
+  <h1 id="목표-분할정복-알고리즘을-적용하여-가장-가까운-두-점-찾기-문제-해결하기">목표: 분할정복 알고리즘을 적용하여 가장 가까운 두 점 찾기 문제 해결하기</h1>
+<h2 id="환경-mac-os-high-sierra-10134">환경: mac OS High Sierra 10.13.4</h2>
+
+<p>가장 가까운 두 점을 찾는 간단한 방법은 ‘모든 경우를 다 점검해 보는 것’입니다. 즉, 모든 점 사이의 거리를 구해보는 것입니다. 
+만약 점의 개수가 n개라면 O(nC2) = O(n(n-1)/2) = O((n^2-n)/2) = O(n^2)
+시간복잡도 n^2을 보면 성능이 나쁘지 않다고 볼 수 있습니다. 하지만, 분할 정복 알고리즘을 사용하면 이보다 더 빨리 ‘가장 가까운 두 점’을 찾을 수 있습니다.</p>
+
+<p>//분할 정복 알고리즘의 의사코드
+//points 점들의 배열(단, x 좌표로 오름차순 정렬되어있음)</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>closetPairRecursive(points){
+	if( 점들의 개수 &lt;= 3){
+		result &lt;- 모든 경우에 대해 최소 거리를 계산
+	}
+
+	가운데 점을 기준으로 points를 points_L과 points_R로 분할
+
+	dL = closestPairRecursive( points_L)
+	dR = closestPairRecursive( points_R)
+	dC = 중간 영역의 점들에서 가장 가까운 거리 구하기
+
+	result = min(dL, dR, dC)
+
+	return result
+}
+</code></pre></div></div>
+
+
+  <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://leaveittogod0123blog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</div>
+
+<div class="pagination">
+  
+    <a href="/2018-09-28/backjoonP15684" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2018-06-23/multiplemainmethodinxcode" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2019-07-22 00:51:18 +0900">2019</time> Yoseph Noh. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+    <script id="dsq-count-scr" src="//leaveittogod0123blog.disqus.com/count.js" async></script>
+  </body>
+</html>

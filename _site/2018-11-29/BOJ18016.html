@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+       백준 10816 lower_bound upper_bound로 풀기  &middot; leaveittogod0123's blog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+</head>
+
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">leaveittogod0123's blog</h2>
+        </a>
+        <ul>
+          <!--<li><a href="/about">About me</a></li>-->
+          <li><a href="/tags">Tags</a></li>
+          <li><a href="/">Posts</a></li>
+          <li><a href="/search/">Search</a></li>
+
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        leaveittogod0123
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2018-11-29 00:00:00 +0900">November 29, 2018</time>
+    
+  </div>
+
+  <h1 class="post-title"> 백준 10816 lower_bound upper_bound로 풀기 </h1>
+
+  <div class="post-line"></div>
+
+  <div class="post-tags">
+  
+  
+  <a href="/tags/#SW 역량테스트">SW 역량테스트</a>,
+  
+  <a href="/tags/#백준 온라인 저지">백준 온라인 저지</a>
+  
+</div>
+
+
+  <h1 id="목표-백준-10816-lower_bound-upper_bound로-문제-풀기">목표: 백준 10816 lower_bound, upper_bound로 문제 풀기</h1>
+<h3 id="환경-mac-os-mojave-1014-clion">환경: mac OS Mojave 10.14, CLion</h3>
+
+<h3 id="로직">로직</h3>
+<p>lower_bound 함수를 통해서 찾으려는 수보다 작거나 같은 수 중에서 가장 큰 값의 인덱스를 반환</p>
+
+<p>upper_bound 함수를 통해서 찾으려는 수보다 큰 수 중에서 가장 작은 값의 인덱스를 반환</p>
+
+<p>답 : upper_bound - lower_bound</p>
+
+<p>lower_bound: 
+오름차순으로 정렬되어있는 배열에서 찾고자 하는 key 값보다 작거나 같은 수 중에서 가장 큰 수의 인덱스를 반환합니다.
+처음 lower_bound를 통해 값을 찾고자 하는 구간을 [0, 마지막인덱스+1]로 설정합니다. 구간 내의 중간 위치를 mid라고 할때, 
+arr[mid] &gt;= key 이면 [left, mid] , arr[mid] &lt; key 이면 [mid+1, right] 로 arr[mid] 값을 통해
+탐색구간을 좁혀갑니다. 탐색하는 구간에는 key값과 같거나 key보다 작은 값들이 존재합니다.</p>
+
+<p>처음 lower_bound 탐색하는 구간을 마지막인덱스+1로 하는 이유는 해당배열에서 가장 큰 값보다 더 큰 수를 찾을 때에는
+마지막 인덱스+1로 표현을 해야되기 때문입니다.</p>
+
+<p>left : 찾으려는 수보다 작은 수
+right : 찾으려는 수보다 크거나 같은 수</p>
+
+<p>lower_bound 과정
+<img src="/img/10816_1.png" alt="1" />
+<img src="/img/10816_2.png" alt="2" />
+<img src="/img/10816_3.png" alt="3" />
+<img src="/img/10816_4.png" alt="4" />
+<img src="/img/10816_5.png" alt="5" />
+right는 항상 key값보다 크거나 같은 수로 유지됩니다.</p>
+
+<p>lower_bound는 이렇게 작거나 같은 수중 가장 큰 값으로 범위를 좁혀가요.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        <span class="k">if</span><span class="p">(</span> <span class="n">nums</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">num</span><span class="p">)</span> <span class="p">{</span> <span class="o">&lt;-</span> <span class="n">lower_bound</span>
+
+        <span class="k">if</span><span class="p">(</span> <span class="n">nums</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">num</span><span class="p">)</span> <span class="p">{</span> <span class="o">&lt;-</span> <span class="n">upper_bound</span> 
+</code></pre></div></div>
+
+<p>upper_bound는</p>
+
+<p>left : 찾으려는 수보다 작거나 같은 수
+right : 찾으려는 수보다 큰 수</p>
+
+<p>그래서 left에는 key값도 포함합니다.
+right값은 항상 key값보다 크고요.</p>
+
+<p>lower_bound와 left, right의 변수의 의미에 차이가 있습니다.</p>
+
+<p>이분탐색, lower_bound, upper_bound에서는 이렇게 left, right 변수의 의미를 명확히 두는게 중요합니다.</p>
+
+<p><a href="https://github.com/yobs0814/problemSolving/blob/master/SWExpert/BOJ10816/main.cpp">SourceCode</a></p>
+
+
+  <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://leaveittogod0123blog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</div>
+
+<div class="pagination">
+  
+    <a href="/2018-11-29/BOJ2667" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2018-11-07/BOJ5373" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2019-07-22 00:51:18 +0900">2019</time> Yoseph Noh. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+    <script id="dsq-count-scr" src="//leaveittogod0123blog.disqus.com/count.js" async></script>
+  </body>
+</html>

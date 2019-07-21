@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+       백준 11066 풀이 &middot; leaveittogod0123's blog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+</head>
+
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">leaveittogod0123's blog</h2>
+        </a>
+        <ul>
+          <!--<li><a href="/about">About me</a></li>-->
+          <li><a href="/tags">Tags</a></li>
+          <li><a href="/">Posts</a></li>
+          <li><a href="/search/">Search</a></li>
+
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        leaveittogod0123
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2019-06-26 00:00:00 +0900">June 26, 2019</time>
+    
+  </div>
+
+  <h1 class="post-title"> 백준 11066 풀이</h1>
+
+  <div class="post-line"></div>
+
+  <div class="post-tags">
+  
+  
+  <a href="/tags/#백준 온라인 저지">백준 온라인 저지</a>
+  
+</div>
+
+
+  <h1 id="목표-백준-11066">목표: 백준 11066</h1>
+<h3 id="환경-mac-os-mojave-1014-clion">환경: mac OS Mojave 10.14, CLion</h3>
+
+<h3 id="로직">로직</h3>
+
+<p>나한테는 대단히 어려웠던 문제, 그러나 정답률 52%</p>
+
+<h4 id="문제이해">문제이해</h4>
+<p>여러 장의 소설을 두 개씩 합쳐서 소설의 여러 장들이 연속이 되도록 파일을 합쳐서 최종적으로는 하나의 파일로 합친다.
+파일을 합친 결과를 누적한다.</p>
+
+<h4 id="문제접근">문제접근</h4>
+<p>다이나믹프로그래밍 - 문제정의, 부분합 개념</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="kt">int</span> <span class="n">MAX</span> <span class="o">=</span> <span class="mi">501</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="n">t</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">arr</span><span class="p">[</span><span class="n">MAX</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">pSum</span><span class="p">[</span><span class="n">MAX</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">d</span><span class="p">[</span><span class="n">MAX</span><span class="p">][</span><span class="n">MAX</span><span class="p">];</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">t</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">t</span><span class="o">--</span><span class="p">){</span>
+        <span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+        <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span><span class="p">;</span>
+        <span class="n">memset</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">arr</span><span class="p">));</span>
+        <span class="n">memset</span><span class="p">(</span><span class="n">pSum</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">pSum</span><span class="p">));</span>
+        <span class="n">memset</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">d</span><span class="p">));</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+            <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+            <span class="n">pSum</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">pSum</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="p">}</span>
+
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+            <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">j</span><span class="p">;</span> <span class="n">j</span><span class="o">--</span><span class="p">){</span>
+                <span class="n">d</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">30</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+                <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="n">j</span><span class="p">;</span> <span class="n">k</span><span class="o">&lt;</span><span class="n">i</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span>
+                    <span class="n">d</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">+</span><span class="n">d</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">]);</span>
+
+                <span class="n">d</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">pSum</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">pSum</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">d</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">n</span><span class="p">]</span><span class="o">&lt;&lt;</span><span class="sc">'\n'</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+
+
+  <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://leaveittogod0123blog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</div>
+
+<div class="pagination">
+  
+    <a href="/2019-06-26/BOJ2164" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2019-03-24/BOJ1107" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2019-07-22 00:51:18 +0900">2019</time> Yoseph Noh. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+    <script id="dsq-count-scr" src="//leaveittogod0123blog.disqus.com/count.js" async></script>
+  </body>
+</html>

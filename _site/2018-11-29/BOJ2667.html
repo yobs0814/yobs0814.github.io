@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+       백준 2667 단지번호붙이기 DFS로 풀기  &middot; leaveittogod0123's blog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+</head>
+
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">leaveittogod0123's blog</h2>
+        </a>
+        <ul>
+          <!--<li><a href="/about">About me</a></li>-->
+          <li><a href="/tags">Tags</a></li>
+          <li><a href="/">Posts</a></li>
+          <li><a href="/search/">Search</a></li>
+
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        leaveittogod0123
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2018-11-29 00:00:00 +0900">November 29, 2018</time>
+    
+  </div>
+
+  <h1 class="post-title"> 백준 2667 단지번호붙이기 DFS로 풀기 </h1>
+
+  <div class="post-line"></div>
+
+  <div class="post-tags">
+  
+  
+  <a href="/tags/#SW 역량테스트">SW 역량테스트</a>,
+  
+  <a href="/tags/#백준 온라인 저지">백준 온라인 저지</a>
+  
+</div>
+
+
+  <h1 id="목표-백준-2667-단지번호붙이기-문제-풀기">목표: 백준 2667 단지번호붙이기 문제 풀기</h1>
+<h3 id="환경-mac-os-mojave-1014-clion">환경: mac OS Mojave 10.14, CLion</h3>
+
+<h3 id="로직">로직</h3>
+
+<ol>
+  <li>
+    <p>2차원 배열로 을 2중 for 문 돌면서 배열원소의 값이 1이면 단지번호를 가지고 DFS를 수행합니다.
+DFS 끝나고 단지번호를 +=1 갱신해줍니다.</p>
+  </li>
+  <li>
+    <p>그리고 단지안에 집의 개수를 cnt[단지번호]에 저장해놨기 때문에 cnt[]배열을 c++ STL sort로 오름차순으로 정렬해줍니다. 끝</p>
+  </li>
+</ol>
+
+<p>자세히 설명하자면,
+이 문제를 풀기위해 사전지식이 필요해요.</p>
+
+<p>사전지식: DFS</p>
+
+<p>DFS는 재귀로 구현하죠.</p>
+
+<h3 id="재귀-정의-어떤-알고리즘이-문제를-보다-작은-입력을-갖는-동일한-문제로-단순화시켜-해결한다면-이-알고리즘은-재귀적이라-불린다">재귀 정의: 어떤 알고리즘이 문제를 보다 작은 입력을 갖는 동일한 문제로 단순화시켜 해결한다면, 이 알고리즘은 재귀적이라 불린다.</h3>
+
+<h3 id="dfs깊이우선탐색-나를-먼저-방문하고-나와-인접하고-기존에-방문하지-않은-노드들을-방문한다-단-스택을-이용해서">DFS(깊이우선탐색): 나를 먼저 방문하고, 나와 인접하고, 기존에 방문하지 않은 노드들을 방문한다. 단, 스택을 이용해서</h3>
+<p><img src="http://www.crazyforcode.com/wp-content/uploads/2016/04/DFS.png" alt="DFS" /></p>
+
+<p>위에 이미지에 stack을 보면 노드들이 쌓이는게 보입니다.
+그리고 보통 함수를 {} 로 묶고 그 블록을 ‘스코프’라고 하잖아요.
+DFS코드를 따라갈때 이렇게 각각의 동그란 노드를 함수 스코프라고 생각하시면 DFS나 재귀함수 이해하는데 도움 돼요.</p>
+
+<p>아래 코드를 보시면 DFS함수 안에 DFS함수를 또 호출하죠 (재귀입니다, 입력이 nRow, nCol로 달라지고요). DFS라는 함수 스코프 안에 매개변수, 지역변수들이 존재할거고, 여기선 그게
+각각의 행번호, 열번호, 단지번호 등이 되겠죠.</p>
+
+<p>재귀함수를 다르게 이해를 하자면, 재귀함수를 호출할때 호출되는 코드 바로 옆에 새로운 입력변수로 함수의 코드가 생기는 확장 구조로 생각하셔도 돼요.</p>
+
+<p>이제 DFS 함수를 호출후 하는 일을 보면,main함수에서 DFS 호출했어요. k,i를 가지고 row,col에 넣고 단지번호 가지고 스택에 push 한거에요.</p>
+
+<p>DFS 함수 내부에서 일어나는 일은 현재 row,col 에 해당하는 집에 단지번호를 붙여요. 그리고, 방문했다고 표시합니다.
+그리고 인접한 집을 방문할때마다( DFS(nRow, nCOl)호출 ) 함수 내부에 일어나는 일이 반복됩니다. 
+방문할 집이 없거나, 기존에 방문한 집이면 재귀함수를 호출하지 않고,
+만약 동서남북 4방향이 다 그렇다면 함수가 종료됩니다. 스택에서 해당 함수 스코프가 빠지게됩니다.</p>
+
+<p>그러면 다시 스택에 맨위에 있는 함수코드가 이어서 진행됩니다. for문에서 북동남서방향으로 DFS호출했으니
+만약에 동쪽방향으로 DFS()호출했고, 그 함수가 수행을 다하고 스택에서 pop 했으면, 이어서 남쪽 방향으로 DFS호출하고, 서쪽 방향도 마찬가지로 계속 수행할겁니다.
+서쪽방향까지 수행했으면 해당위치의 함수코드가 모드 수행됐으니 그 함수 스코는 스택에서 pop 됩니다.</p>
+
+<p>위의 그림이미지를 다시 보고 오시면 이해하는데 도움이 돼요.</p>
+
+<p>그리고 동서남북 방향으로 2차원 배열 원소를 접근할때,</p>
+
+<p>항상 유효한 배열범위를 넘어가면 안되니, 범위체크해줍니다.</p>
+
+<p>기존에 방문한 노드면 또 방문하지 않습니다. 방문체크해줍니다.</p>
+
+<p>dRow, dCol 배열을 통해 동서남북 배열원소를 확인할 수 있습니다.
+예를 들어, 0,0 위치에서 -1,0 (북) 0,1 (동) 1,0 (남) 0,-1 (서) 방향으로 배열원소의 값이 1인지 확인할 수 있습니다.
+이렇게 각각의 행번호,열번호 위치에서 동서남북으로 이동해보면서 배열원소의 값이 1이면, 단지번호를 붙이고 다음 위치를 입력변수로 주고 DFS를 호출합니다.</p>
+
+<p>이렇게 main함수 내에 2중 for문 안에 DFS를 한번 호출할때마다 
+인접해있는 원소들은 다 같은 수로 갱신됩니다.</p>
+
+<p>문제에서 원하는건 단지의 수와 
+각 단지의 요소수입니다.</p>
+
+<p>단지수는 danjinum 변수를 이용해서
+단지 요소의 개수는 cnt[단지번호]를 통해서 구할 수 있습니다.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">DFS</span><span class="p">(</span><span class="kt">int</span> <span class="n">row</span><span class="p">,</span> <span class="kt">int</span> <span class="n">col</span><span class="p">,</span> <span class="kt">int</span> <span class="n">danjiNum</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">danji</span><span class="p">[</span><span class="n">danjiNum</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">points</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">));</span>
+    <span class="n">check</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="n">map</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">danjiNum</span><span class="p">;</span>
+    <span class="n">cnt</span><span class="p">[</span><span class="n">danjiNum</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">nRow</span> <span class="o">=</span> <span class="n">row</span> <span class="o">+</span> <span class="n">dRow</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="kt">int</span> <span class="n">nCol</span> <span class="o">=</span> <span class="n">col</span> <span class="o">+</span> <span class="n">dCol</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">nRow</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">nRow</span> <span class="o">&gt;=</span> <span class="n">n1</span> <span class="o">||</span> <span class="n">nCol</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">nCol</span> <span class="o">&gt;=</span> <span class="n">n1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">continue</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">check</span><span class="p">[</span><span class="n">nRow</span><span class="p">][</span><span class="n">nCol</span><span class="p">])</span> <span class="p">{</span>
+            <span class="k">continue</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">map</span><span class="p">[</span><span class="n">nRow</span><span class="p">][</span><span class="n">nCol</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">DFS</span><span class="p">(</span><span class="n">nRow</span><span class="p">,</span> <span class="n">nCol</span><span class="p">,</span> <span class="n">danjiNum</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><a href="https://github.com/yobs0814/problemSolving/blob/master/SWExpert/BOJ2667/main.cpp">SourceCode</a></p>
+
+
+  <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://leaveittogod0123blog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</div>
+
+<div class="pagination">
+  
+    <a href="/2019-02-08/BOJ6549" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2018-11-29/BOJ18016" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2019-07-22 00:51:18 +0900">2019</time> Yoseph Noh. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+    <script id="dsq-count-scr" src="//leaveittogod0123blog.disqus.com/count.js" async></script>
+  </body>
+</html>

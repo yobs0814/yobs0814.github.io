@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      SWExpertacademy 1952. [모의 SW 역량테스트] 수영장 &middot; leaveittogod0123's blog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+</head>
+
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">leaveittogod0123's blog</h2>
+        </a>
+        <ul>
+          <!--<li><a href="/about">About me</a></li>-->
+          <li><a href="/tags">Tags</a></li>
+          <li><a href="/">Posts</a></li>
+          <li><a href="/search/">Search</a></li>
+
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        leaveittogod0123
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2018-10-10 00:00:00 +0900">October 10, 2018</time>
+    
+  </div>
+
+  <h1 class="post-title">SWExpertacademy 1952. [모의 SW 역량테스트] 수영장</h1>
+
+  <div class="post-line"></div>
+
+  <div class="post-tags">
+  
+  
+  <a href="/tags/#SW 역량테스트">SW 역량테스트</a>
+  
+</div>
+
+
+  <h1 id="목표-swexpertacademy-1952-모의-sw-역량테스트-수영장-문제-풀기">목표: SWExpertacademy 1952. [모의 SW 역량테스트] 수영장 문제 풀기</h1>
+<h3 id="환경-mac-os-high-sierra-10134-clion">환경: mac OS High Sierra 10.13.4, CLion</h3>
+
+<p>이 문제 또한 완전탐색으로 풀려고 합니다.
+완전탐색이란 문제의 답을 찾는 것인데, 가능한 경우를 모두 나열하고, 각각이 해가 될 수 있는지 확인하는 방법입니다.</p>
+
+<p>우선 완전탐색의 장단점을 얘기해보자면
+장점으로는 어떻게든 답을 구해낼 수 있다는 것이에요. 모든 경우를 다 살펴보고 해를 구하는 것이니까요.</p>
+
+<p>이 문제를 통해 알게된 것은 시간복잡도를 계산해보는 습관이 중요하다는 것입니다. 시간 안에 정확히 동작한다면, 그 방법은 좋은 방법입니다.</p>
+
+<p>물론 더 빠른 방법으로 구현할 수 있으면 그게 최고겠죠.</p>
+
+<p>[제약 사항]</p>
+
+<ol>
+  <li>
+    <p>시간 제한 : 최대 50개 테스트 케이스를 모두 통과하는 데 C/C++/Java 모두 3초</p>
+  </li>
+  <li>
+    <p>모든 종류의 이용권 요금은 10 이상 3,000 이하의 정수이다.</p>
+  </li>
+  <li>
+    <p>각 달의 이용 계획은 각 달의 마지막 일자보다 크지 않다.</p>
+  </li>
+</ol>
+
+<p>수영장 이용 요금의 최소값을 구하는 문제입니다.</p>
+
+<p>문제를 보자마자 파악해낸 것은 인간의 논리로 계산하는 것(그리디 알고리즘)보다</p>
+
+<p>빠른 연산을 이용한 완전탐색이 답을 찾는데 안전한 방법이다. 라고 생각했습니다.</p>
+
+<p>그래서 경우의 수를 나눠봤습니다.</p>
+
+<p>1일 이용권을 사용하는 경우</p>
+
+<p>1달 이용권을 사용하는 경우</p>
+
+<p>3달 이용권을 사용하는 경우</p>
+
+<p>1년 이용권을 사용하는 경우로 나뉘는데요.</p>
+
+<p>처음 설계한 방법은 10월이전에만 3달 이용권을 사용하게끔 if문을 넣어줬었고, 1월달에만 1년치 이용권을 사용하게 하였습니다.</p>
+
+<p>테스트케이스의 답과 다르게 나와서 뭐가 잘못되었는지 생각해봤습니다.</p>
+
+<p>문제의 조건을 보면</p>
+
+<p>① 1일 이용권 : 1일 이용이 가능하다.</p>
+
+<p>② 1달 이용권 : 1달 동안 이용이 가능하다. 1달 이용권은 매달 1일부터 시작한다.</p>
+
+<p>③ 3달 이용권 : 3달 동안 이용이 가능하다. 3달 이용권은 매달 1일부터 시작한다.
+       (11월, 12월에도 3달 이용권을 사용할 수 있다)</p>
+
+<p>④ 1년 이용권 : 1년 동안 이용이 가능하다. 1년 이용권은 매년 1월 1일부터 시작한다.</p>
+
+<p>11월 12월 에도 3달 이용권을 사용할 수 있다고 친절하게 설명을 해줬습니다.</p>
+
+<p>&lt;이 말은 어느달이든 상관없이 3달 이용권과 1년 이용권을 사용해도 된다.&gt;라는 인사이트를 주었습니다.
+왜냐하면 어차피 최소값을 구하는게 답이기 때문에 넘치게 이용권을 남발한경우는 값을 최소값 갱신 if문을 통과하지 못할겁니다.</p>
+
+<p>시간복잡도를 계산해보면 1월부터 12월까지 다 이용한다고 치면, 매 달마다
+1일치 이용권을 사용하는 경우
+1달치 이용권을 사용하는 경우
+..
+총 네가지 방법이 가능합니다.</p>
+
+<p>그러므로 4번 * 4번 * .. * 4번, 총 4^12번 이 가능하고
+O(2^12) 약 1600만이라는 시간복잡도가 나옵니다.</p>
+
+<p>1초에 1억번 연산한다고 가정하였을때 1초에 수행이 된다는 것을 알 수 있습니다.</p>
+
+<p>이 문제를 풀기 위한 사전 문제풀이는 
+<a href="https://www.acmicpc.net/problem/1987">알파벳</a>
+<a href="https://www.acmicpc.net/problem/1759">암호만들기</a>
+<a href="https://www.acmicpc.net/problem/9095">1+2+3더하기</a>
+등 재귀를 통한 해결할 수 있는 조합적문제들 입니다.</p>
+
+<p><a href="https://www.swexpertacademy.com/main/solvingProblem/solvingProblem.do">수영장</a></p>
+
+<p>[code]
+( https://github.com/yobs0814/problemSolving/blob/master/SWExpert/P1952/main.cpp )</p>
+
+
+  <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://leaveittogod0123blog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</div>
+
+<div class="pagination">
+  
+    <a href="/2018-10-13/SWExpert-4012" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2018-10-09/SWExpert-1953" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2019-07-22 00:51:18 +0900">2019</time> Yoseph Noh. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+    <script id="dsq-count-scr" src="//leaveittogod0123blog.disqus.com/count.js" async></script>
+  </body>
+</html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      SWExpert #5648 원자 소멸 시뮬레이션 &middot; leaveittogod0123's blog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+</head>
+
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">leaveittogod0123's blog</h2>
+        </a>
+        <ul>
+          <!--<li><a href="/about">About me</a></li>-->
+          <li><a href="/tags">Tags</a></li>
+          <li><a href="/">Posts</a></li>
+          <li><a href="/search/">Search</a></li>
+
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        leaveittogod0123
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2018-10-05 00:00:00 +0900">October 05, 2018</time>
+    
+  </div>
+
+  <h1 class="post-title">SWExpert #5648 원자 소멸 시뮬레이션</h1>
+
+  <div class="post-line"></div>
+
+  <div class="post-tags">
+  
+  
+  <a href="/tags/#SW 역량테스트">SW 역량테스트</a>
+  
+</div>
+
+
+  <h1 id="목표-swexpertacademy-p5648-원자-소멸-시뮬레이션-문제-풀기">목표: SWExpertacademy P5648 원자 소멸 시뮬레이션 문제 풀기</h1>
+<h3 id="환경-mac-os-high-sierra-10134-clion">환경: mac OS High Sierra 10.13.4, CLion</h3>
+
+<p>이 문제 또한 완전탐색으로 풀려고 합니다.
+완전탐색이란 문제의 답을 찾는 것인데, 가능한 경우를 모두 나열하고, 각각이 해가 될 수 있는지 확인하는 방법입니다.</p>
+
+<p>우선 완전탐색의 장단점을 얘기해보자면
+장점으로는 어떻게든 답을 구해낼 수 있다는 것이에요. 모든 경우를 다 살펴보고 해를 구하는 것이니까요.</p>
+
+<p>이 문제를 통해 알게된 것은 시간복잡도를 계산해보는 습관이 중요하다는 것입니다. 시간 안에 정확히 동작한다면, 그 방법은 좋은 방법입니다.</p>
+
+<p>물론 더 빠른 방법으로 구현할 수 있으면 그게 최고겠죠.</p>
+
+<p>[제약 사항]</p>
+
+<ol>
+  <li>
+    <p>원자들의 수 N 은 1,000개 이하이다. (1≤N≤1,000)</p>
+  </li>
+  <li>
+    <p>각 원자들의 보유 에너지 K 는 1 이상 100 이하이다. (1≤K≤100)</p>
+  </li>
+  <li>
+    <p>원자들의 처음 위치 [x, y] 는 -1,000 이상 1,000 이하의 정수로 주어진다. (-1,000≤x,y≤1,000)</p>
+  </li>
+  <li>
+    <p>원자들은 2차원 평면 위에서 움직이며 원자들이 움직일 수 있는 좌표의 범위에 제한은 없다.</p>
+  </li>
+  <li>
+    <p>원자들의 이동 방향은 상(0), 하(1), 좌(2), 우(3)로 주어진다.</p>
+  </li>
+  <li>
+    <p>원자들은 동시에 1초에 이동 방향으로 1만큼 이동한다.</p>
+  </li>
+  <li>
+    <p>원자들의 최초 위치는 서로 중복되지 않는다.</p>
+  </li>
+  <li>
+    <p>원자들은 2개 이상의 원자들이 서로 충돌할 경우 보유한 에너지를 방출하면서 바로 소멸된다.</p>
+  </li>
+  <li>
+    <p>원자들은 이동 방향은 처음에 주어진 방향에서 바뀌지 않는다.</p>
+  </li>
+  <li>
+    <p>원자들이 충돌하여 소멸되며 방출되는 에너지는 다른 원자의 위치나 이동 방향에 영향을 주지 않는다.</p>
+  </li>
+</ol>
+
+<p>이 문제는 단순 반복문을 이용한 완전탐색을 사용하였습니다.
+50개 테스트 케이스를 3초안에 해결해야하므로,
+1초에 1억번 연산을 한다고 가정했을때, 1개의 테스트 케이스에 대한 시간복잡도가 6백만 이하로 나온다고 생각하여 이 방법을 이용해서 구현하였습니다. 즉, 6백만 이상이 되면 시간초과입니다.
+이 부분도 고민을 많이 했던 부분입니다.</p>
+
+<p>우선, 이 문제를 푸는데 정말 오래 걸렸습니다. 쉽게 풀 수 있었는데, 처음에 굉장히 복잡하게 구현했습니다.</p>
+
+<p>모든 원자가 점에서 충돌하면 좋겠지만 선에서 충돌하는 경우가 발생합니다.</p>
+
+<p>점에서 충돌한다면 바로 옆에 위치했을때 충돌하는데 1초가 걸리고,</p>
+
+<p>선에서 충돌한다면 바로 옆에 위치했을때 충돌하는데 0.5초가 걸리죠.</p>
+
+<p>그래서 각자의 좌표를 2배씩 늘리면 충돌하는데 0.5초가 걸리는 일이 없겠죠.</p>
+
+<p>그리고 2차원배열을 사용하지 않고 구현했을때는 시간복잡도가 4000(가능한 모든 시간대)*O(N^2)
+으로 나와서 시간초과가 나왔는데요.</p>
+
+<p>여기서 입력값이 음수로 나와서 고민한결과 입력범위가 -1000&lt;= x,y &lt;=1000 이기때문에</p>
+
+<p>x,y에 1000씩 더해주면 인덱스 처리를 할 수 있게 0&lt;=x, y&lt;=2000 으로 범위가 바뀌게됩니다.</p>
+
+<p>여기에 좌표를 충돌 체크를 더 쉽게 하기 위해서 2배씩 해줌으로써 0&lt;= x,y&lt;=4000의 맵 크기를 정해놨습니다.</p>
+
+<p>이제 2차원 배열로 충돌을 체크할 수 있게 되었기 때문에 원자수 : N, O(N^2) -&gt; O(N)으로 바꿀 수 있었습니다.
+그럼으로 약 4백만번 안에 동작합니다. 그래서 제한 시간안에 동작하게 됩니다.</p>
+
+<p>이 문제를 시간초과에서 PASS으로 바꿀 수 있었던 것은 시간복잡도 계산을 통해 가능했다고 생각합니다. 이 문제는 특히 시간복잡도를 처음부터 잘 계산해서 설계했다면 이렇게 힘들지 않았을 겁니다.</p>
+
+<p>그리고 다들 잘 푸시겠지만, 제가 힘들었던 또 다른 부분은 원자의 이동제한이 없는데, 맵의 크기로 제한을 두어서, WRONG이 계속 나왔었는데,</p>
+
+<p>원자의 이동 제한이 없습니다. 맵의 크기를 정해놨고 만약 원자가 맵을 나간다면 앞으로도 소멸이 안될 가능성이 매우 높겠죠. 그런 경우에는 에너지를 소멸시켜줍니다.</p>
+
+<p><a href="https://www.swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWXRFInKex8DFAUo&amp;categoryId=AWXRFInKex8DFAUo&amp;categoryType=CODE">원자 소멸 시뮬레이션</a></p>
+
+<p>[code]</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+
+using namespace std;
+
+
+const int MAX = 4000;
+const int ELEMENTMAX = 1000;
+
+
+struct Atom {
+    int x;
+    int y;
+    int dir;
+    int energy;
+};
+//x -&gt; row y -&gt; col UP : col+=1, LEFT: row-1;
+int dy[] = {1, -1, 0, 0}; // 0: UP, DOWN, LEFT, RIGHT
+int dx[] = {0, 0, -1, 1};
+
+int num, ans;
+bool check[MAX + 4][MAX + 4];
+int map[MAX + 4][MAX + 4];
+Atom atom[MAX + 2];
+
+
+void go() {
+
+    int turn = 1;
+
+    while (turn &lt;= 4000) {
+
+        int tempEnergy = 0;
+        //원소체크 각각 원소 비교
+
+        // 이동
+
+        for (int i = 1; i &lt;= num; ++i) {
+
+            if (atom[i].energy == 0) {
+                continue;
+            }
+
+
+            int nextX = dx[atom[i].dir] + atom[i].x;
+            int nextY = dy[atom[i].dir] + atom[i].y;
+            if (nextX &gt;= 0 &amp;&amp; nextX &lt;=4000 &amp;&amp; nextY &gt;= 0 &amp;&amp; nextY &lt;= 4000) {
+//                printf("%d번째 요소 X: %d, Y: %d, Dir: %d, energy: %d\n", i, atom[i].x, atom[i].y, atom[i].dir,
+//                       atom[i].energy);
+                map[atom[i].x][atom[i].y] -= 1;
+                atom[i].x = nextX;
+                atom[i].y = nextY;
+                map[atom[i].x][atom[i].y] += 1;
+                if (map[atom[i].x][atom[i].y] &gt; 1) {
+                    check[atom[i].x][atom[i].y] = true;
+                }
+            }else{
+                map[atom[i].x][atom[i].y] -= 1;
+                atom[i].energy = 0;
+            }
+
+        }
+
+
+        //충돌체크
+
+
+        for (int i = 1; i &lt;= num; ++i) {
+
+
+            if (atom[i].energy == 0) {
+                continue;
+            }
+
+            int tempX = atom[i].x;
+            int tempY = atom[i].y;
+
+            if (check[tempX][tempY]) {
+                if (map[tempX][tempY] == 1) {
+                    check[tempX][tempY] = false;
+                }
+                map[tempX][tempY] -= 1;
+                tempEnergy += atom[i].energy;
+                atom[i].energy = 0;
+            }
+        }
+
+
+
+        ans += tempEnergy;
+        turn += 1;
+
+        int cnt =1;
+        for (int j = 1; j &lt;= num ; ++j) {
+            if( atom[j].energy == 0){
+                cnt++;
+            }
+        }
+
+        if( cnt == num){
+            return;
+        }
+
+    }
+
+}
+
+
+int main(int argc, char **argv) {
+    int test_case;
+    int T;
+
+    //freopen("input.txt", "r", stdin);
+    cin &gt;&gt; T;
+    /*
+       여러 개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
+    */
+    for (test_case = 1; test_case &lt;= T; ++test_case) {
+        num = 0;
+        scanf("%d", &amp;num);
+        memset(atom, 0, sizeof(struct Atom));
+        memset(check, 0, sizeof(check));
+        memset(map, 0, sizeof(map));
+        ans = 0;
+        for (int i = 1; i &lt;= num; ++i) {
+
+            scanf("%d %d %d %d", &amp;atom[i].x, &amp;atom[i].y, &amp;atom[i].dir, &amp;atom[i].energy);
+            atom[i].x += 1000;
+            atom[i].y += 1000;
+            atom[i].x *= 2;
+            atom[i].y *= 2;
+            map[atom[i].x][atom[i].y] += 1;
+
+        }
+        go();
+        printf("#%d %d\n", test_case, ans);
+    }
+    return 0;//정상종료시 반드시 0을 리턴해야합니다.
+}
+</code></pre></div></div>
+
+
+  <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://leaveittogod0123blog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</div>
+
+<div class="pagination">
+  
+    <a href="/2018-10-09/SWExpert-1953" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2018-10-04/SWExpert-1949" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2019-07-22 00:51:18 +0900">2019</time> Yoseph Noh. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+    <script id="dsq-count-scr" src="//leaveittogod0123blog.disqus.com/count.js" async></script>
+  </body>
+</html>

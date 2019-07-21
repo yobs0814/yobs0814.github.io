@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+       SWEA 삼성 모의 SW역량테스트 2112 보호 필름   &middot; leaveittogod0123's blog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+</head>
+
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">leaveittogod0123's blog</h2>
+        </a>
+        <ul>
+          <!--<li><a href="/about">About me</a></li>-->
+          <li><a href="/tags">Tags</a></li>
+          <li><a href="/">Posts</a></li>
+          <li><a href="/search/">Search</a></li>
+
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        leaveittogod0123
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2018-10-03 00:00:00 +0900">October 03, 2018</time>
+    
+  </div>
+
+  <h1 class="post-title"> SWEA 삼성 모의 SW역량테스트 2112 보호 필름  </h1>
+
+  <div class="post-line"></div>
+
+  <div class="post-tags">
+  
+  
+  <a href="/tags/#SW 역량테스트">SW 역량테스트</a>,
+  
+  <a href="/tags/#SWexpert academy">SWexpert academy</a>
+  
+</div>
+
+
+  <h1 id="목표-swexpert-academy-모의-sw-역량테스트-2112-보호-필름-문제-풀기">목표: SWexpert academy 모의 SW 역량테스트 2112 보호 필름 문제 풀기</h1>
+<h3 id="환경-mac-os-high-sierra-10134-clion">환경: mac OS High Sierra 10.13.4, CLion</h3>
+
+<p>이 문제 또한 완전탐색으로 풀려고 합니다.
+완전탐색이란 문제의 답을 찾는 것인데, 가능한 경우를 모두 나열하고, 각각이 해가 될 수 있는지 확인하는 방법입니다.</p>
+
+<p>우선 완전탐색의 장단점을 얘기해보자면
+장점으로는 어떻게든 답을 구해낼 수 있다는 것이에요. 모든 경우를 다 살펴보고 해를 구하는 것이니까요.
+단점은 문제의 조건에 따라 오래 걸린다는 것인데, 이것을 최적화 하는 방법들이 있어요. 가지치기라든지 백트래킹이라든지</p>
+
+<p>[제약사항]</p>
+
+<ol>
+  <li>
+    <p>시간제한 : 최대 50개 테스트 케이스를 모두 통과하는데, C/C++/Java 모두 5초</p>
+  </li>
+  <li>
+    <p>보호 필름의 두께 D는 3이상 13이하의 정수이다. (3≤D≤13)</p>
+  </li>
+  <li>
+    <p>보호 필름의 가로크기 W는 1이상 20이하의 정수이다. (1≤W≤20)</p>
+  </li>
+  <li>
+    <p>합격기준 K는 1이상 D이하의 정수이다. (1≤K≤D)</p>
+  </li>
+  <li>
+    <p>셀이 가질 수 있는 특성은 A, B 두 개만 존재한다.</p>
+  </li>
+</ol>
+
+<p><a href="https://www.acmicpc.net/problem/15686">치킨배달</a>문제와 굉장히 비슷한 개념을 물어보는 문제인데요.</p>
+
+<p>이 문제에서는 D층에 시료를 추가해서 안전한 보호필름을 만드는 것이 중요한데,
+이 문제에서는 몇개의 시료를 추가해야하는지 주어지지 않았습니다. 그 말은 0개부터 D개까지 다 넣어보면서 안전한 보호필름인지 체크하라는 것인데요.</p>
+
+<p>크게 두가지 로직으로 나뉠 수 있는데,</p>
+
+<p>몇개의 시료를 추가할거냐?와 몇개이 시료를 추가할거냐는 치킨배달 문제에서 n개의 체인점 중에서 m개를 구하는 방법과 똑같은데, 거기에 플러스 m개가 주어지지 않았기 때문에 0~D개까지 다해보는겁니다.</p>
+
+<p>약품검사를 어떻게 할것인가?로 나뉘는데요.  약품검사는 재귀를 돌면서 계속해서 해야하는 체크로직이기 때문에 효율적이여야합니다.
+약품검사의 경우는 문제의 정의대로 보면 약품검사를 하다가 안전하지 않은 열을 찾았으면
+그 뒤에 있는 열을 계속 검사할 필요가 없습니다. 약품검사를 그만두는 코드가 꼭 필요합니다.</p>
+
+<p>여기서 중요하게 완전탐색은 그러면 인간의 논리를 넣지않고, 컴퓨터의 연산능력을 이용해 가능한 모든 경우의수를 탐색하되,</p>
+
+<p>재귀함수도 마찬가지고 구현문제도 마찬가지고 더이상 안돌아봐야할 경우가 매우 확실해 지잖아요? 그건 돌아보면 안됩니다. 절대로</p>
+
+<p><a href="https://www.swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5V1SYKAaUDFAWu&amp;categoryId=AV5V1SYKAaUDFAWu&amp;categoryType=CODE">보호 필름</a></p>
+
+<p>[code]</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+ 
+ 
+using namespace std;
+ 
+const int ROWMAX = 13;
+const int COLMAX = 20;
+ 
+int TC, K, D, W;
+int map[ROWMAX+1][COLMAX+1];
+int ans;
+ 
+bool checkRow(int col){
+    bool ret = false;
+    int cnt = 0;
+    int temp = map[0][col];
+    for (int j = 0; j &lt; D; ++j) {
+        if(map[j][col] == temp){
+            cnt+=1;
+ 
+            if( cnt &gt;= K){
+                ret = true;
+                return ret;
+            }
+        }else{
+ 
+            temp = map[j][col];
+            cnt =1;
+        }
+ 
+ 
+    }
+ 
+    if( cnt &lt; K){
+        ret = false;
+    }
+    return ret;
+}
+ 
+void go(int curRow, int inputCnt, int goal){
+ 
+ 
+ 
+    // curRow까지 inputCnt약을 투입했을때 약품이 안전하면 ans값을 갱신하는 함수
+    if( curRow &gt; D){
+        return;
+    }
+ 
+    if( inputCnt == goal){
+        // 약품 검사
+        int colCnt = 0;
+        for (int i = 0; i &lt; W; ++i) {
+ 
+            if(checkRow(i)){
+                colCnt += 1;
+            }else{
+                return;
+            }
+ 
+        }
+        if( colCnt == W){
+            ans = inputCnt;
+            return;
+        }
+    }
+ 
+    //아무것도 투입안했음
+    go(curRow+1, inputCnt, goal);
+ 
+    //curRow에 A시약 투입
+    int temp[COLMAX];
+    memset(temp, 0, sizeof(temp));
+    for (int j = 0; j &lt; W ; ++j) {
+        temp[j] = map[curRow][j];
+        map[curRow][j] = 0;
+    }
+    go(curRow+1, inputCnt+1, goal);
+    for (int j = 0; j &lt; W ; ++j) {
+        map[curRow][j] = temp[j];
+    }
+ 
+ 
+    //curCol에 B시약 투입
+    memset(temp, 0, sizeof(temp));
+    for (int j = 0; j &lt; W ; ++j) {
+        temp[j] = map[curRow][j];
+        map[curRow][j] = 1;
+    }
+    go(curRow+1, inputCnt+1, goal);
+    for (int j = 0; j &lt; W ; ++j) {
+        map[curRow][j] = temp[j];
+    }
+ 
+}
+ 
+int main() {
+ 
+    cin &gt;&gt; TC;
+ 
+    for (int T = 1; T &lt;= TC ; ++T) {
+        cin &gt;&gt; D &gt;&gt; W &gt;&gt; K;
+ 
+        for (int i = 0; i &lt; D; ++i) {
+            for (int j = 0; j &lt; W; ++j) {
+                cin &gt;&gt; map[i][j];
+            }
+        }
+ 
+        ans = D;
+ 
+        for (int i = 0; i &lt;= D; ++i) {
+            go(0,0,i);
+            if( ans &lt; D){
+                break;
+            }
+        }
+        cout&lt;&lt;"#"&lt;&lt;T&lt;&lt;" "&lt;&lt;ans&lt;&lt;"\n";
+    }
+ 
+    return 0;
+}
+</code></pre></div></div>
+
+
+  <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://leaveittogod0123blog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</div>
+
+<div class="pagination">
+  
+    <a href="/2018-10-04/CallSublimeFromTerminal" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2018-09-28/backjoonP15684" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2019-07-22 00:51:18 +0900">2019</time> Yoseph Noh. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+    <script id="dsq-count-scr" src="//leaveittogod0123blog.disqus.com/count.js" async></script>
+  </body>
+</html>

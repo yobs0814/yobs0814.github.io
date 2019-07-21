@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+       SWEA 4012 [모의 SW 역량테스트] 요리사  &middot; leaveittogod0123's blog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+</head>
+
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">leaveittogod0123's blog</h2>
+        </a>
+        <ul>
+          <!--<li><a href="/about">About me</a></li>-->
+          <li><a href="/tags">Tags</a></li>
+          <li><a href="/">Posts</a></li>
+          <li><a href="/search/">Search</a></li>
+
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        leaveittogod0123
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2018-10-13 00:00:00 +0900">October 13, 2018</time>
+    
+  </div>
+
+  <h1 class="post-title"> SWEA 4012 [모의 SW 역량테스트] 요리사 </h1>
+
+  <div class="post-line"></div>
+
+  <div class="post-tags">
+  
+  
+  <a href="/tags/#SW 역량테스트">SW 역량테스트</a>
+  
+</div>
+
+
+  <h1 id="목표-swexpert-academy-4012-모의-sw-역량테스트-요리사-문제-풀기">목표: SWexpert Academy 4012 [모의 SW 역량테스트] 요리사 문제 풀기</h1>
+<h3 id="환경-mac-os-high-sierra-10134-clion">환경: mac OS High Sierra 10.13.4, CLion</h3>
+
+<p>이 문제 또한 완전탐색으로 풀려고 합니다.
+완전탐색이란 문제의 답을 찾는 것인데, 가능한 경우를 모두 나열하고, 각각이 해가 될 수 있는지 확인하는 방법입니다.</p>
+
+<p>우선 완전탐색의 장단점을 얘기해보자면
+장점으로는 어떻게든 답을 구해낼 수 있다는 것이에요. 모든 경우를 다 살펴보고 해를 구하는 것이니까요.
+단점은 문제의 조건에 따라 오래 걸린다는 것인데, 이것을 최적화 하는 방법들이 있어요. 가지치기라든지 백트래킹이라든지</p>
+
+<h2 id="로직">로직</h2>
+<p>두명의 손님에게 음식을 제공하려고 합니다.
+그리고 N개의 식재료가 있습니다. 식재료는 N/2 개씩 나누어 두 개의 요리하려고 합니다. (N은 짝수)</p>
+
+<p>가상의 요리사 A, B가 있습니다.
+food[]라는 배열을 통해 N개의 식재료들을 나열해놨습니다.
+A,B 요리사는 각각 N/2개씩 식재료를 찜해놓습니다.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">food</span><span class="p">[</span><span class="n">inx</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// inx번째 식재료는 A요리사가 찜</span>
+    <span class="n">solve</span><span class="p">(</span><span class="n">inx</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">aCnt</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">bCnt</span><span class="p">);</span> 
+    <span class="n">food</span><span class="p">[</span><span class="n">inx</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// inx번재 식재료는 B요리사가 찜</span>
+    <span class="n">solve</span><span class="p">(</span><span class="n">inx</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">aCnt</span><span class="p">,</span> <span class="n">bCnt</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>위 코드가 익숙하지 않으신분들은 
+<a href="https://www.acmicpc.net/problem/1987">알파벳</a> 문제를 빠르게 보시는게 좋습니다.
+재귀를 통해 조합문제를 푸는 것인데,
+뛰어나신분들이 해놓은 코드가 있으니 검색해보시길.</p>
+
+<p>그럼 다시 식재료 찜하는 것을 언제까지하냐?
+언제 재귀가 멈춰야하는지? 
+종료조건 == 모든 식재료가 찜 됐음. 
+그때에 식재료 선택이 끝났으니 calc()함수에서 시너지 계산하면 됩니다.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">if</span><span class="p">(</span> <span class="n">inx</span> <span class="o">==</span> <span class="n">N</span><span class="p">){</span>
+        <span class="kt">int</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">calc</span><span class="p">();</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">ans</span> <span class="o">&gt;</span> <span class="n">tmp</span><span class="p">){</span>
+            <span class="n">ans</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<p>그러면 안되는 경우는? 각각의 요리사가 찜한 요리의 식재료 수가 N/2보다 크면 안됩니다.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">if</span><span class="p">(</span> <span class="n">aCnt</span> <span class="o">&gt;</span> <span class="n">N</span><span class="o">/</span><span class="mi">2</span> <span class="o">||</span> <span class="n">bCnt</span> <span class="o">&gt;</span> <span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">){</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<p>재귀함수의 시간복잡도는
+solve 함수 내에서 solve를 두번씩
+인덱스가 0~N-1까지 반복되다보니
+O(2^N)이 됩니다. N크기가 (4 ≤ N ≤ 16)이므로 최악의 경우 2의 16승이므로 굉장히 작은 연산횟수입니다.</p>
+
+<p>1초에 약 1억번 연산한다고 했을때 비해도 충분히 적은 횟수이무로 좋은 알고리즘이라고 생각합니다.</p>
+
+<p>[제약사항]</p>
+
+<ol>
+  <li>
+    <p>시간 제한 : 최대 50개 테스트 케이스를 모두 통과하는 데 C / C++ / Java 모두 3초</p>
+  </li>
+  <li>
+    <p>식재료의 수 N은 4이상 16이하의 짝수이다. (4 ≤ N ≤ 16)</p>
+  </li>
+  <li>
+    <p>시너지 Sij는 1이상 20,000이하의 정수이다. (1 ≤ Sij ≤ 20,000, i ≠ j)</p>
+  </li>
+  <li>
+    <p>i와 j가 서로 같은 경우의 Sij값은 정의되지 않는다. 입력에서는 0으로 주어진다.</p>
+  </li>
+</ol>
+
+<p><a href="https://www.swexpertacademy.com/main/code/problem/problemDetail.do">요리사</a></p>
+
+<p><a href="https://github.com/yobs0814/problemSolving/blob/master/SWExpert/p4012/main.cpp">code</a></p>
+
+
+  <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://leaveittogod0123blog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</div>
+
+<div class="pagination">
+  
+    <a href="/2018-10-17/backjoonP14502" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2018-10-10/SWExpert-1952" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2019-07-22 00:51:18 +0900">2019</time> Yoseph Noh. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+    <script id="dsq-count-scr" src="//leaveittogod0123blog.disqus.com/count.js" async></script>
+  </body>
+</html>

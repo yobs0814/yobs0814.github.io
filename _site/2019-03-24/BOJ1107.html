@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+       백준 1107 DFS로 문제 풀기  &middot; leaveittogod0123's blog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+</head>
+
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">leaveittogod0123's blog</h2>
+        </a>
+        <ul>
+          <!--<li><a href="/about">About me</a></li>-->
+          <li><a href="/tags">Tags</a></li>
+          <li><a href="/">Posts</a></li>
+          <li><a href="/search/">Search</a></li>
+
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        leaveittogod0123
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2019-03-24 00:00:00 +0900">March 24, 2019</time>
+    
+  </div>
+
+  <h1 class="post-title"> 백준 1107 DFS로 문제 풀기 </h1>
+
+  <div class="post-line"></div>
+
+  <div class="post-tags">
+  
+  
+  <a href="/tags/#SW 역량테스트">SW 역량테스트</a>,
+  
+  <a href="/tags/#백준 온라인 저지">백준 온라인 저지</a>,
+  
+  <a href="/tags/#부르트포스">부르트포스</a>
+  
+</div>
+
+
+  <h1 id="목표-백준-1107-문제-풀기">목표: 백준 1107 문제 풀기</h1>
+<h3 id="환경-mac-os-mojave-1014-visual-studio-2015">환경: mac OS Mojave 10.14, Visual Studio 2015</h3>
+
+<h3 id="로직">로직</h3>
+<p>dfs(버튼을 누른횟수, 채널) 이란 함수를 정의해서
+모든 경우의수를 계산하여 풀이했습니다.</p>
+
+<p>버튼을 누른횟수가 찾으려는 수의 자리수보다 크면 종료해야됩니다.
+질문 검색을 통해 알아낸 결과, 이동하려는 채널보다 큰 수에서 - 버튼을 통해서
+이동하는게 빠를 수도 있습니다.
+그래서 재귀 종료조건을 아래와 같이 만들었습니다.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="n">idx</span> <span class="o">&gt;</span> <span class="n">sz</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>dfs를 하면서 자리수를 앞에서부터 선택을 해줍니다. 
+1234면 천자리, 백자리, 십자리, 일자리 순으로 선택합니다.</p>
+
+<p>해당 자리수에 누를 버튼을
+for문을 돌면서 고장난 버튼이 아니면 버튼을 누르고
+버튼을 누른 결과를 갱신하여 인자로 넘겨줬습니다.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">error</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">nNum</span> <span class="o">=</span> <span class="n">curNum</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">+</span> <span class="n">i</span><span class="p">;</span>
+
+    <span class="n">dfs</span><span class="p">(</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">nNum</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>시간복잡도는 O(10^자리수)입니다.</p>
+
+<p><a href="https://github.com/yobs0814/problemSolving/blob/master/SWExpert/BOJ/BOJ1107/%EC%86%8C%EC%8A%A4.cpp">SourceCode</a></p>
+
+
+  <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://leaveittogod0123blog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</div>
+
+<div class="pagination">
+  
+    <a href="/2019-06-26/BOJ11066" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2019-02-12/SWEA2817" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2019-07-22 00:51:18 +0900">2019</time> Yoseph Noh. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+    <script id="dsq-count-scr" src="//leaveittogod0123blog.disqus.com/count.js" async></script>
+  </body>
+</html>

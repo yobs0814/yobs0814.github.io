@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      Sublime Text 서브라임 텍스트를 터미널에서 실행하기 &middot; leaveittogod0123's blog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+</head>
+
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">leaveittogod0123's blog</h2>
+        </a>
+        <ul>
+          <!--<li><a href="/about">About me</a></li>-->
+          <li><a href="/tags">Tags</a></li>
+          <li><a href="/">Posts</a></li>
+          <li><a href="/search/">Search</a></li>
+
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        leaveittogod0123
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2018-10-04 00:00:00 +0900">October 04, 2018</time>
+    
+  </div>
+
+  <h1 class="post-title">Sublime Text 서브라임 텍스트를 터미널에서 실행하기</h1>
+
+  <div class="post-line"></div>
+
+  <div class="post-tags">
+  
+  
+  <a href="/tags/#SublimeText">SublimeText</a>,
+  
+  <a href="/tags/#Terminal">Terminal</a>
+  
+</div>
+
+
+  <h1 id="목표-sublime-을-터미널에서-실행하기">목표: sublime 을 터미널에서 실행하기</h1>
+<h3 id="환경-mac-os-high-sierra-10134-submlime-text3">환경: mac OS High Sierra 10.13.4, Submlime text3</h3>
+
+<p><a href="https://beomi.github.io/2017/07/04/Call-Sublime-from-Terminal/">참조</a>
+위 블로그에 정말 자세히 나와있는데, 따라해도 잘 안되서 구글링을 더 해본결과</p>
+
+<h3 id="sublime-text-설치-확인">sublime Text 설치 확인</h3>
+<p>터미널을 키고 아래 명령어를 입력해서 설치 확인해봅니다.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># SublimeText3 의 경우
+open /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl
+</code></pre></div></div>
+
+<p>서브라임 텍스트 프로그램이 실행된다면</p>
+
+<p>다시 터미널에 아래 코드를 입력해줍니다.</p>
+
+<p>[code]</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rm /usr/local/bin/subl;
+sudo ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/subl;
+</code></pre></div></div>
+
+
+  <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://leaveittogod0123blog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</div>
+
+<div class="pagination">
+  
+    <a href="/2018-10-04/SWExpert-1949" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2018-10-03/SWExpertP2112" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2019-07-22 00:51:18 +0900">2019</time> Yoseph Noh. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+    <script id="dsq-count-scr" src="//leaveittogod0123blog.disqus.com/count.js" async></script>
+  </body>
+</html>

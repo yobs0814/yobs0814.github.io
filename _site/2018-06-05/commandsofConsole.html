@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+       자주 사용하는 콘솔 명령어 정리 &middot; leaveittogod0123's blog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+</head>
+
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">leaveittogod0123's blog</h2>
+        </a>
+        <ul>
+          <!--<li><a href="/about">About me</a></li>-->
+          <li><a href="/tags">Tags</a></li>
+          <li><a href="/">Posts</a></li>
+          <li><a href="/search/">Search</a></li>
+
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        leaveittogod0123
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2018-06-05 00:00:00 +0900">June 05, 2018</time>
+    
+  </div>
+
+  <h1 class="post-title"> 자주 사용하는 콘솔 명령어 정리</h1>
+
+  <div class="post-line"></div>
+
+  <div class="post-tags">
+  
+  
+  <a href="/tags/#mac">mac</a>,
+  
+  <a href="/tags/#console">console</a>
+  
+</div>
+
+
+  <h1 id="목표-콘솔을-이용해보자">목표: 콘솔을 이용해보자</h1>
+<h2 id="환경-mac-os-high-sierra-10134">환경: mac OS High Sierra 10.13.4</h2>
+
+<p>각 OS에서 터미널을 실행한다.
+터미널이 실행된 화면을 보면
+YOSEPHui-MacBook-Pro:firstProject yosephnoh$ 라는 글자는 프롬프트 라고 부른다.
+사용자로부터 명령을 입력 받는 역할을 담당한다. 프롬프트에 적혀있는 단어들의 의미는 다음과 같다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>사용자ID@컴퓨터명:현재디렉토리$
+</code></pre></div></div>
+
+<p>현재 디렉토리명에 물결(~)표시가 있는데 이는 관례적으로 리눅스에서 사용자의 홈 디렉토리를 나타낸다.
+마지막으로 $표시도 의미가 있다. $는 현재 사용하고 있는 계정의 권한이 일반 사용자임을 나타낸다. 일반 사용자 외에 최고 권한
+사용자도 있는데 이를 root라고 부른다. root계정을 사용하면 #표시로 바뀌게 된다. 사용자 권한에 관한 이야기는 추후에
+검색을 통해 살펴보도록하자.</p>
+
+<p>terminal 을 종료하는 방법은</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ exit
+</code></pre></div></div>
+<p>특수기호 ($) 뒤쪽에 있는 글자만 키보드로 입력하면 된다.</p>
+
+<p>지금까지 콘솔창을 사용하기 위한 기본 설명을 진행했다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left"><center>명령어</center></th>
+      <th style="text-align: center"><center>설명</center></th>
+      <th style="text-align: right"><center>예제</center></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>pwd</strong></td>
+      <td style="text-align: center"><center>디렉토리 이동</center></td>
+      <td style="text-align: right">/Users/사용자명/Documents/IOSLab/firstProject</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>cd ..</strong></td>
+      <td style="text-align: center"><center>현재 디렉토리의 상위 디렉토리로 이동</center></td>
+      <td style="text-align: right">/Users/사용자명/Downloads/IOSLab</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>cd ~</strong></td>
+      <td style="text-align: center"><center>사용자의 홈 디렉토리로 이동 </center></td>
+      <td style="text-align: right">/Users/사용자명</td>
+    </tr>
+  </tbody>
+</table>
+
+
+  <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://leaveittogod0123blog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</div>
+
+<div class="pagination">
+  
+    <a href="/2018-06-06/externalLibrarybycocoapods" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2018-06-01/xcodeuploadingtogithub" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2019-07-22 00:51:18 +0900">2019</time> Yoseph Noh. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+    <script id="dsq-count-scr" src="//leaveittogod0123blog.disqus.com/count.js" async></script>
+  </body>
+</html>

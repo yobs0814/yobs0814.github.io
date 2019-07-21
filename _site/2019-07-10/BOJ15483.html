@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+       백준 15483 편집거리 알고리즘 풀이 &middot; leaveittogod0123's blog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+</head>
+
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">leaveittogod0123's blog</h2>
+        </a>
+        <ul>
+          <!--<li><a href="/about">About me</a></li>-->
+          <li><a href="/tags">Tags</a></li>
+          <li><a href="/">Posts</a></li>
+          <li><a href="/search/">Search</a></li>
+
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        leaveittogod0123
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2019-07-10 00:00:00 +0900">July 10, 2019</time>
+    
+  </div>
+
+  <h1 class="post-title"> 백준 15483 편집거리 알고리즘 풀이</h1>
+
+  <div class="post-line"></div>
+
+  <div class="post-tags">
+  
+  
+  <a href="/tags/#백준 온라인 저지">백준 온라인 저지</a>
+  
+</div>
+
+
+  <h1 id="목표-백준-15483-풀기">목표: 백준 15483 풀기</h1>
+<h3 id="환경-mac-os-mojave-1014-clion">환경: mac OS Mojave 10.14, CLion</h3>
+
+<h3 id="로직">로직</h3>
+
+<h4 id="문제이해">문제이해</h4>
+<p>굉장히 유명한 편집 거리 알고리즘을 다이나믹 프로그래밍 문제로 풀이
+DP를 모르는데 이 문제를 싸악 풀었으면 알고리즘 안해도 됌.<br />
+DP에 대해 모른다면 이해 자체가 안되는 문제</p>
+
+<h4 id="문제접근">문제접근</h4>
+<p>이게 왜 <a href="https://www.acmicpc.net/workbook/view/1946">단계별로 풀어보기 jh05013 Edition pt.1</a> 에 들어가는지 전혀모르겠음.</p>
+
+<p>이 문제를 풀이하면서 고민했음. 풀이가 뭘까, 전혀 모르겠음. 모르겠음. 전혀 모르겠음. 검색했음.<br />
+블로그마다 편집거리 알고리즘이라 써있음. 편집거리 알고리즘 검색했음.</p>
+
+<p>그래서 인터넷에서 본 풀이를 정리함.
+<a href="https://www.geeksforgeeks.org/edit-distance-dp-5/">the mighty geeksforgeeks</a></p>
+
+<p>이 문제에서 작은 문제란 무엇인가?</p>
+
+<p>정리가 이해가 안된다면 geeksforgeeks 가서 그림을 보면 되죠.
+또한 DP를 모른다면 코드플러스의 백준 강의를 들으면 되죠.</p>
+
+<p>이 아이디어는 두 문자열의 왼쪽 또는 오른쪽에서 쳐다보는 모든 문자를 하나씩 처리함.
+오른쪽부터 보죠. 모든 문자 쌍을 순회할때 두가지의 경우의 수가 있죠.</p>
+
+<p>그전에 정의할 것<br />
+m : str1의 길이<br />
+n : str2의 길이</p>
+
+<ol>
+  <li>두 문자열의 마지막 문자가 같다? 
+ m-1, n-1 이 작은 문제가 되죠.</li>
+  <li>
+    <p>두 문장열의 마지막 문자가 다르다?
+문제에서 주어진 대로<br />
+삽입<br />
+삭제<br />
+교체 
+로 나눌 수 있죠.</p>
+
+    <p>삽입의 경우는 m 과 n-1의 작은 문제로 볼 수 있고<br />
+삭제의 경우는 m-1 과 n의 작은 문제로 볼 수 있고<br />
+교체의 경우는 m-1 과 n-1의 작은 문제로 볼 수 있죠.</p>
+  </li>
+</ol>
+
+<p>작은 문제로 나누어도 겹치는 경우의수가 매우 발생함.<br />
+시간복잡도가 O(3^m) 인 아주 뭣 같은 복잡도죠.</p>
+
+<p>고래서<br />
+DP를 무조건 사용하면 시간복잡도로 이득, bottom-up이든 top-down이든 똑같죠.
+메모이제이션을 써야해요.</p>
+
+<p>시간복잡도O(n*m)에 해결해버림.</p>
+
+<p>나에겐 매우 어려운 문제였음…</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include&lt;iostream&gt;
+#include&lt;string&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="c1">// Utility function to find the minimum of three numbers </span>
+<span class="kt">int</span> <span class="nf">min</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">z</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">min</span><span class="p">(</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">z</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">editDistDP</span><span class="p">(</span><span class="n">string</span> <span class="n">str1</span><span class="p">,</span> <span class="n">string</span> <span class="n">str2</span><span class="p">,</span> <span class="kt">int</span> <span class="n">m</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Create a table to store results of subproblems </span>
+    <span class="kt">int</span> <span class="n">dp</span><span class="p">[</span><span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>
+
+    <span class="c1">// Fill d[][] in bottom up manner </span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">m</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">j</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">// If first string is empty, only option is to </span>
+            <span class="c1">// insert all characters of second string </span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span>
+                <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">j</span><span class="p">;</span>  <span class="c1">// Min. operations = j </span>
+
+                <span class="c1">// If second string is empty, only option is to</span>
+                <span class="c1">// remove all characters of second string</span>
+            <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">j</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span>
+                <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span> <span class="c1">// Min. operations = i </span>
+
+                <span class="c1">// If last characters are same, ignore last char</span>
+                <span class="c1">// and recur for remaining string</span>
+            <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">str1</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">str2</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+                <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
+
+                <span class="c1">// If the last character is different, consider all</span>
+                <span class="c1">// possibilities and find the minimum</span>
+            <span class="k">else</span>
+                <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">min</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>  <span class="c1">// Insert </span>
+                                   <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">],</span>  <span class="c1">// Remove </span>
+                                   <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]);</span> <span class="c1">// Replace </span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">dp</span><span class="p">[</span><span class="n">m</span><span class="p">][</span><span class="n">n</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+    <span class="n">string</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">;</span>
+    <span class="n">cin</span><span class="o">&gt;&gt;</span> <span class="n">a</span> <span class="o">&gt;&gt;</span> <span class="n">b</span><span class="p">;</span>
+
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">editDistDP</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">.</span><span class="n">length</span><span class="p">(),</span><span class="n">b</span><span class="p">.</span><span class="n">length</span><span class="p">());</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+
+
+  <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://leaveittogod0123blog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</div>
+
+<div class="pagination">
+  
+  
+    <a href="/2019-07-10/BOJ1351" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2019-07-22 00:51:18 +0900">2019</time> Yoseph Noh. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+    <script id="dsq-count-scr" src="//leaveittogod0123blog.disqus.com/count.js" async></script>
+  </body>
+</html>

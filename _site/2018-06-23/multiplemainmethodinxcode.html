@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      xCode에서 여러개의 main 메서드를 사용하기 &middot; leaveittogod0123's blog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+</head>
+
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">leaveittogod0123's blog</h2>
+        </a>
+        <ul>
+          <!--<li><a href="/about">About me</a></li>-->
+          <li><a href="/tags">Tags</a></li>
+          <li><a href="/">Posts</a></li>
+          <li><a href="/search/">Search</a></li>
+
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        leaveittogod0123
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2018-06-23 00:00:00 +0900">June 23, 2018</time>
+    
+  </div>
+
+  <h1 class="post-title">xCode에서 여러개의 main 메서드를 사용하기</h1>
+
+  <div class="post-line"></div>
+
+  <div class="post-tags">
+  
+  
+  <a href="/tags/#Xcode9">Xcode9</a>,
+  
+  <a href="/tags/#c">c</a>
+  
+</div>
+
+
+  <h1 id="목표-xcode에서-여러개의-main-메서드를-사용하기">목표: xCode에서 여러개의 main 메서드를 사용하기</h1>
+<h3 id="환경-mac-os-high-sierra-10134-xcode94">환경: mac OS High Sierra 10.13.4, Xcode9.4</h3>
+
+<p>File -&gt; New -&gt; Target… 그리고 macOS탭에서 Application -&gt; Command Line Tool
+next -&gt; Product name 입력후 -&gt; finish</p>
+
+<p><img src="https://i.stack.imgur.com/O3SQ1.png" alt="img1" /></p>
+
+<p>실행할때는 navigator 위에있는 target scheme만 바꿔주면 된다.</p>
+
+<p><img src="https://i.stack.imgur.com/fEds5.png" alt="img1" /></p>
+
+<p>원래는 여러개의 타겟 접근은 앱에서 여러 코드를 공유할때 쓰이지만, 이런 상황에서도 사용된다.</p>
+
+<p>다른 방법이 한개 더 있는데 참조한 사이트에 있음.</p>
+
+<p><img src="https://i.stack.imgur.com/Ilkhq.png" alt="img1" /></p>
+
+<p><a href="https://stackoverflow.com/questions/40006218/xcode-multiple-main-methods">참조</a>.</p>
+
+<hr />
+
+<p>그러면 target은 뭔가?</p>
+
+<ul>
+  <li>workspace는 한개 또는 그 이상의 프로젝트를 가진다. 보통 이 프로젝트는 연관이 있음.</li>
+  <li>project는 코드와 리소스 등등을 가진다.</li>
+  <li>target은 각 프로젝트는 한개 이상의 targets을 갖는다.
+    <ul>
+      <li>각각의 target은 프로젝트에 대한 빌드 세팅을 정의한다.</li>
+      <li>각각의 target은 클래스들과 리소스들 그리고 사용자 정의 스크립트 등 빌드에 필요한 것들을 정의한다.</li>
+      <li>여러개의 targets은 같은 프로젝트에서 다른 버전의 배포를 할때 사용된다.
+        <ul>
+          <li>예를 들어, my project에 두개의 targets을 갖고 있다. 그리고  “normal”빌드와 “office”빌드는 각각 다른 기능을 추가하여 테스트해야하는데, targets를 바꿈으로써 손쉽게 테스트를 할 수 있음.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>scheme은 빌드, 테스트, 프로파일을 누를 때 일어난다.
+    <ul>
+      <li>보통 target하나당 적어도 하나의 scheme을 갖는다.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>target은 다른 내용을 더 봐야 이해가 될듯..
+<a href="https://stackoverflow.com/questions/20637435/xcode-what-is-a-target-and-scheme-in-plain-language">참조</a>.</p>
+
+
+  <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://leaveittogod0123blog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</div>
+
+<div class="pagination">
+  
+    <a href="/2018-09-28/ClosetPairProblem" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2018-06-06/externalLibrarybycocoapods" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2019-07-22 00:51:18 +0900">2019</time> Yoseph Noh. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+    <script id="dsq-count-scr" src="//leaveittogod0123blog.disqus.com/count.js" async></script>
+  </body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+       백준 15684 사다리조작 브루트포스로 풀기  &middot; leaveittogod0123's blog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+</head>
+
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">leaveittogod0123's blog</h2>
+        </a>
+        <ul>
+          <!--<li><a href="/about">About me</a></li>-->
+          <li><a href="/tags">Tags</a></li>
+          <li><a href="/">Posts</a></li>
+          <li><a href="/search/">Search</a></li>
+
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        leaveittogod0123
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2018-09-28 00:00:00 +0900">September 28, 2018</time>
+    
+  </div>
+
+  <h1 class="post-title"> 백준 15684 사다리조작 브루트포스로 풀기 </h1>
+
+  <div class="post-line"></div>
+
+  <div class="post-tags">
+  
+  
+  <a href="/tags/#SW 역량테스트">SW 역량테스트</a>,
+  
+  <a href="/tags/#백준 온라인 저지">백준 온라인 저지</a>
+  
+</div>
+
+
+  <h1 id="목표-백준-온라인-저지--15674-사다리조작-문제해결">목표: 백준 온라인 저지 : 15674 사다리조작 문제해결</h1>
+<h3 id="환경-mac-os-high-sierra-10134-clion">환경: mac OS High Sierra 10.13.4, CLion</h3>
+
+<p>이 문제 또한 완전탐색으로 풀려고 합니다.
+완전탐색이란 문제의 답을 찾는 것인데, 가능한 경우를 모두 나열하고, 각각이 해가 될 수 있는지 확인하는 방법입니다.</p>
+
+<p>우선 완전탐색의 장단점을 얘기해보자면
+장점으로는 어떻게든 답을 구해낼 수 있다는 것이에요. 모든 경우를 다 살펴보고 해를 구하는 것이니까요.
+단점은 문제의 조건에 따라 오래 걸린다는 것인데, 이것을 최적화 하는 방법들이 있어요. 가지치기라든지 백트래킹이라든지</p>
+
+<h3 id="로직">로직</h3>
+
+<p>크게 두가지로 나뉩니다. 사다리 두기, i번째 사다리 상단 출발해서 i번째 사다리 하단으로 도착하는지 체크하기</p>
+<ol>
+  <li>사다리 두기
+0,0부터 시작해서 N-1,H-1 까지 main함수에서 가능한 애초에 둘 사다리 개수를 가지고 go함수를 들어갑니다.
+go함수 내부에 2중 for문 돌면서 둘 수 있는 공간에 사다리를 둡니다.</li>
+</ol>
+
+<p>문제의 조건이 행의 수: 2&lt;= N &lt;= 10 열의 수 1 ≤ H ≤ 30 이므로
+최대 배열크기가 300인 애들을 확인해보면 되요.
+사다리가 0개인 경우 300C0, 사다리가 1개인 경우 300C1, 2개인 경우 300C2 .. 최대 3개니까 300C3</p>
+
+<p>사다리 두기 : 300<em>299</em>298/ 3<em>2</em>1 = 약 4백만 충분히 모든 경우의 수를 다 다룰 수 있습니다.</p>
+
+<p>여기서 제가 처음 설계해서 시간초과 나온코드에는 사다리를 두기전에 가능한 경우인지 체크하잖아요.</p>
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">map</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">map</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">map</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]){</span> 
+</code></pre></div></div>
+<p>이렇게 O(1) 만에 할 수 있는데, 해당하는 1차원 배열을 다 돌았어요. 그래서 이 문제 이후에는
+보통 이런 체크로직에서 시간복잡도를 줄일 수 있는지 설계할때부터 생각을 하게 되었습니다.</p>
+
+<p>그리고 항상 사다리 두고 재귀함수 호출한 후에, 재귀함수가 끝나면 
+for문으로 해당 열을 다 돌면서 사다리 둘지 보잖아요.</p>
+
+<p>for문의 다음 인덱스에 사다리 둘 것이기 때문에 재귀함수 끝났으면 
+재귀함수 호출 전에 두었던 사다리를 제거하는 코드가 꼭 들어가야됩니다.(백트래킹이죠.)</p>
+
+<p>그리고 만약에 시뮬레이션(i번째 사다리 상단에 출발해서 i번째 사다리 하단에 도착하는지 체크)이 성공하면
+더이상 사다리를 두지않고 종료해버리기 때문에 300Cn 이 온전히 계산되지 않죠.</p>
+
+<p>그래서 시간복잡도 계산한것보다 훨씬 빠르게 프로그램이 수행될겁니다.
+전체의 경우의 수만큼 두다가 되면 그만 둬버리니까요.</p>
+
+<ol>
+  <li>시뮬레이션(i번째 사다리 상단에 출발해서 i번째 사다리 하단에 도착하는지 체크)
+2중 for 돌기때문에 수행되는 시간복잡도 O(N^2) = 300
+그러나 시뮬레이션 중에 하나라도 틀리면 나가리기 때문에 break 코드가 들어가서 온전히 O(N^2)이 절대 나올 수 없습니다.</li>
+</ol>
+
+<p>여기서 중요하게 생각했던 부분은 시간복잡도가 1억번이하다. 무식하지만 안전한 방법이 됩니다.</p>
+
+<p><a href="https://www.acmicpc.net/problem/15684">사다리조작</a></p>
+
+<p>[code]</p>
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;cstdio&gt;
+#include &lt;climits&gt;
+</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">MAXROW</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">MAXCOL</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+
+<span class="kt">bool</span> <span class="n">map</span><span class="p">[</span><span class="n">MAXROW</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">MAXCOL</span><span class="o">+</span><span class="mi">2</span><span class="p">];</span> <span class="c1">//좌우 패딩</span>
+<span class="kt">int</span> <span class="n">N</span><span class="p">,</span><span class="n">M</span><span class="p">,</span><span class="n">H</span><span class="p">;</span> <span class="c1">//열의수, 주어진 사다리 수, 행의 수</span>
+<span class="kt">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="n">INT_MAX</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">recur</span><span class="p">;</span>
+
+<span class="kt">bool</span> <span class="nf">simulate</span><span class="p">(){</span>
+    <span class="kt">bool</span> <span class="n">ret</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">corret</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">copy</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">N</span> <span class="p">;</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 열 반복</span>
+        <span class="n">copy</span> <span class="o">=</span> <span class="n">j</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">H</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//행 반복</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">map</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">copy</span><span class="p">]){</span>
+                <span class="n">copy</span><span class="o">++</span><span class="p">;</span>
+            <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span> <span class="n">map</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">copy</span><span class="o">-</span><span class="mi">1</span><span class="p">]){</span>
+                <span class="n">copy</span><span class="o">--</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">copy</span> <span class="o">==</span> <span class="n">j</span><span class="p">){</span>
+            <span class="n">corret</span><span class="o">+=</span><span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+            <span class="k">break</span><span class="p">;</span>  <span class="c1">//하나라도 다르면 의미없음.</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">corret</span> <span class="o">==</span> <span class="n">N</span><span class="p">){</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">go</span><span class="p">(</span><span class="kt">int</span> <span class="n">rowPos</span><span class="p">,</span> <span class="kt">int</span> <span class="n">cnt</span><span class="p">,</span> <span class="kt">int</span> <span class="n">goal</span><span class="p">){</span>
+    <span class="c1">// rowPos부터 사다리 cnt를 추가하여 i번째 열이 사다리 타고 i번째로 갔는지 확인하는 함수</span>
+
+    <span class="k">if</span><span class="p">(</span> <span class="n">cnt</span> <span class="o">==</span> <span class="n">goal</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">simulate</span><span class="p">()){</span>
+            <span class="n">ans</span> <span class="o">=</span> <span class="n">cnt</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">rowPos</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">H</span> <span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 행 반복</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">N</span> <span class="p">;</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 열 반복 마지막 열에는 사다리 추가의미 없</span>
+                <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">map</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">map</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">map</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]){</span>
+                    <span class="n">map</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+                    <span class="k">if</span><span class="p">(</span><span class="n">ans</span> <span class="o">!=</span> <span class="n">INT_MAX</span><span class="p">){</span>
+                        <span class="k">return</span><span class="p">;</span>
+                    <span class="p">}</span>
+                    <span class="n">go</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">cnt</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">goal</span><span class="p">);</span>
+
+                    <span class="n">map</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d %d %d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">N</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">M</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">H</span><span class="p">);</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">M</span> <span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">;</span>
+        <span class="n">scanf</span><span class="p">(</span><span class="s">"%d %d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">);</span>
+        <span class="n">map</span><span class="p">[</span><span class="n">a</span><span class="p">][</span><span class="n">b</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">go</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">i</span><span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span> <span class="n">ans</span> <span class="o">!=</span> <span class="n">INT_MAX</span><span class="p">){</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span><span class="p">(</span> <span class="n">ans</span> <span class="o">==</span> <span class="n">INT_MAX</span><span class="p">){</span>
+        <span class="n">ans</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">ans</span><span class="p">);</span>
+
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+
+  <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://leaveittogod0123blog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</div>
+
+<div class="pagination">
+  
+    <a href="/2018-10-03/SWExpertP2112" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2018-09-28/ClosetPairProblem" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2019-07-22 00:51:18 +0900">2019</time> Yoseph Noh. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+    <script id="dsq-count-scr" src="//leaveittogod0123blog.disqus.com/count.js" async></script>
+  </body>
+</html>

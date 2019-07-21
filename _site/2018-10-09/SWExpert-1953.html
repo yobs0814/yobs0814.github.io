@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      SWExpertacademy 1953. [모의 SW 역량테스트] 탈주범 검거 &middot; leaveittogod0123's blog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+</head>
+
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">leaveittogod0123's blog</h2>
+        </a>
+        <ul>
+          <!--<li><a href="/about">About me</a></li>-->
+          <li><a href="/tags">Tags</a></li>
+          <li><a href="/">Posts</a></li>
+          <li><a href="/search/">Search</a></li>
+
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        leaveittogod0123
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2018-10-09 00:00:00 +0900">October 09, 2018</time>
+    
+  </div>
+
+  <h1 class="post-title">SWExpertacademy 1953. [모의 SW 역량테스트] 탈주범 검거</h1>
+
+  <div class="post-line"></div>
+
+  <div class="post-tags">
+  
+  
+  <a href="/tags/#SW 역량테스트">SW 역량테스트</a>
+  
+</div>
+
+
+  <h1 id="목표-swexpertacademy-1953-모의-sw-역량테스트-탈주범-검거-문제-풀기">목표: SWExpertacademy 1953. [모의 SW 역량테스트] 탈주범 검거 문제 풀기</h1>
+<h3 id="환경-mac-os-high-sierra-10134-clion">환경: mac OS High Sierra 10.13.4, CLion</h3>
+
+<p>[제약 사항]</p>
+<ol>
+  <li>
+    <p>시간 제한 : 최대 50개 테이트 케이스를 모두 통과하는데, C/C++/Java 모두 1초</p>
+  </li>
+  <li>
+    <p>지하 터널 지도의 세로 크기 N, 가로 크기 M은 각각 5 이상 50 이하이다. (5 ≤ N, M ≤ 50)</p>
+  </li>
+  <li>
+    <p>맨홀 뚜껑의 세로 위치 R 은 0 이상 N-1이하이고 가로 위치 C 는 0 이상 M-1이하이다. (0 ≤ R ≤ N-1, 0 ≤ C ≤ M-1)</p>
+  </li>
+  <li>
+    <p>탈출 후 소요된 시간 L은 1 이상 20 이하이다. (1 ≤ L ≤ 20)</p>
+  </li>
+  <li>
+    <p>지하 터널 지도에는 반드시 1개 이상의 터널이 있음이 보장된다.</p>
+  </li>
+  <li>
+    <p>맨홀 뚜껑은 항상 터널이 있는 위치에 존재한다.</p>
+  </li>
+</ol>
+
+<p>이 문제는 2차원 배열로 구성된 맵안에서 row,col값을 변경하며 2차원배열을 순회하는 문제이고, 
+또한 시간당 1의 거리를 움직일 수 있다는 특징이 가중치를 1로 둔 그래프를 순회하는 말이므로 
+BFS로 해결했습니다.</p>
+
+<h3 id="그래프-순회의-목적-특정-노드부터-시작해서-연결되어있는-모든-노드정점을-방문">그래프 순회의 목적: 특정 노드부터 시작해서 연결되어있는 모든 노드(정점)을 방문</h3>
+<h3 id="bfs-인접한-노드들을-우선-모두-방문표시하고-뻗어나간다">BFS: 인접한 노드들을 우선 모두 방문표시하고 뻗어나간다.</h3>
+
+<p>그래프를 순회하기 위해서는 각각의 정점에 대해서 간선을 저장해둬야합니다.
+이 문제에서는 그래프연결을 입력으로 받지 않고 각 위치에서 터널구조물에 따라 상 하 좌 우 이동방향이 정해지기 때문에 특정 노드에서 연결된 터널끼리만 이동가능하게 하면 됩니다.</p>
+
+<p>시간복잡도 계산: 그래프 순회 시간복잡도 O(V+E)
+(정점의 개수)2500 * (간선의 개수)(2500 * 4) 모든 노드가 상 하 좌 우 네방향으로 이동가능하다고 했을 때 각 노드마다 4가지 방향으로 이동가능</p>
+
+<p>1초에 약 1억번 연산을 한다고 가정했을 때 1초안에 수행됩니다.</p>
+
+<p>이런 2차원 배열을 순회하는 알고리즘에서는 다음 이동가능한 경우를 체크하는 로직에서 O(N^2)이 나오면 시간초과가 되는 경우가 흔합니다. 
+그러므로 체크로직을 수행할때는 되도록이면 2차원 배열을 이용해 	체크로직의 시간복잡도가 O(1)이 되게끔 구현하는것이 좋습니다.</p>
+
+<p>체크로직을 if문을 통해 할 수 있지만 isConnected라는 2차원 배열을 통해 구현하였습니다.
+이 배열의 의미는 isConnected[ ** 이동할방향 ** ][ ** 다음노드의 터널종류 ** ]입니다.</p>
+
+<p>예를 들어 현재노드(터널)1일 경우 상하좌우로 이동가능하며 오른쪽으로 이동한다고 가정했을때 
+다음 노드는 터널종류 1,3,6,7인 경우에만 연결이 되므로 이동가능합니다.
+그래서 isConnected[1] = {false, true, false, true,  false, false, true,  true}; 
+인덱스 1,3,6,7만 true로 해두고 나머지는 false로 이동가능한지를 체크합니다.
+이렇게 구현함으로써 체크로직의 시간복잡도는 O(1)이 걸리게 됩니다.</p>
+
+<p>또한 1시간당 1번 이동하므로 다음 노드까지의 이동거리를 현재까지 이동거리에 1씩 더해줌으로써
+dist[nRow][nCol] = dist[curRow][curCol] + 1;
+결국 시간 = 거리 로 의미를 두어 거리가 6까지 이동할 수 있는 범위는 6시간안에 이동할 수 있는 범위가 됩니다.</p>
+
+<h3 id="그래프-순회에서-가장-중요한-것이-연결된-모든-노드를-방문한다">그래프 순회에서 가장 중요한 것이 연결된 모든 노드를 방문한다</h3>
+<h3 id="단-한번씩만-방문한다">단, 한번씩만 방문한다.</h3>
+
+<p>그러므로 노드 방문한 체크 배열이 필요한데, 거리가 0인경우 아직 방문하지 않았다는 의미이므로
+dist배열을 통해서 방문 여부를 판단할 수 있었습니다.</p>
+
+<p><a href="https://www.swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5PpLlKAQ4DFAUq&amp;categoryId=AV5PpLlKAQ4DFAUq&amp;categoryType=CODE">탈주범 검거</a></p>
+
+<p><a href="https://github.com/yobs0814/problemSolving/blob/master/SWExpert/1953/main.cpp">code</a></p>
+
+
+  <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://leaveittogod0123blog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</div>
+
+<div class="pagination">
+  
+    <a href="/2018-10-10/SWExpert-1952" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2018-10-05/SWExpert-5648" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2019-07-22 00:51:18 +0900">2019</time> Yoseph Noh. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+    <script id="dsq-count-scr" src="//leaveittogod0123blog.disqus.com/count.js" async></script>
+  </body>
+</html>

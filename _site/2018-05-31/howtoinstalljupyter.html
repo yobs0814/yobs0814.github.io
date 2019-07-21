@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      텐서플로우를 주피터 노트북에서 실행 &middot; leaveittogod0123's blog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+</head>
+
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">leaveittogod0123's blog</h2>
+        </a>
+        <ul>
+          <!--<li><a href="/about">About me</a></li>-->
+          <li><a href="/tags">Tags</a></li>
+          <li><a href="/">Posts</a></li>
+          <li><a href="/search/">Search</a></li>
+
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        leaveittogod0123
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2018-05-31 00:00:00 +0900">May 31, 2018</time>
+    
+  </div>
+
+  <h1 class="post-title">텐서플로우를 주피터 노트북에서 실행</h1>
+
+  <div class="post-line"></div>
+
+  <div class="post-tags">
+  
+  
+  <a href="/tags/#jupyternotebook">jupyternotebook</a>,
+  
+  <a href="/tags/#tensorflow">tensorflow</a>,
+  
+  <a href="/tags/#anaconda">anaconda</a>
+  
+</div>
+
+
+  <h1 id="목표-텐서플로우를-주피터-노트북에서-실행">목표: 텐서플로우를 주피터 노트북에서 실행</h1>
+<h3 id="환경-mac-os-macos-high-sierra-10134">환경: Mac OS macOS High Sierra 10.13.4</h3>
+
+<p>결국 주피터노트북하고 파이썬3는
+아나콘다로 설치함..
+3.6버전을 인터넷으로 다운로드 받아서 설치함.</p>
+
+<p>아나콘다 3.6 버전을 가지고
+파이썬3.6 버전 설치했고, 3.5버전이 커버된다고 사이트에 써있음..</p>
+
+<p>터미널에서 아나콘다 설치</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ conda install -c anaconda jupyter
+</code></pre></div></div>
+
+<p>참고: https://anaconda.org/anaconda/jupyter</p>
+
+<p>텐서플로우 설치 ( 아나콘다 3.6 설치했다는 가정하에)</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ conda create -n tensor flow python=3.6
+</code></pre></div></div>
+
+<p>텐서플로우 실행 준비</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ source activate tensorflow
+</code></pre></div></div>
+<p>프롬프트가 (tensorflow)로 변함</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(tensorflow)$ condo install -c conda-forge tensorflow
+</code></pre></div></div>
+<p>그럼 설치된다. 설치후</p>
+
+<p>텐서플로 환경 비활성화</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ source deactivate
+</code></pre></div></div>
+
+<p>이제 설치가 다 되었으니, 텐서플로우를 실행하려면 텐서플로 환경 활성</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ source activate tensorflow
+</code></pre></div></div>
+
+<p>주피터 노트북 설치 (기존 Jupiter notebook 제거할 필요없음)</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(tensorflow)$ conda install jupyter
+</code></pre></div></div>
+
+<p>이제 주피터를 실행해서 tensorflow 사용하고싶으면 먼저 활성화 시키고
+Jupyter 실행하면 된다.</p>
+
+<p>주피터노트북으로 텐서플로 실행</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ source activate tensorflow
+$ (tensorflow)$ jupyter notebook
+</code></pre></div></div>
+
+<p>종료하는 법
+주피터 파일에서 file - close and halt 클릭</p>
+
+<p>터미널에서 Ctrl + c 해서 종료해야된다.</p>
+
+<p>참고: http://pinkwink.kr/992</p>
+
+
+  <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://leaveittogod0123blog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</div>
+
+<div class="pagination">
+  
+    <a href="/2018-06-01/addingtagcloudandacrhivespagetojekyll" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2017-03-16/example-content" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2019-07-22 00:51:18 +0900">2019</time> Yoseph Noh. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+    <script id="dsq-count-scr" src="//leaveittogod0123blog.disqus.com/count.js" async></script>
+  </body>
+</html>

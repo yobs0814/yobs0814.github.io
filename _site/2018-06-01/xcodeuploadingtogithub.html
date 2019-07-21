@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      ios xcode에서 github에 소스 올리기 &middot; leaveittogod0123's blog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+</head>
+
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">leaveittogod0123's blog</h2>
+        </a>
+        <ul>
+          <!--<li><a href="/about">About me</a></li>-->
+          <li><a href="/tags">Tags</a></li>
+          <li><a href="/">Posts</a></li>
+          <li><a href="/search/">Search</a></li>
+
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        leaveittogod0123
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2018-06-01 00:00:00 +0900">June 01, 2018</time>
+    
+  </div>
+
+  <h1 class="post-title">ios xcode에서 github에 소스 올리기</h1>
+
+  <div class="post-line"></div>
+
+  <div class="post-tags">
+  
+  
+  <a href="/tags/#xcode">xcode</a>,
+  
+  <a href="/tags/#github">github</a>
+  
+</div>
+
+
+  <p>#목표: xcode로 github소스올리기
+##버전 : xcode 9.3.1</p>
+
+<p>xcode new project를 만드는 과정에서 경로지정하는 탭에서</p>
+
+<p><img src="/img/2018-06-02-1.39.55.png" alt="img1" />
+이 부분을 체크합니다.</p>
+
+<p>새 폴더를 만들면 활성화 됩니다.</p>
+
+<p>깃헙 리파지토리 만들기</p>
+
+<p>왼쪽에 보이는 네이게이션 영역에서</p>
+
+<p>네비게이션 영역의 source control navigator에서 해당 프로젝트 우측클릭
+<img src="/img/2018-06-02-1.40.10.png" alt="img2" /></p>
+
+<p>create <프로젝트이름> remote on github...</프로젝트이름></p>
+
+<p>그러면 깃헙 계정에 리파지토리 만들어집니다.</p>
+
+<p>깃헙 계정 설정은</p>
+
+<p><img src="/img/2018-06-02-1-40-19.png" alt="img3" /></p>
+
+<p>Preferences..  클릭후 Account탭에서 github 계정 넣고, Clone using HTTP…</p>
+
+<p>ssh key는 자동으로 만들어주는 버튼을 클릭합니다.</p>
+
+<p>나머지는 다른 IDE와 비슷한 방식이므로 생략합니다.</p>
+
+<h2 id="추가내용">추가내용</h2>
+<p>꼭 xCode를 이용하지 않고 git을 이용하는게 더 나은 편한 방법 같음..</p>
+
+<p>참조: https://www.youtube.com/watch?v=cVBECn2j-iQ</p>
+
+
+  <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://leaveittogod0123blog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</div>
+
+<div class="pagination">
+  
+    <a href="/2018-06-05/commandsofConsole" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2018-06-01/addingtagcloudandacrhivespagetojekyll" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2019-07-22 00:51:18 +0900">2019</time> Yoseph Noh. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+    <script id="dsq-count-scr" src="//leaveittogod0123blog.disqus.com/count.js" async></script>
+  </body>
+</html>

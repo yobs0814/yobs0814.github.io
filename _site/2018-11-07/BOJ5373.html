@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+       백준 5373 큐빙  &middot; leaveittogod0123's blog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+</head>
+
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">leaveittogod0123's blog</h2>
+        </a>
+        <ul>
+          <!--<li><a href="/about">About me</a></li>-->
+          <li><a href="/tags">Tags</a></li>
+          <li><a href="/">Posts</a></li>
+          <li><a href="/search/">Search</a></li>
+
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        leaveittogod0123
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2018-11-07 00:00:00 +0900">November 07, 2018</time>
+    
+  </div>
+
+  <h1 class="post-title"> 백준 5373 큐빙 </h1>
+
+  <div class="post-line"></div>
+
+  <div class="post-tags">
+  
+  
+  <a href="/tags/#SW 역량테스트">SW 역량테스트</a>,
+  
+  <a href="/tags/#백준 온라인 저지">백준 온라인 저지</a>
+  
+</div>
+
+
+  <h1 id="목표-백준-온라인-저지-5373-큐빙-문제-풀기">목표: 백준 온라인 저지 5373 큐빙 문제 풀기</h1>
+<h3 id="환경-mac-os-mojave-1014-clion">환경: mac OS Mojave 10.14, CLion</h3>
+
+<h3 id="로직">로직</h3>
+<p><a href="https://www.acmicpc.net/problem/5373">큐빙</a> 문제는 시뮬레이션 유형의 문제입니다.
+시뮬레이션 문제는 주어진 문제의 조건을 그대로 구현하는 문제에요.</p>
+
+<p>좀더 자세히 말하자면, 큐브를 돌릴때 큐브를 바라본 좌측상단을 기준으로 아래와 같이 인덱스 넘버링을 하였습니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>3</td>
+      <td>4</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>7</td>
+      <td>8</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>그리고 돌리는 면도 WAY1 라는 enum을 통해 표현하고, 노트에 큐브의 전개면을 그린 후에</p>
+
+<p>이동순서를 일일히 그려보고 그대로 배열요소 값을 이동시켰습니다.</p>
+
+<p>알고리즘을 몰라도 풀 수 있는 문제인데, 구현하는데 오래걸렸습니다.</p>
+
+<p>큐브를 돌리면, 돌리는 면을 기준으로 왼쪽, 오른쪽, 뒤쪽, 앞쪽 면도 돌아가지만, 돌리는 면도 바뀐다는 것입니다.</p>
+
+<p>이전에 틀린 코드와 PASS한 코드의 차이점은 돌리는 면은 그대로 두고 돌리는 면에 붙어있는 큐브들만 위치를 변경한 점입니다.</p>
+
+<p>마지막으로 나중에 더 좋은 방법을 알게되면 포스팅할 계획이 있습니다. 이렇게 푸는게 아닐 겁니다.</p>
+
+<p><a href="https://github.com/yobs0814/problemSolving/blob/master/SWExpert/BOJ5373_3/main.cpp">SourceCode</a></p>
+
+
+  <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://leaveittogod0123blog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</div>
+
+<div class="pagination">
+  
+    <a href="/2018-11-29/BOJ18016" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2018-11-04/BOJ3184" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2019-07-22 00:51:18 +0900">2019</time> Yoseph Noh. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+    <script id="dsq-count-scr" src="//leaveittogod0123blog.disqus.com/count.js" async></script>
+  </body>
+</html>

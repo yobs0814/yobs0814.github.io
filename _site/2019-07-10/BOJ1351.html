@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+       백준 1351 풀이 &middot; leaveittogod0123's blog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+</head>
+
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">leaveittogod0123's blog</h2>
+        </a>
+        <ul>
+          <!--<li><a href="/about">About me</a></li>-->
+          <li><a href="/tags">Tags</a></li>
+          <li><a href="/">Posts</a></li>
+          <li><a href="/search/">Search</a></li>
+
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        leaveittogod0123
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2019-07-10 00:00:00 +0900">July 10, 2019</time>
+    
+  </div>
+
+  <h1 class="post-title"> 백준 1351 풀이</h1>
+
+  <div class="post-line"></div>
+
+  <div class="post-tags">
+  
+  
+  <a href="/tags/#백준 온라인 저지">백준 온라인 저지</a>
+  
+</div>
+
+
+  <h1 id="목표-백준-1351-풀기">목표: 백준 1351 풀기</h1>
+<h3 id="환경-mac-os-mojave-1014-clion">환경: mac OS Mojave 10.14, CLion</h3>
+
+<h3 id="로직">로직</h3>
+
+<h4 id="문제이해">문제이해</h4>
+<p>점화식이 주어진 DP 문제</p>
+
+<h4 id="문제접근">문제접근</h4>
+<p>DP의 두 가지 핵심 개념<br />
+overlapping subproblem : 작은 문제가 겹친다. ( 작은 문제가 여러 번 발생한다.)
+optimal substructure : (어떻게 풀든 작은 문제의 답은 항상 같다. 그러니 가져다 쓸 수 있다.)</p>
+
+<p>이 두가지 개념을 가능하게 해주는 memoization 그냥
+한번 풀이한 작은 문제는 또 풀이하지 않고, 가져다 쓰기.</p>
+
+<p>여기에 + 2가지.</p>
+<ol>
+  <li>
+    <p>오개념 있었다. 정확히 말하면 그동안 코딩은 대충했다는 것<br />
+0을 0이 아닌 양의 정수로 나누는 연산이 에러인 줄 알았음.
+n을 0으로 나누었을때 에러가 남.</p>
+  </li>
+  <li>
+    <p>보통 메모이제이션을 배열로 사용한다. 그러나 이 문제는 범위가 int 데이터 사이즈를 벗어난다.<br />
+long long 으로 인덱스를 주고싶다. 전에 string을 인덱스로 주고 싶을때는?<br />
+map을 사용했었다. 똑같다. int형이 아닌 값을 인덱스로 사용하고싶으면? map을 쓰자.</p>
+  </li>
+</ol>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;iostream&gt;
+#include &lt;map&gt;
+</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="kt">long</span> <span class="kt">long</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">;</span>
+<span class="n">map</span><span class="o">&lt;</span><span class="kt">long</span> <span class="kt">long</span><span class="p">,</span> <span class="kt">long</span> <span class="kt">long</span><span class="o">&gt;</span> <span class="n">cache</span><span class="p">;</span>
+<span class="kt">long</span> <span class="kt">long</span> <span class="nf">solve</span><span class="p">(</span><span class="kt">long</span> <span class="kt">long</span> <span class="n">n</span><span class="p">){</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">cache</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="n">n</span><span class="p">)){</span>
+        <span class="k">return</span> <span class="n">cache</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+        <span class="k">return</span> <span class="n">cache</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">solve</span><span class="p">(</span><span class="n">n</span><span class="o">/</span><span class="n">p</span><span class="p">)</span> <span class="o">+</span> <span class="n">solve</span><span class="p">(</span><span class="n">n</span><span class="o">/</span><span class="n">q</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="n">cache</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span> <span class="o">&gt;&gt;</span> <span class="n">p</span> <span class="o">&gt;&gt;</span> <span class="n">q</span><span class="p">;</span>
+
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">solve</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="sc">'\n'</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+
+
+  <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://leaveittogod0123blog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</div>
+
+<div class="pagination">
+  
+    <a href="/2019-07-10/BOJ15483" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2019-07-09/BOJ10866" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2019-07-22 00:51:18 +0900">2019</time> Yoseph Noh. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+    <script id="dsq-count-scr" src="//leaveittogod0123blog.disqus.com/count.js" async></script>
+  </body>
+</html>

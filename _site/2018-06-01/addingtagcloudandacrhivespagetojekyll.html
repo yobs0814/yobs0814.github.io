@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      Jekyll에 태그랑 아카이브 페이지 추가하기 &middot; leaveittogod0123's blog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+</head>
+
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">leaveittogod0123's blog</h2>
+        </a>
+        <ul>
+          <!--<li><a href="/about">About me</a></li>-->
+          <li><a href="/tags">Tags</a></li>
+          <li><a href="/">Posts</a></li>
+          <li><a href="/search/">Search</a></li>
+
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        leaveittogod0123
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2018-06-01 00:00:00 +0900">June 01, 2018</time>
+    
+  </div>
+
+  <h1 class="post-title">Jekyll에 태그랑 아카이브 페이지 추가하기</h1>
+
+  <div class="post-line"></div>
+
+  <div class="post-tags">
+  
+  
+  <a href="/tags/#jeykll">jeykll</a>,
+  
+  <a href="/tags/#githubpage">githubpage</a>,
+  
+  <a href="/tags/#tags">tags</a>
+  
+</div>
+
+
+  <h1 id="목표-jekyll-테마로-만든-깃헙블로그에-태그-기능추가하기">목표: jekyll 테마로 만든 깃헙블로그에 태그 기능추가하기</h1>
+<h3 id="버전--mac-os-high-sierra-10134">버전 : mac OS High Sierra 10.13.4</h3>
+
+<p><a href="https://blog.meinside.pe.kr/Adding-tag-cloud-and-archives-page-to-Jekyll/">참조</a>.</p>
+
+<p>참조한 사이트를 그대로 따라했습니다.</p>
+
+<h2 id="1-로컬-깃허브블로그-페이지를-만든다">1. 로컬 깃허브블로그 페이지를 만든다.</h2>
+<p>tags.md 파일 블로그폴더 루트 디렉토리에 만듭니다.</p>
+
+<figure class="highlight"><pre><code class="language-liquid" data-lang="liquid">---
+layout: page
+permalink: /tags/
+---
+
+&lt;ul class="tag-cloud"&gt;
+<span class="p">{%</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span><span class="nv">tag</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nv">site.tags</span><span class="w"> </span><span class="p">%}</span>
+  &lt;li style="font-size: <span class="p">{{</span><span class="w"> </span><span class="nv">tag</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">last</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">size</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">times</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">divided_by</span><span class="p">:</span><span class="w"> </span>site.tags.size<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">plus</span><span class="p">:</span><span class="w"> </span><span class="mi">70</span><span class="w">  </span><span class="p">}}</span>%"&gt;
+    &lt;a href="#<span class="p">{{</span><span class="w"> </span><span class="nv">tag</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">first</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">slugize</span><span class="w"> </span><span class="p">}}</span>"&gt;
+      <span class="p">{{</span><span class="w"> </span><span class="nv">tag</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">first</span><span class="w"> </span><span class="p">}}</span>
+    &lt;/a&gt;
+  &lt;/li&gt;
+<span class="p">{%</span><span class="w"> </span><span class="nt">endfor</span><span class="w"> </span><span class="p">%}</span>
+&lt;/ul&gt;
+
+&lt;div id="archives"&gt;
+<span class="p">{%</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span><span class="nv">tag</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nv">site.tags</span><span class="w"> </span><span class="p">%}</span>
+  &lt;div class="archive-group"&gt;
+    <span class="p">{%</span><span class="w"> </span><span class="nt">capture</span><span class="w"> </span><span class="na">tag_name</span><span class="w"> </span><span class="p">%}{{</span><span class="w"> </span><span class="nv">tag</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">first</span><span class="w"> </span><span class="p">}}{%</span><span class="w"> </span><span class="nt">endcapture</span><span class="w"> </span><span class="p">%}</span>
+    &lt;h3 id="#<span class="p">{{</span><span class="w"> </span><span class="nv">tag_name</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">slugize</span><span class="w"> </span><span class="p">}}</span>"&gt;<span class="p">{{</span><span class="w"> </span><span class="nv">tag_name</span><span class="w"> </span><span class="p">}}</span>&lt;/h3&gt;
+    &lt;a name="<span class="p">{{</span><span class="w"> </span><span class="nv">tag_name</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">slugize</span><span class="w"> </span><span class="p">}}</span>"&gt;&lt;/a&gt;
+    <span class="p">{%</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span><span class="nv">post</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nv">site.tags[tag_name]</span><span class="w"> </span><span class="p">%}</span>
+    &lt;article class="archive-item"&gt;
+      &lt;h4&gt;&lt;a href="<span class="p">{{</span><span class="w"> </span><span class="nv">root_url</span><span class="w"> </span><span class="p">}}{{</span><span class="w"> </span><span class="nv">post</span><span class="p">.</span><span class="nv">url</span><span class="w"> </span><span class="p">}}</span>"&gt;<span class="p">{{</span><span class="w"> </span><span class="nv">post</span><span class="p">.</span><span class="nv">title</span><span class="w"> </span><span class="p">}}</span>&lt;/a&gt;&lt;/h4&gt;
+    &lt;/article&gt;
+    <span class="p">{%</span><span class="w"> </span><span class="nt">endfor</span><span class="w"> </span><span class="p">%}</span>
+  &lt;/div&gt;
+<span class="p">{%</span><span class="w"> </span><span class="nt">endfor</span><span class="w"> </span><span class="p">%}</span>
+&lt;/div&gt;</code></pre></figure>
+
+<hr />
+
+<h2 id="2-태그를-포스트에-보여주기">2. 태그를 포스트에 보여주기</h2>
+<p>포스트에 추가될 include 파일을 만듭니다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ touch _includes/post-tags.html
+</code></pre></div></div>
+
+<p>아래의 내용으로:</p>
+
+<figure class="highlight"><pre><code class="language-liquid" data-lang="liquid">&lt;div class="post-tags"&gt;
+  Tags:
+  <span class="p">{%</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">post</span><span class="w"> </span><span class="p">%}</span>
+    <span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">tags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">post</span><span class="p">.</span><span class="nv">tags</span><span class="w"> </span><span class="p">%}</span>
+  <span class="p">{%</span><span class="w"> </span><span class="kr">else</span><span class="w"> </span><span class="p">%}</span>
+    <span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">tags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">page</span><span class="p">.</span><span class="nv">tags</span><span class="w"> </span><span class="p">%}</span>
+  <span class="p">{%</span><span class="w"> </span><span class="kr">endif</span><span class="w"> </span><span class="p">%}</span>
+  <span class="p">{%</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span><span class="nv">tag</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nv">tags</span><span class="w"> </span><span class="p">%}</span>
+  &lt;a href="/tags/#<span class="p">{{</span><span class="nv">tag</span><span class="p">|</span><span class="nf">slugize}}"&gt;{{tag}}&lt;/a&gt;{%</span><span class="w"> </span>unless<span class="w"> </span>forloop.last<span class="w"> </span><span class="p">%}</span>,<span class="p">{%</span><span class="w"> </span><span class="kr">endunless</span><span class="w"> </span><span class="p">%}</span>
+  <span class="p">{%</span><span class="w"> </span><span class="nt">endfor</span><span class="w"> </span><span class="p">%}</span>
+&lt;/div</code></pre></figure>
+
+<p>그리고</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_layouts/post.html 파일을 오픈해서
+</code></pre></div></div>
+
+<p>적당한 곳에 include해줍니다.</p>
+
+<figure class="highlight"><pre><code class="language-liquid" data-lang="liquid">&lt;div class="post"&gt;
+  &lt;div class="post-info"&gt;
+    ...
+  &lt;/div&gt;
+
+  &lt;h1 class="post-title"&gt; ...
+
+  <span class="p">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span><span class="na">post-tags</span><span class="p">.</span><span class="na">html</span><span class="w"> </span><span class="p">%}</span> // &lt;- here
+
+  &lt;div class="post-line"&gt; ...
+
+&lt;/div&gt;</code></pre></figure>
+
+<hr />
+
+<h2 id="3-태그-클라우드랑-아카이브를-꾸며줄-css-file-생성-기존테마-폴더에-stylescss-파일이-있으면-생성하지말고-사용하세요">3. 태그 클라우드랑 아카이브를 꾸며줄 css file 생성 기존테마 폴더에 styles.css 파일이 있으면 생성하지말고 사용하세요.</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$touch styles.css
+
+// 수정 할때는
+$vi styles.css
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-liquid" data-lang="liquid">/ for tag cloud and archives
+.tag-cloud {
+  list-style: none;
+  padding: 0;
+  text-align: justify;
+  font-size: 16px;
+  li {
+    display: inline-block;
+    margin: 0 12px 12px 0;
+  }
+}
+#archives {
+  padding: 5px;
+}
+.archive-group {
+  margin: 5px;
+  border-top: 1px solid #ddd;
+}
+.archive-item {
+  margin-left: 5px;
+}
+.post-tags {
+  text-align: right;
+}</code></pre></figure>
+
+<hr />
+
+<h2 id="4-포스팅할때-태그붙이기">4. 포스팅할때 태그붙이기</h2>
+<p>이것은 예입니다:</p>
+
+<figure class="highlight"><pre><code class="language-liquid" data-lang="liquid">---
+layout: post
+title: This is an example.
+tags:  // &lt;- here you go
+- jekyll
+- example
+published: true
+---
+
+This is a post for an example.</code></pre></figure>
+
+<hr />
+
+<h2 id="5-메인화면에-tags-보여주기">5. 메인화면에 Tags 보여주기</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_layouts/default.html 들어간 다음
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-liquid" data-lang="liquid">...
+  &lt;body&gt;
+    &lt;nav class="nav"&gt;
+        ...
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href="<span class="p">{{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}}</span>"&gt;About&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="<span class="p">{{</span><span class="w"> </span><span class="nv">site</span><span class="p">.</span><span class="nv">baseurl</span><span class="w"> </span><span class="p">}}</span>/tags"&gt;Tags&lt;/a&gt;&lt;/li&gt;  &lt;!-- &lt;-here yo go --&gt;
+          &lt;li&gt;&lt;a href="<span class="p">{{</span><span class="w"> </span><span class="err">...</span><span class="p">}}</span>/"&gt;Posts&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+    &lt;/nav&gt;
+
+    &lt;footer&gt;
+      ...
+    &lt;/footer&gt;
+  &lt;/body&gt;</code></pre></figure>
+
+
+
+  <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://leaveittogod0123blog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</div>
+
+<div class="pagination">
+  
+    <a href="/2018-06-01/xcodeuploadingtogithub" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2018-05-31/howtoinstalljupyter" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2019-07-22 00:51:18 +0900">2019</time> Yoseph Noh. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+    <script id="dsq-count-scr" src="//leaveittogod0123blog.disqus.com/count.js" async></script>
+  </body>
+</html>

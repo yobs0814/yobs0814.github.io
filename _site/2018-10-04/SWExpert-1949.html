@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      SWExpert #1949 등산로 조성 &middot; leaveittogod0123's blog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+</head>
+
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">leaveittogod0123's blog</h2>
+        </a>
+        <ul>
+          <!--<li><a href="/about">About me</a></li>-->
+          <li><a href="/tags">Tags</a></li>
+          <li><a href="/">Posts</a></li>
+          <li><a href="/search/">Search</a></li>
+
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        leaveittogod0123
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2018-10-04 00:00:00 +0900">October 04, 2018</time>
+    
+  </div>
+
+  <h1 class="post-title">SWExpert #1949 등산로 조성</h1>
+
+  <div class="post-line"></div>
+
+  <div class="post-tags">
+  
+  
+  <a href="/tags/#SW 역량테스트">SW 역량테스트</a>
+  
+</div>
+
+
+  <h1 id="목표-swexpertacademy-p1949-등산로-조성-문제-풀기">목표: SWExpertacademy P1949 등산로 조성 문제 풀기</h1>
+<h3 id="환경-mac-os-high-sierra-10134-clion">환경: mac OS High Sierra 10.13.4, CLion</h3>
+
+<p>이 문제 또한 완전탐색으로 풀려고 합니다.
+완전탐색이란 문제의 답을 찾는 것인데, 가능한 경우를 모두 나열하고, 각각이 해가 될 수 있는지 확인하는 방법입니다.</p>
+
+<p>우선 완전탐색의 장단점을 얘기해보자면
+장점으로는 어떻게든 답을 구해낼 수 있다는 것이에요. 모든 경우를 다 살펴보고 해를 구하는 것이니까요.
+단점은 문제의 조건에 따라 오래 걸린다는 것인데, 이것을 최적화 하는 방법들이 있어요. 가지치기라든지 백트래킹이라든지</p>
+
+<p>[제약 사항]</p>
+
+<ol>
+  <li>
+    <p>시간 제한 : 최대 50개 테스트 케이스를 모두 통과하는 데 C/C++/Java 모두 3초</p>
+  </li>
+  <li>
+    <p>지도의 한 변의 길이 N은 3 이상 8 이하의 정수이다. (3 ≤ N ≤ 8)</p>
+  </li>
+  <li>
+    <p>최대 공사 가능 깊이 K는 1 이상 5 이하의 정수이다. (1 ≤ K ≤ 5)</p>
+  </li>
+  <li>
+    <p>지도에 나타나는 지형의 높이는 1 이상 20 이하의 정수이다.</p>
+  </li>
+  <li>
+    <p>지도에서 가장 높은 봉우리는 최대 5개이다.</p>
+  </li>
+  <li>
+    <p>지형은 정수 단위로만 깎을 수 있다.</p>
+  </li>
+  <li>
+    <p>필요한 경우 지형을 깎아 높이를 1보다 작게 만드는 것도 가능하다.</p>
+  </li>
+</ol>
+
+<h3 id="로직">로직</h3>
+
+<p>이 문제도 크게 두가지 로직으로 나뉘는데요.</p>
+
+<p>깍을 산을 선택하는 로직과</p>
+
+<p>등산로 조성 즉 등산로 길이를 구하는 로직으로 나뉘는데요.</p>
+
+<p>깍을 산을 선택하는 로직은 N제한이 크지 않기 때문에 2중 for문을 통해서 각각의 산을 K번 깍습니다.</p>
+
+<p>등산로 조성은 결국 노드를 이동하는 것인데, 노드를 이동하는 것은 그래프의 순회를 이용하면 되는데요.</p>
+
+<p>그래프 순회로는 가장 간단한 방법 중 DFS,BFS가 있는데, 자기자신보다 낮은 산으로 이동하여, 그 길이를 구하는 것이기 때문에
+DFS로 풀기로 결정했어요.</p>
+
+<p>“나를 먼저 방문하고 그 다음으로 인접한 노드를 차례대로 방문” -&gt; 인접한노드를 차례대로 방문이라는 말은 자기자신 위치를 기준으로
+상 하 좌 우로 이동이 가능하며, 자기 자신보다 낮은 산으로 이동해야하는 규칙이 있습니다.</p>
+
+<p>“단, 방문했던 노드는 방문하지 않는다.”</p>
+
+<p>일반적인 DFS는 체크배열을 이용해서 이전에 방문한 정점인지 확인하는 노드가 필요한데, 
+이 문제에는 자기보다 작은 값으로만 이동가능하다는 특성이 있기 때문에 따로 체크배열을 만들지 않고 
+자기자신보다 작으면 이동하는 것으로 체크로직을 대신했습니다.</p>
+
+<p>이 문제가 의미있다고 생각하는 이유는 브루트포스를 이용해 풀 수 있고,
+완전탐색(부르트포스)는 인간의 논리를 넣지않고, 컴퓨터의 연산능력을 이용해 모든 경우의수(등산로 조성이 가능한)를 탐색하라입니다 
+단, 입력제한으로 시간복잡도 계산을 통해 시간안에 프로그램이 수행된다고 하면요.</p>
+
+<p><a href="https://www.swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5PoOKKAPIDFAUq&amp;categoryId=AV5PoOKKAPIDFAUq&amp;categoryType=CODE">등산로 조성</a></p>
+
+<p>[code]</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+
+using namespace std;
+
+const int PEAKMAX = 5;
+const int MAX = 20;
+int TC, N, K, max1, ans;
+int map[MAX][MAX];
+
+int dRow[] = {-1, 0, 1, 0}; //상하좌우 이동을 위한 배열
+int dCol[] = {0, 1, 0, -1};
+
+pair&lt;int, int&gt; highestPoint[PEAKMAX];
+
+void DFS(int row, int col, int cnt) {
+    //봉우리의 위치에서부터 등산로 조성하고 등산로 길이 갱신하는 함수
+
+    for (int i = 0; i &lt; 4; ++i) {
+        int nextRow = row + dRow[i];
+        int nextCol = col + dCol[i];
+
+        if (nextRow &gt;= 0 &amp;&amp; nextRow &lt; N &amp;&amp; nextCol &gt;= 0 &amp;&amp; nextCol &lt; N) {
+            if (map[nextRow][nextCol] &lt; map[row][col]) {
+//                cout&lt;&lt;"row: "&lt;&lt;nextRow&lt;&lt;", col: "&lt;&lt;nextCol&lt;&lt;"인 "&lt;&lt;map[nextRow][nextCol]&lt;&lt;"에 방문\n";
+                DFS(nextRow, nextCol, cnt + 1);
+                if (cnt + 1 &gt; ans) {
+                    ans = cnt + 1;
+                }
+            }
+        }
+    }
+}
+
+int main() {
+    cin &gt;&gt; TC;
+
+    int cnt = 0;
+
+
+    for (int T = 1; T &lt;= TC; ++T) {
+        cin &gt;&gt; N &gt;&gt; K;
+
+        max1 = 0;
+        ans = 0;
+        cnt = 0;
+
+        for (int i = 0; i &lt; N; ++i) {
+            for (int j = 0; j &lt; N; ++j) {
+                cin &gt;&gt; map[i][j];
+
+                //  미리 봉우리 위치를 저장해두고
+
+                if (max1 &lt; map[i][j]) {
+                    max1 = map[i][j];
+                    memset(highestPoint, 0, sizeof(highestPoint));
+                    cnt = 0;
+                    highestPoint[cnt].first = i;
+                    highestPoint[cnt].second = j;
+                    cnt += 1;
+                } else if (max1 == map[i][j]) {
+                    highestPoint[cnt].first = i;
+                    highestPoint[cnt].second = j;
+                    cnt += 1;
+                }
+            }
+        }
+
+        for (int k = 0; k &lt; N; ++k) {
+            for (int i = 0; i &lt; N; ++i) {
+                for (int j = 1; j &lt;= K; ++j) {
+
+                    //2중 for문을 통해 각각의 산을 다 깍아보면서
+
+                    map[k][i] -= j;
+//                        cout&lt;&lt;"row: "&lt;&lt;k&lt;&lt;", col:"&lt;&lt;i&lt;&lt;" 을 "&lt;&lt;j&lt;&lt;"만큼 깍아서 "&lt;&lt;map[k][i]&lt;&lt;"로 깍였음\n";
+
+                    for (int l = 0; l &lt; cnt; ++l) {
+
+                        //각각의 봉우리 위치에서 DFS를 수행한다.
+
+                        int row = highestPoint[l].first;
+                        int col = highestPoint[l].second;
+//                            cout&lt;&lt;"row: "&lt;&lt;row&lt;&lt;", col: "&lt;&lt;col&lt;&lt;"인 "&lt;&lt;map[row][col]&lt;&lt;"에 방문\n";
+                        DFS(row, col, 1);
+//                            cout&lt;&lt;"봉우리 높이:"&lt;&lt;map[row][col]&lt;&lt;"에서"&lt;&lt;" row: "&lt;&lt;row&lt;&lt;", col: "&lt;&lt;col&lt;&lt;", 현재 제일 긴 등산로 길이: "&lt;&lt;ans&lt;&lt;"입니다\n";
+                    }
+
+                    //깍았던 산을 원상복귀 시킨다. 백트래킹의 경우 함수 호출전에 상태를 바꿨으면 함수 호출 후 상태를 원복 시켜야 각각의 경우의 수가 독립적인 탐색을 한다고 볼 수 있음.
+                    map[k][i] += j; 
+
+
+
+                }
+            }
+        }
+
+        cout &lt;&lt; "#" &lt;&lt; T &lt;&lt; " " &lt;&lt; ans &lt;&lt; "\n";
+
+    }
+
+
+    return 0;
+}
+</code></pre></div></div>
+
+
+  <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://leaveittogod0123blog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</div>
+
+<div class="pagination">
+  
+    <a href="/2018-10-05/SWExpert-5648" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2018-10-04/CallSublimeFromTerminal" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2019-07-22 00:51:18 +0900">2019</time> Yoseph Noh. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+    <script id="dsq-count-scr" src="//leaveittogod0123blog.disqus.com/count.js" async></script>
+  </body>
+</html>

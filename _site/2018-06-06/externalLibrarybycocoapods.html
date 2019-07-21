@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      swift4, xcode9 에서 외부라이브러리 연동하기 &middot; leaveittogod0123's blog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+</head>
+
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">leaveittogod0123's blog</h2>
+        </a>
+        <ul>
+          <!--<li><a href="/about">About me</a></li>-->
+          <li><a href="/tags">Tags</a></li>
+          <li><a href="/">Posts</a></li>
+          <li><a href="/search/">Search</a></li>
+
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        leaveittogod0123
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2018-06-06 00:00:00 +0900">June 06, 2018</time>
+    
+  </div>
+
+  <h1 class="post-title">swift4, xcode9 에서 외부라이브러리 연동하기</h1>
+
+  <div class="post-line"></div>
+
+  <div class="post-tags">
+  
+  
+  <a href="/tags/#Xcode9">Xcode9</a>,
+  
+  <a href="/tags/#FSCalendar">FSCalendar</a>
+  
+</div>
+
+
+  <h1 id="목표-xcode9에-fscalendar-연동하기">목표: xcode9에 FSCalendar 연동하기</h1>
+<h3 id="환경-mac-os-high-sierra-10134-xcode94">환경: mac OS High Sierra 10.13.4, Xcode9.4</h3>
+
+<p><a href="https://github.com/WenchaoD/FSCalendar">추가하려는 외부라이브러리</a>
+<a href="http://zeddios.tistory.com/25">cocoapods사용법</a></p>
+
+<p>cocoapods 사용법에 대해서는 위의 참조에 너무 친절하게 나와있음.
+외부 라이브러리를 관리하는 프로그램인데요. 맥은 루비가 기본으로 설치되어있기 때문에
+루비를 이용해 설치하고 사용합니다.</p>
+
+<p>다만 문제가 있었는데 추가하려는 외부라이브러리 ‘FSCalendar’ Readme에 나온대로 읽고 그대로 따라했는데</p>
+
+<h2 id="문제-no-such-module-fscalender">문제: no such module ‘FSCalender’</h2>
+
+<p>역시나 그냥 되는건 없죠. 이 문제가 발생했지요. 구글링을 해봐도 나한테 해당되는 방법이 아니었는데,
+iOS에 대해서 모르는게 많아서 발생한 문제였음.</p>
+
+<p>##해결: xcode 메뉴바 -&gt; Product -&gt; Scheme -&gt; FSCalendar -&gt; Run(command + R)</p>
+
+<p>막 이것저것 해보다가 문제해결.</p>
+
+
+  <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://leaveittogod0123blog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</div>
+
+<div class="pagination">
+  
+    <a href="/2018-06-23/multiplemainmethodinxcode" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2018-06-05/commandsofConsole" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2019-07-22 00:51:18 +0900">2019</time> Yoseph Noh. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+    <script id="dsq-count-scr" src="//leaveittogod0123blog.disqus.com/count.js" async></script>
+  </body>
+</html>
