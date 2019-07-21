@@ -7,7 +7,7 @@
 
   <title>
     
-       &middot; leaveittogod0123's blog
+      leaveittogod0123's blog
     
   </title>
 
@@ -39,36 +39,31 @@
     </nav>
 
     <main>
-      <div id="results">
-  <h1><!-- `key` listing for `value` --></h1>
+      <div class="catalogue">
+  
+    <a href="/2017-03-16/example-content" class="catalogue-item">
+      <div>
+        <time datetime="2017-03-16 00:00:00 +0900" class="catalogue-time">March 16, 2017</time>
+        <h1 class="catalogue-title">Example Content</h1>
+        <div class="catalogue-line"></div>
 
-  <ul class="results">
-    <!-- results lists -->
-  </ul>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tincidunt ornare nibh, non elementum augue tempus eget. Pellentesque tempus scelerisque iaculis. Nullam interdum ultricies nibh quis sollicitudin. Donec ornare fermentum...
+        </p>
+
+      </div>
+    </a>
+  
 </div>
 
-<!— Html Elements for Search -->
-<div id="search-container">
-<input type="text" id="search-input" placeholder="search...">
-<ul id="results-container"></ul>
+<div class="pagination">
+  
+    <a href="/page6" class="left arrow">&#8592;</a>
+  
+  
+
+  <span>7</span>
 </div>
-
-<!-- Script pointing to jekyll-search.js -->
-<script src="/dest/jekyll-search.js" type="text/javascript"></script>
-
-
-<script type="text/javascript">
-      SimpleJekyllSearch({
-        searchInput: document.getElementById('search-input'),
-        resultsContainer: document.getElementById('results-container'),
-        json: '/search2.json',
-        searchResultTemplate: '<li><a href="{url}" title="{desc}">{title}</a></li>',
-        noResultsText: 'No results found',
-        limit: 10,
-        fuzzy: false,
-        exclude: ['Welcome']
-      })
-</script>
 
     </main>
 

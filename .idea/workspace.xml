@@ -2,10 +2,49 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e3d9c12-661f-4435-9408-755a4ab295d3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/_posts/2019-07-22-jekyll-serve-error.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tale.gemspec" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_includes/post-tags.html" beforeDir="false" afterPath="$PROJECT_DIR$/_includes/post-tags.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_sass/tale/_custom.scss" beforeDir="false" afterPath="$PROJECT_DIR$/_sass/tale/_custom.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2017-03-16/example-content.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2017-03-16/example-content.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2018-05-31/howtoinstalljupyter.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2018-05-31/howtoinstalljupyter.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2018-06-01/addingtagcloudandacrhivespagetojekyll.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2018-06-01/addingtagcloudandacrhivespagetojekyll.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2018-06-01/xcodeuploadingtogithub.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2018-06-01/xcodeuploadingtogithub.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2018-06-05/commandsofConsole.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2018-06-05/commandsofConsole.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2018-06-06/externalLibrarybycocoapods.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2018-06-06/externalLibrarybycocoapods.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2018-06-23/multiplemainmethodinxcode.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2018-06-23/multiplemainmethodinxcode.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2018-09-28/ClosetPairProblem.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2018-09-28/ClosetPairProblem.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2018-09-28/backjoonP15684.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2018-09-28/backjoonP15684.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2018-10-03/SWExpertP2112.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2018-10-03/SWExpertP2112.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2018-10-04/CallSublimeFromTerminal.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2018-10-04/CallSublimeFromTerminal.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2018-10-04/SWExpert-1949.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2018-10-04/SWExpert-1949.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2018-10-05/SWExpert-5648.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2018-10-05/SWExpert-5648.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2018-10-09/SWExpert-1953.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2018-10-09/SWExpert-1953.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2018-10-10/SWExpert-1952.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2018-10-10/SWExpert-1952.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2018-10-13/SWExpert-4012.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2018-10-13/SWExpert-4012.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2018-10-17/backjoonP14502.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2018-10-17/backjoonP14502.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2018-10-20/SWEA2112.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2018-10-20/SWEA2112.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2018-11-04/BOJ3184.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2018-11-04/BOJ3184.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2018-11-07/BOJ5373.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2018-11-07/BOJ5373.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2018-11-29/BOJ18016.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2018-11-29/BOJ18016.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2018-11-29/BOJ2667.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2018-11-29/BOJ2667.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2019-02-08/BOJ6549.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019-02-08/BOJ6549.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2019-02-12/SWEA2817.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019-02-12/SWEA2817.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2019-03-24/BOJ1107.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019-03-24/BOJ1107.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2019-06-26/BOJ11066.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019-06-26/BOJ11066.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2019-06-26/BOJ2164.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019-06-26/BOJ2164.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2019-07-09/BOJ10866.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019-07-09/BOJ10866.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2019-07-10/BOJ1351.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019-07-10/BOJ1351.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2019-07-10/BOJ15483.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019-07-10/BOJ15483.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/feed.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_site/feed.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/page2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/page2/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/page3/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/page3/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/page4/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/page4/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/page5/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/page5/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/page6/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/page6/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/search/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/search/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/search2.json" beforeDir="false" afterPath="$PROJECT_DIR$/_site/search2.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/sitemap.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_site/sitemap.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/tags/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/tags/index.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -21,8 +60,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_includes/post-tags.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="62" selection-start-line="7" selection-start-column="62" selection-end-line="7" selection-end-column="62" />
+            <state relative-caret-position="165">
+              <caret line="11" selection-start-line="11" selection-end-line="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/_sass/tale/_custom.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="46" column="31" lean-forward="true" selection-start-line="46" selection-start-column="31" selection-end-line="46" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -35,15 +83,6 @@
                 <caret line="16" column="36" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
               </first_editor>
               <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_layouts/post.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -78,12 +117,12 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_posts/2019-07-22-jekyll-serve-error.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="102">
-                <caret line="6" column="8" lean-forward="true" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+              <first_editor relative-caret-position="578">
+                <caret line="34" selection-start-line="34" selection-end-line="34" />
               </first_editor>
               <second_editor />
             </state>
@@ -142,9 +181,7 @@
         <option value="$PROJECT_DIR$/_layouts/comets.html" />
         <option value="$PROJECT_DIR$/_layouts/default.html" />
         <option value="$PROJECT_DIR$/search.html" />
-        <option value="$PROJECT_DIR$/_includes/post-tags.html" />
         <option value="$PROJECT_DIR$/styles.css" />
-        <option value="$PROJECT_DIR$/_sass/tale/_custom.scss" />
         <option value="$PROJECT_DIR$/_posts/2018-09-28-ClosetPairProblem.md" />
         <option value="$PROJECT_DIR$/_posts/2018-10-03-SWExpertP2112.md" />
         <option value="$PROJECT_DIR$/_posts/2018-10-04-CallSublimeFromTerminal.md" />
@@ -158,6 +195,8 @@
         <option value="$PROJECT_DIR$/tale.gemspec" />
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/_posts/2019-07-22-jekyll-serve-error.md" />
+        <option value="$PROJECT_DIR$/_includes/post-tags.html" />
+        <option value="$PROJECT_DIR$/_sass/tale/_custom.scss" />
       </list>
     </option>
   </component>
@@ -183,7 +222,13 @@
             <path>
               <item name="leaveittogod0123.github.io" type="b2602c69:ProjectViewProjectNode" />
               <item name="leaveittogod0123.github.io" type="462c0819:PsiDirectoryNode" />
-              <item name="_posts" type="462c0819:PsiDirectoryNode" />
+              <item name="_sass" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="leaveittogod0123.github.io" type="b2602c69:ProjectViewProjectNode" />
+              <item name="leaveittogod0123.github.io" type="462c0819:PsiDirectoryNode" />
+              <item name="_sass" type="462c0819:PsiDirectoryNode" />
+              <item name="tale" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -237,12 +282,12 @@
       <workItem from="1563368339729" duration="5000" />
       <workItem from="1563369937649" duration="794000" />
       <workItem from="1563721477136" duration="805000" />
-      <workItem from="1563724148181" duration="1475000" />
+      <workItem from="1563724148181" duration="1723000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9381000" />
+    <option name="totallyTimeSpent" value="9629000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="75" y="-956" width="1570" height="877" extended-state="0" />
@@ -328,13 +373,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/_sass/tale.scss">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_sass/tale/_custom.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="960">
-          <caret line="64" column="1" selection-start-line="64" selection-start-column="1" selection-end-line="64" selection-end-column="1" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/_sass/tale/_variables.scss">
       <provider selected="true" editor-type-id="text-editor">
@@ -520,23 +558,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_includes/post-tags.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="62" selection-start-line="7" selection-start-column="62" selection-end-line="7" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_posts/2019-07-10-BOJ15483.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="240">
-            <caret line="16" column="36" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/_layouts/post.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
@@ -595,10 +616,34 @@
     <entry file="file://$PROJECT_DIR$/_posts/2019-07-22-jekyll-serve-error.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="102">
-            <caret line="6" column="8" lean-forward="true" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+          <first_editor relative-caret-position="578">
+            <caret line="34" selection-start-line="34" selection-end-line="34" />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_posts/2019-07-10-BOJ15483.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="240">
+            <caret line="16" column="36" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_includes/post-tags.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_sass/tale/_custom.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="46" column="31" lean-forward="true" selection-start-line="46" selection-start-column="31" selection-end-line="46" selection-end-column="31" />
         </state>
       </provider>
     </entry>

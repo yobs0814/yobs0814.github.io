@@ -5,9 +5,67 @@
     <description>leaveittogod0123 Personal Website</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 22 Jul 2019 00:51:18 +0900</pubDate>
-    <lastBuildDate>Mon, 22 Jul 2019 00:51:18 +0900</lastBuildDate>
+    <pubDate>Mon, 22 Jul 2019 01:19:29 +0900</pubDate>
+    <lastBuildDate>Mon, 22 Jul 2019 01:19:29 +0900</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title> Mac에서 jekyll serve 실행시 오류 해결</title>
+        <description>&lt;h3 id=&quot;환경-mac-os-mojave-1014-clion&quot;&gt;환경: mac OS Mojave 10.14, CLion&lt;/h3&gt;
+
+&lt;h4 id=&quot;문제-발생&quot;&gt;문제 발생&lt;/h4&gt;
+&lt;p&gt;지킬블로그를 로컬에서 실행하기 위해서&lt;/p&gt;
+
+&lt;p&gt;구글링을 통해 지킬 블로그 디렉토리에서 터미널로 jekyll serve 라는 명령어를 통해 로컬 실행이 가능하다는 것을 알게 되었다.&lt;/p&gt;
+
+&lt;p&gt;jekyll serve 실행시&lt;/p&gt;
+
+&lt;p&gt;jekyll serve error because extensions are not built 불라불라하는 에러가 발생했다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/jekyll/jekyll/issues/7317&quot;&gt;구글링을 통해 찾은 이슈 해결법&lt;/a&gt; 그런데 해결이 안됐다.&lt;/p&gt;
+
+&lt;p&gt;일단 bundle update도 되지 않았다. stackoverflow등 검색결과&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/jekyll/jekyll/issues/7274&quot;&gt;Cannot install Jekyll on MacOS Mojave #7274&lt;/a&gt; 에서 본 것 처럼&lt;/p&gt;
+
+&lt;p&gt;xcode-select –install 도 안됐다. 혹시 몰라 xcode도 업데이트했다.&lt;/p&gt;
+
+&lt;p&gt;그래도 해결이 안됐다.&lt;/p&gt;
+
+&lt;p&gt;ruby 업데이트해야된다라는 결론을 지음.&lt;/p&gt;
+
+&lt;p&gt;구글에서 루비 업데이트로 검색하면 &lt;a href=&quot;https://www.ruby-lang.org/ko/documentation/installation/&quot;&gt;루비 사이트&lt;/a&gt;가 나온다.&lt;/p&gt;
+
+&lt;p&gt;근데 하라는데로 해도 되질 않았다.&lt;/p&gt;
+
+&lt;h4 id=&quot;문제해결&quot;&gt;문제해결&lt;/h4&gt;
+
+&lt;p&gt;ruby mojave 키워드로 검색하니 &lt;a href=&quot;https://gorails.com/setup/osx/10.14-mojave&quot;&gt;새로운 ruby 사이트&lt;/a&gt;가 있었다.&lt;/p&gt;
+
+&lt;p&gt;사이트에 나온대로&lt;/p&gt;
+
+&lt;p&gt;installing homebrew, installing Ruby를 따라서 했음.&lt;/p&gt;
+
+&lt;p&gt;일단 루비가 2.3.8 -&amp;gt; 2.6.3 으로 업데이트 되었다.&lt;/p&gt;
+
+&lt;p&gt;이제 다시&lt;/p&gt;
+
+&lt;p&gt;$bundle update&lt;/p&gt;
+
+&lt;p&gt;$gem install jekyll&lt;/p&gt;
+
+&lt;p&gt;$bundle exec jekyll serve를 하면&lt;/p&gt;
+
+&lt;p&gt;크롬으로 localhost:4000 접속하면 로컬에서 지키블로그가 올라간것을 볼 수 있음.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2019-07-22/jekyll-serve-error</link>
+        <guid isPermaLink="true">http://localhost:4000/2019-07-22/jekyll-serve-error</guid>
+        
+        <category>jekyll</category>
+        
+        
+      </item>
     
       <item>
         <title> 백준 15483 편집거리 알고리즘 풀이</title>
@@ -2587,144 +2645,6 @@ $ (tensorflow)$ jupyter notebook
         <category>tensorflow</category>
         
         <category>anaconda</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Example Content</title>
-        <description>&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tincidunt ornare nibh, non elementum augue tempus eget. Pellentesque tempus scelerisque iaculis. Nullam interdum ultricies nibh quis sollicitudin. Donec ornare fermentum facilisis. Ut at sem ac sem imperdiet varius a eget tortor. Nam eu augue eget orci semper maximus in eget augue. Mauris ornare, nisl ut suscipit consectetur, mi quam interdum tellus, at rutrum quam eros ultrices mi.&lt;/p&gt;
-
-&lt;h1 id=&quot;headers&quot;&gt;Headers&lt;/h1&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span class=&quot;gh&quot;&gt;# H1&lt;/span&gt;
-&lt;span class=&quot;gu&quot;&gt;## H2&lt;/span&gt;
-&lt;span class=&quot;gu&quot;&gt;### H3&lt;/span&gt;
-&lt;span class=&quot;gu&quot;&gt;#### H4&lt;/span&gt;
-&lt;span class=&quot;gu&quot;&gt;##### H5&lt;/span&gt;
-&lt;span class=&quot;gu&quot;&gt;###### H6&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h1 id=&quot;h1&quot;&gt;H1&lt;/h1&gt;
-&lt;h2 id=&quot;h2&quot;&gt;H2&lt;/h2&gt;
-&lt;h3 id=&quot;h3&quot;&gt;H3&lt;/h3&gt;
-&lt;h4 id=&quot;h4&quot;&gt;H4&lt;/h4&gt;
-&lt;h5 id=&quot;h5&quot;&gt;H5&lt;/h5&gt;
-&lt;h6 id=&quot;h6&quot;&gt;H6&lt;/h6&gt;
-
-&lt;h1 id=&quot;text-formatting&quot;&gt;Text formatting&lt;/h1&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;gs&quot;&gt;**Bold**&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; _Italics_
-&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; ~~Strikethrough~~
-&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;ins&amp;gt;&lt;/span&gt;Underline&lt;span class=&quot;nt&quot;&gt;&amp;lt;/ins&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;sup&amp;gt;&lt;/span&gt;Superscript&lt;span class=&quot;nt&quot;&gt;&amp;lt;/sup&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;sub&amp;gt;&lt;/span&gt;Subscript&lt;span class=&quot;nt&quot;&gt;&amp;lt;/sub&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; Abbreviation: &lt;span class=&quot;nt&quot;&gt;&amp;lt;abbr&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;title=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;HyperText Markup Language&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;HTML&lt;span class=&quot;nt&quot;&gt;&amp;lt;/abbr&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; Citation: &lt;span class=&quot;nt&quot;&gt;&amp;lt;cite&amp;gt;&lt;/span&gt;&lt;span class=&quot;ni&quot;&gt;&amp;amp;mdash;&lt;/span&gt; Chester How&lt;span class=&quot;nt&quot;&gt;&amp;lt;/cite&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Bold&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;em&gt;Italics&lt;/em&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;del&gt;Strikethrough&lt;/del&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;ins&gt;Underline&lt;/ins&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;sup&gt;Superscript&lt;/sup&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;sub&gt;Subscript&lt;/sub&gt;&lt;/li&gt;
-  &lt;li&gt;Abbreviation: &lt;abbr title=&quot;HyperText Markup Language&quot;&gt;HTML&lt;/abbr&gt;&lt;/li&gt;
-  &lt;li&gt;Citation: &lt;cite&gt;— Chester How&lt;/cite&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;lists&quot;&gt;Lists&lt;/h1&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span class=&quot;p&quot;&gt;1.&lt;/span&gt; Ordered list item 1
-&lt;span class=&quot;p&quot;&gt;2.&lt;/span&gt; Ordered list item 2
-&lt;span class=&quot;p&quot;&gt;3.&lt;/span&gt; Ordered list item 3
-&lt;span class=&quot;p&quot;&gt;
-*&lt;/span&gt; Unordered list item 1
-&lt;span class=&quot;p&quot;&gt;*&lt;/span&gt; Unordered list item 2
-&lt;span class=&quot;p&quot;&gt;*&lt;/span&gt; Unordered list item 3&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Ordered list item 1&lt;/li&gt;
-  &lt;li&gt;Ordered list item 2&lt;/li&gt;
-  &lt;li&gt;Ordered list item 3&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Unordered list item 1&lt;/li&gt;
-  &lt;li&gt;Unordered list item 2&lt;/li&gt;
-  &lt;li&gt;Unordered list item 3&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;links&quot;&gt;Links&lt;/h1&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;Check out tale on &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;GitHub&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;https://github.com/chesterhow/tale&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;.&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Check out tale on &lt;a href=&quot;https://github.com/chesterhow/tale&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h1 id=&quot;images&quot;&gt;Images&lt;/h1&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span class=&quot;p&quot;&gt;![&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;Placeholder image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;https://placehold.it/800x400&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;&quot;Placeholder image&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;p&quot;&gt;![&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;Image with caption&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;https://placehold.it/700x400&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;&quot;Image with caption&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;ge&quot;&gt;_This is an image with a caption_&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://placehold.it/800x400&quot; alt=&quot;Placeholder image&quot; title=&quot;Placeholder image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://placehold.it/700x400&quot; alt=&quot;Image with caption&quot; title=&quot;Image with caption&quot; /&gt;
-&lt;em&gt;This is an image with a caption&lt;/em&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;code-and-syntax-highlighting&quot;&gt;Code and Syntax Highlighting&lt;/h1&gt;
-&lt;p&gt;Use back-ticks for &lt;code class=&quot;highlighter-rouge&quot;&gt;inline code&lt;/code&gt;. Multi-line code snippets are supported too through Pygments.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// Sample javascript code&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;JavaScript syntax highlighting&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# Sample python code
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Python syntax highlighting&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Adding &lt;code class=&quot;highlighter-rouge&quot;&gt;linenos&lt;/code&gt; to the Pygments tag enables line numbers.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c1&quot;&gt;// Sample javascript code&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;JavaScript syntax highlighting&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h1 id=&quot;blockquotes&quot;&gt;Blockquotes&lt;/h1&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span class=&quot;gt&quot;&gt;&amp;gt; Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h1 id=&quot;horizontal-rule--line-break&quot;&gt;Horizontal Rule &amp;amp; Line Break&lt;/h1&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;Use &lt;span class=&quot;sb&quot;&gt;`&amp;lt;hr&amp;gt;`&lt;/span&gt; for horizontal rules
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;hr&amp;gt;&lt;/span&gt;
-
-and &lt;span class=&quot;sb&quot;&gt;`&amp;lt;br&amp;gt;`&lt;/span&gt; for line breaks.
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;br&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Use &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;hr&amp;gt;&lt;/code&gt; for horizontal rules&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;and &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;br&amp;gt;&lt;/code&gt; for line breaks.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;The end&lt;/em&gt;&lt;/p&gt;
-</description>
-        <pubDate>Thu, 16 Mar 2017 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2017-03-16/example-content</link>
-        <guid isPermaLink="true">http://localhost:4000/2017-03-16/example-content</guid>
         
         
       </item>

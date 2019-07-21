@@ -4,6 +4,7 @@
   {% else %}
     {% assign tags = page.tags %}
   {% endif %}
+  tag:
   {% for tag in tags %}
   <a href="/tags/#{{tag|slugize}}">{{tag}}</a>{% unless forloop.last %},{% endunless %}
   {% endfor %}

@@ -1,6 +1,15 @@
 [
   
     {
+      "title"    : " Mac에서 jekyll serve 실행시 오류 해결",
+      "category" : "",
+      "tags"     : "jekyll",
+      "url"      : "/2019-07-22/jekyll-serve-error",
+      "date"     : "2019-07-22 00:00:00 +0900",
+  "content"   : "[\n  {% for post in site.posts %}\n    {\n      \"title\"    : \"{{ post.title | escape }}\",\n      \"category\" : \"{{ post.category }}\",\n      \"tags\"     : \"{{ post.tags | join: ', ' }}\",\n      \"url\"      : \"{{ site.baseurl }}{{ post.url }}\",\n      \"date\"     : \"{{ post.date }}\",\n  \"content\"   : {{ page.content | jsonify }}\n    } {% unless forloop.last %},{% endunless %}\n  {% endfor %}\n  ,\n  {% for page in site.pages %}\n   {\n     {% if page.title != nil %}\n        \"title\"    : \"{{ page.title | escape }}\",\n        \"category\" : \"{{ page.category }}\",\n        \"tags\"     : \"{{ page.tags | join: ', ' }}\",\n        \"url\"      : \"{{ site.baseurl }}{{ page.url }}\",\n        \"date\"     : \"{{ page.date }}\",\n  \"content\"   : {{ page.content | jsonify }}\n     {% endif %}\n   } {% unless forloop.last %},{% endunless %}\n  {% endfor %}\n]\n"
+    } ,
+  
+    {
       "title"    : " 백준 15483 편집거리 알고리즘 풀이",
       "category" : "",
       "tags"     : "백준 온라인 저지",
@@ -364,6 +373,17 @@
         "category" : "",
         "tags"     : "",
         "url"      : "/page6/",
+        "date"     : "",
+  "content"   : ""
+     
+   } ,
+  
+   {
+     
+        "title"    : "Home",
+        "category" : "",
+        "tags"     : "",
+        "url"      : "/page7/",
         "date"     : "",
   "content"   : ""
      
