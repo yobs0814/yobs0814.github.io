@@ -2,55 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e3d9c12-661f-4435-9408-755a4ab295d3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/_posts/2019-07-22-BOJ2293.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_posts/2019-07-24-LinkedList.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_posts/2019-07-24-Queue.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_posts/2019-07-24-Stack.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2018-06-01-addingtagcloudandacrhivespagetojekyll.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2018-06-01-addingtagcloudandacrhivespagetojekyll.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2017-03-16/example-content.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2017-03-16/example-content.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2018-05-31/howtoinstalljupyter.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2018-05-31/howtoinstalljupyter.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2018-06-01/addingtagcloudandacrhivespagetojekyll.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2018-06-01/addingtagcloudandacrhivespagetojekyll.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2018-06-01/xcodeuploadingtogithub.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2018-06-01/xcodeuploadingtogithub.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2018-06-05/commandsofConsole.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2018-06-05/commandsofConsole.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2018-06-06/externalLibrarybycocoapods.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2018-06-06/externalLibrarybycocoapods.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2018-06-23/multiplemainmethodinxcode.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2018-06-23/multiplemainmethodinxcode.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2018-09-28/ClosetPairProblem.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2018-09-28/ClosetPairProblem.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2018-09-28/backjoonP15684.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2018-09-28/backjoonP15684.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2018-10-03/SWExpertP2112.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2018-10-03/SWExpertP2112.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2018-10-04/CallSublimeFromTerminal.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2018-10-04/CallSublimeFromTerminal.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2018-10-04/SWExpert-1949.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2018-10-04/SWExpert-1949.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2018-10-05/SWExpert-5648.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2018-10-05/SWExpert-5648.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2018-10-09/SWExpert-1953.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2018-10-09/SWExpert-1953.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2018-10-10/SWExpert-1952.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2018-10-10/SWExpert-1952.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2018-10-13/SWExpert-4012.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2018-10-13/SWExpert-4012.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2018-10-17/backjoonP14502.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2018-10-17/backjoonP14502.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2018-10-20/SWEA2112.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2018-10-20/SWEA2112.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2018-11-04/BOJ3184.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2018-11-04/BOJ3184.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2018-11-07/BOJ5373.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2018-11-07/BOJ5373.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2018-11-29/BOJ18016.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2018-11-29/BOJ18016.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2018-11-29/BOJ2667.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2018-11-29/BOJ2667.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2019-02-08/BOJ6549.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019-02-08/BOJ6549.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2019-02-12/SWEA2817.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019-02-12/SWEA2817.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2019-03-24/BOJ1107.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019-03-24/BOJ1107.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2019-06-26/BOJ11066.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019-06-26/BOJ11066.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2019-06-26/BOJ2164.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019-06-26/BOJ2164.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2019-07-09/BOJ10866.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019-07-09/BOJ10866.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2019-07-10/BOJ1351.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019-07-10/BOJ1351.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2019-07-10/BOJ15483.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019-07-10/BOJ15483.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2019-07-22/jekyll-serve-error.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019-07-22/jekyll-serve-error.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/feed.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_site/feed.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/page2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/page2/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/page3/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/page3/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/page4/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/page4/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/page5/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/page5/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/page6/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/page6/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/page7/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/page7/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/search/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/search/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/search2.json" beforeDir="false" afterPath="$PROJECT_DIR$/_site/search2.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/sitemap.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_site/sitemap.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/tags/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/tags/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2019-07-24-Queue.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2019-07-24-Queue.md" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -63,12 +15,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_posts/2019-07-24-LinkedList.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
               <first_editor relative-caret-position="694">
                 <caret line="57" column="5" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/_posts/2019-07-24-Queue.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="390">
+                <caret line="26" column="45" selection-start-line="26" selection-start-column="44" selection-end-line="26" selection-end-column="45" />
               </first_editor>
               <second_editor />
             </state>
@@ -116,8 +80,8 @@
         <option value="$PROJECT_DIR$/_posts/2018-06-01-addingtagcloudandacrhivespagetojekyll.md" />
         <option value="$PROJECT_DIR$/_posts/2019-07-22-BOJ2293.md" />
         <option value="$PROJECT_DIR$/_posts/2019-07-24-Stack.md" />
-        <option value="$PROJECT_DIR$/_posts/2019-07-24-Queue.md" />
         <option value="$PROJECT_DIR$/_posts/2019-07-24-LinkedList.md" />
+        <option value="$PROJECT_DIR$/_posts/2019-07-24-Queue.md" />
       </list>
     </option>
   </component>
@@ -201,12 +165,12 @@
       <workItem from="1563754909001" duration="92000" />
       <workItem from="1563755027384" duration="353000" />
       <workItem from="1563768084261" duration="2783000" />
-      <workItem from="1563941954461" duration="5923000" />
+      <workItem from="1563941954461" duration="6014000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18869000" />
+    <option name="totallyTimeSpent" value="18960000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1057" width="1920" height="1057" extended-state="6" />
@@ -614,21 +578,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_posts/2019-07-24-Queue.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="90">
-            <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/_posts/2019-07-24-LinkedList.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="694">
             <caret line="57" column="5" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_posts/2019-07-24-Queue.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="390">
+            <caret line="26" column="45" selection-start-line="26" selection-start-column="44" selection-end-line="26" selection-end-column="45" />
           </first_editor>
           <second_editor />
         </state>

@@ -5,8 +5,8 @@
     <description>leaveittogod0123 Personal Website</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 24 Jul 2019 15:15:56 +0900</pubDate>
-    <lastBuildDate>Wed, 24 Jul 2019 15:15:56 +0900</lastBuildDate>
+    <pubDate>Wed, 24 Jul 2019 15:17:45 +0900</pubDate>
+    <lastBuildDate>Wed, 24 Jul 2019 15:17:45 +0900</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
     
       <item>
@@ -107,7 +107,7 @@ while(true){
 
 &lt;p&gt;QUEUE을 설명하고, 스택을 왜 쓰는지에 대해서 그림으로 이해해보고, 스택을 이용한 알고리즘을 슈도코드로 작성하겠습니다.&lt;/p&gt;
 
-&lt;h2 id=&quot;스택-개념&quot;&gt;스택 개념:&lt;/h2&gt;
+&lt;h2 id=&quot;큐-개념&quot;&gt;큐 개념:&lt;/h2&gt;
 &lt;p&gt;STACK은 FIFO (First In First Out)구조의 데이터를 저장할 수 있는 공간입니다.&lt;/p&gt;
 
 &lt;p&gt;먼저 들어온 데이터가 먼저 나갑니다. 순서대로 일을 처리할 때 쓰입니다.&lt;/p&gt;
