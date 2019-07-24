@@ -5,9 +5,254 @@
     <description>leaveittogod0123 Personal Website</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 22 Jul 2019 01:19:29 +0900</pubDate>
-    <lastBuildDate>Mon, 22 Jul 2019 01:19:29 +0900</lastBuildDate>
+    <pubDate>Wed, 24 Jul 2019 15:15:56 +0900</pubDate>
+    <lastBuildDate>Wed, 24 Jul 2019 15:15:56 +0900</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>자료구조 STACK이란?</title>
+        <description>&lt;h3 id=&quot;환경-mac-os-mojave-1014-clion&quot;&gt;환경: mac OS Mojave 10.14, CLion&lt;/h3&gt;
+
+&lt;p&gt;우리는 프로그래밍언어로 문제를 해결하거나 새로운 기능을 만들 때, 알고리즘을 설계합니다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;알고리즘을 코드로 구현할때 구현한 프로그램이 효과적으로( 빠른시간 안에 동작&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;적은 데이터를 사용하여 ) 동작할 수 있게&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;많이 알려진 자료구조를 사용하는데, 문제 상황에 맞게 자료구조를 선택하여 구현하면 됩니다.&lt;/p&gt;
+
+&lt;p&gt;STACK을 설명하고, 스택을 왜 쓰는지에 대해서 그림으로 이해해보고, 스택을 이용한 알고리즘을 슈도코드로 작성하겠습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;스택-개념&quot;&gt;스택 개념:&lt;/h2&gt;
+&lt;p&gt;STACK은 LIFO (Last In First Out)구조의 데이터를 저장할 수 있는 공간입니다.&lt;/p&gt;
+
+&lt;p&gt;데이터를 저장하고, 최근에 저장한 데이터를 확인할 수 있고, 데이터를 빼낼 때는 최근에 추가된 것을 빼냅니다.&lt;/p&gt;
+
+&lt;p&gt;각 위치에서 이동할 수 있는 방향으로는 현재 위치를 (r,c) 이라할때&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../img/20190724북남동서.png&quot; alt=&quot;img1&quot; /&gt;
+위와 같이 표현할 수 있고 각 (r,c) 남, 동, 북, 서 방향으로 순서대로 이동할 수 있다고 가정합니다. (x표시나, 배열 범위를 넘어갈 수 없음.)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../img/20190724격자판.png&quot; alt=&quot;img2&quot; /&gt;
+위와 같은 2차원 배열 구조의 격자판에서 x 로 되어있거나 배열 범위를 넘어가지 않은 상태에서&lt;/p&gt;
+
+&lt;p&gt;(행, 열)기준으로 (0,0) -&amp;gt; (3,3)으로 이동하는 프로그램을 스택을 통해 구현할 수 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;스택을-쓰면-좋은점&quot;&gt;스택을 쓰면 좋은점&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;../img/20190724push1.png&quot; alt=&quot;img3&quot; /&gt;
+이렇게 격자판에서 도착지점을 가기 위해 스택에 이동공간을 저장합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../img/20190724push2.png&quot; alt=&quot;img4&quot; /&gt;
+그런데 막 다른 곳에서는 갈 곳이 없을때는 돌아와야 하는데 스택에 이동한 공간을 저장 해놓았기 때문에&lt;/p&gt;
+
+&lt;p&gt;최근에 이동한 곳으로 돌아갈 수 있습니다. 이렇게 발자취를 기억해야하는 상황에서 스택은 유용하게 쓰일 수 있는 자료구조입니다.&lt;/p&gt;
+
+&lt;p&gt;이렇게 스택이란 자료구조를 통해 다음과 같이 스택을 이용해서&lt;/p&gt;
+
+&lt;p&gt;2차원 배열에서 (0,0) -&amp;gt; (3,3) 시작위치와 도착위치를 정해주면 이동할 수 있는지 없는지 판단할 수 있는 프로그램을 구현할 수 있습니다.
+&lt;img src=&quot;../img/20190724push3.png&quot; alt=&quot;img3&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;슈도코드&quot;&gt;슈도코드&lt;/h2&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;스택을 생성한다.
+시작 공간을 입력받는다.
+스택에 시작 위치을 저장한다.
+
+while(true){
+    최근에 저장한 이동 위치를 확인한다.
+    
+    if(최근 이동 위치가 도착 위치면)
+        도착했음을 저장 또는 출력.
+        종료.
+    
+    for(북 남 동 서){
+        이동할 수 있는지 체크한다.
+        이동할 수 있으면 스택에 이동 위치를 저장한다.
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</description>
+        <pubDate>Wed, 24 Jul 2019 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2019-07-24/Stack</link>
+        <guid isPermaLink="true">http://localhost:4000/2019-07-24/Stack</guid>
+        
+        <category>Data Structure</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>자료구조 Queue이란?</title>
+        <description>&lt;h3 id=&quot;환경-mac-os-mojave-1014-clion&quot;&gt;환경: mac OS Mojave 10.14, CLion&lt;/h3&gt;
+
+&lt;p&gt;우리는 프로그래밍언어로 문제를 해결하거나 새로운 기능을 만들 때, 알고리즘을 설계합니다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;알고리즘을 코드로 구현할때 구현한 프로그램이 효과적으로( 빠른시간 안에 동작&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;적은 데이터를 사용하여 ) 동작할 수 있게&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;많이 알려진 자료구조를 사용하는데, 문제 상황에 맞게 자료구조를 선택하여 구현하면 됩니다.&lt;/p&gt;
+
+&lt;p&gt;QUEUE을 설명하고, 스택을 왜 쓰는지에 대해서 그림으로 이해해보고, 스택을 이용한 알고리즘을 슈도코드로 작성하겠습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;스택-개념&quot;&gt;스택 개념:&lt;/h2&gt;
+&lt;p&gt;STACK은 FIFO (First In First Out)구조의 데이터를 저장할 수 있는 공간입니다.&lt;/p&gt;
+
+&lt;p&gt;먼저 들어온 데이터가 먼저 나갑니다. 순서대로 일을 처리할 때 쓰입니다.&lt;/p&gt;
+
+&lt;p&gt;가상의 물류센터가 100개의 택배 물품 처리하는데 걸리는 시간을 구하는 시뮬레이션 프로그램을 구현하려고 합니다.&lt;/p&gt;
+
+&lt;p&gt;택배가 실제로 어떤 절차로 처리되는지 모릅니다. 큐를 설명하기 위해서 몇 가지 가정을 하겠습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../img/20190724queue.png&quot; alt=&quot;그림1&quot; /&gt;
+입고 순으로 터미널에 들어가고, 순서대로 A물류 센터, B물류 센터가 있다고 가정하겠습니다.&lt;/p&gt;
+
+&lt;p&gt;물류센터가 처음 동작할때 시간을 기록합니다.&lt;/p&gt;
+
+&lt;p&gt;A물류센터는 최대 5개 물품이 들어올 수 있고, 한 물품이 처리되는데 5분이 걸립니다.
+즉 A물류센터가 처리하는 물품이 5개면 더이상 A물류센터로 들어오지 못하고 기다려야됩니다.&lt;/p&gt;
+
+&lt;p&gt;B물류센터는 최대 10개 물품이 들어올 수 있고, 한 물품이 처리되는데 2분이 걸립니다.
+마찬가지로 B물류센터가 처리하는 물품이 10개면 더이상 B물류센터로 들어오지 못하고 기다려야됩니다.&lt;/p&gt;
+
+&lt;p&gt;그리고 모든 물품이 출고되는 시간을 기록합니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;큐를-사용하면-좋은점&quot;&gt;큐를 사용하면 좋은점:&lt;/h2&gt;
+&lt;p&gt;병렬적으로 여러 물류 센터가 동시에 처리하는 것을 구현할 때 큐가 효과적으로 쓰입니다.
+입고되는 터미널, A물류센터, B물류센터, 출고되는 터미널을 각각 큐로 구현하면&lt;br /&gt;
+FIFO의 이점을 이용해서 병렬적으로 처리하는 효과를 볼 수 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;슈도코드&quot;&gt;슈도코드&lt;/h2&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;입고 터미널, A물류센터, B물류센터, 출고 터미널을 의미하는 큐를 각각 생성합니다.
+연기되는 물품을 저장하는 대기 터미널 큐도 하나 생성합니다.
+시작시간을 기록.
+
+while(true){
+    if(현재 출고 터미널에서 빼내온 물품 번호가 100번인가)
+        종료시간 기록.
+        종료
+    if(대기 터미널에 물품이 있는가?) 
+        기다리는 물품을 빼냄.
+    else if(입고 터미널에 물품이 있으면)    
+        입고터미널에서 먼저 들어온 물품을 뺍니다.
+    
+    if(A물류센터가 현재 처리하는 물품의 개수가 5개 미만인가?)
+        A물류센터 큐에 물품 이동
+    else if(A물류센터가 현재 처리하는 물품의 개수가 10개 미만인가?)
+        B물류센터 큐에 물품 이동
+    else     
+        대기 터미널에 이동
+        
+    for(A물류센터에서 처리되는 물품을 순회)
+        남은 처리시간을 -1 갱신
+        갱신후 남은 처리시간이 0이면 출고 터미널로 이동
+    
+    for(B물류센터에서 처리되는 물품을 순회)
+        갱신후 남은 처리시간이 0이면 출고 터미널로 이동
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</description>
+        <pubDate>Wed, 24 Jul 2019 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2019-07-24/Queue</link>
+        <guid isPermaLink="true">http://localhost:4000/2019-07-24/Queue</guid>
+        
+        <category>Data Structure</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>자료구조 LinkedList이란?</title>
+        <description>&lt;h3 id=&quot;환경-mac-os-mojave-1014-clion&quot;&gt;환경: mac OS Mojave 10.14, CLion&lt;/h3&gt;
+
+&lt;p&gt;우리는 프로그래밍언어로 문제를 해결하거나 새로운 기능을 만들 때, 알고리즘을 설계합니다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;알고리즘을 코드로 구현할때 구현한 프로그램이 효과적으로( 빠른시간 안에 동작&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;적은 데이터를 사용하여 ) 동작할 수 있게&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;많이 알려진 자료구조를 사용하는데, 문제 상황에 맞게 자료구조를 선택하여 구현하면 됩니다.&lt;/p&gt;
+
+&lt;p&gt;LinkedList을 설명하고, 스택을 왜 쓰는지에 대해서 그림으로 이해해보고, 스택을 이용한 알고리즘을 슈도코드로 작성하겠습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;linkedlist-개념&quot;&gt;LinkedList 개념:&lt;/h2&gt;
+&lt;p&gt;LinkedList은 각각의 데이터가 링크로 이어져 있는 데이터 저장 공간입니다.&lt;/p&gt;
+
+&lt;p&gt;첫번째 데이터 또는 마지막 데이터의 주소를 기억해야하는 구조입니다.&lt;/p&gt;
+
+&lt;p&gt;그래야 첫번째 데이터 또는 마지막 데이터를 시작으로 링크를 타고 다니면서 순회를 할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../img/20190724list1.png&quot; alt=&quot;그림1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;우선순위를 통해 일을 처리하기 위해 TodoList를 구현하려고 합니다.&lt;/p&gt;
+
+&lt;p&gt;자료구조로는 쌩뚱맞게 Array를 사용하겠습니다. 
+Array에 보다 LinkedList가 더 효과적인 상황을 만들어서 LinkedList를 쓰면 어떻게 좋은지 알아보겠습니다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;운동1시간&lt;/li&gt;
+  &lt;li&gt;공부1분&lt;/li&gt;
+  &lt;li&gt;게임1시간&lt;/li&gt;
+  &lt;li&gt;TV2시간&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;이렇게 리스트가 있을때 우선순위를 변경하고 싶어졌습니다.
+2번 위치에 잡서칭1시간을 추가하고싶은데요.&lt;/p&gt;
+
+&lt;p&gt;Array는 같은 자료형을 가진 메모리 공간으로 이루어진 자료구조이고, 장점으로는 인덱스를 통해 O(1)복잡도로
+해당 데이터를 접근할 수 있는 자료구조입니다.&lt;/p&gt;
+
+&lt;p&gt;첫번째 인덱스 1번~n번까지 TodoList개수만큼 순회를 합니다.
+2번을 찾았으면 이번에 잡서칭1시간을 추가하기 위해 공간을 마련해야합니다.
+공부1분을 3번으로 이동시키고, 게임1시간을 4번으로, TV2시간을 5번으로 이동시킨 후
+마련된 2번 공간에 잡서칭1시간을 저장하면 됩니다.&lt;/p&gt;
+
+&lt;p&gt;Array의 단점은 중간에 값을 삽입하기 위해서는 최악의 경우 O(n) 이란 시간복잡도를 갖습니다.
+잡서칭1시간을 특정위치에 저장하기 위해서 2~4번 할일을 미뤘습니다. 총 3번의 이동이란 기회비용이 들었습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;linkedlist를-쓰면-좋은점&quot;&gt;LinkedList를 쓰면 좋은점&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;../img/20190724list2.png&quot; alt=&quot;그림2&quot; /&gt;
+LinkedList를 사용한다면 잡서칭 1시간을 1번 다음 링크에 붙이고 2번 이전 링크에 붙이면 됩니다.
+이렇게 되면 데이터를 중간에 삽입하는데 걸리는 시간복잡도는 O(1)이 됩니다.
+&lt;img src=&quot;../img/20190724list3.png&quot; alt=&quot;그림3&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;슈도코드&quot;&gt;슈도코드&lt;/h2&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;링크드 리스트를 생성합니다.
+운동 1시간을 추가합니다.
+공부 1분을 운동 1시간 뒤에 추가합니다.
+게임 1시간을 공부 1분 뒤에 추가합니다.
+TV 2시간을 게임 1시간 뒤에 추가합니다.
+잡서칭 1시간을 운동 뒤에 공부 1분 이전에 추가합니다.
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</description>
+        <pubDate>Wed, 24 Jul 2019 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2019-07-24/LinkedList</link>
+        <guid isPermaLink="true">http://localhost:4000/2019-07-24/LinkedList</guid>
+        
+        <category>Data Structure</category>
+        
+        
+      </item>
     
       <item>
         <title> Mac에서 jekyll serve 실행시 오류 해결</title>
@@ -63,6 +308,67 @@
         <guid isPermaLink="true">http://localhost:4000/2019-07-22/jekyll-serve-error</guid>
         
         <category>jekyll</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>백준 2293 동전 1 풀이</title>
+        <description>&lt;h1 id=&quot;목표-백준-2293-동전-1-풀이&quot;&gt;목표: 백준 2293 동전 1 풀이&lt;/h1&gt;
+&lt;h3 id=&quot;환경-mac-os-mojave-1014-clion&quot;&gt;환경: mac OS Mojave 10.14, CLion&lt;/h3&gt;
+
+&lt;h3 id=&quot;로직&quot;&gt;로직&lt;/h3&gt;
+
+&lt;h3 id=&quot;문제이해&quot;&gt;문제이해&lt;/h3&gt;
+&lt;p&gt;DP 문제이고, 동전 시리즈 중 한 문제입니다.
+작은 문제로 큰 문제를 풀 수 있을 것이란 생각을 통해 DP로 접근하였고, 역시나 DP였음.&lt;/p&gt;
+
+&lt;h3 id=&quot;문제접근&quot;&gt;문제접근&lt;/h3&gt;
+&lt;p&gt;동전의 가치가 주어지고, 주어진 동전을 이용해서 가치의 합이 k가 되는 경우의 수를 구하라.&lt;br /&gt;
+DP의 문제는 겹치는 작은 문제와 한번 구한 답을 이용해라. 이 두 가지를 풀이하면 되는데&lt;br /&gt;
+dp[i]라는 배열을 선언했고, 그 의미는 합이 i가 되는 경우의 수를 구하라.
+그러면 topdown 방식으로 알고리즘이 생각이 났고, 코드는 bottom up으로 구현했음.&lt;/p&gt;
+
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;map&amp;gt;
+#include &amp;lt;vector&amp;gt;
+&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;inputData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;ios_base&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sync_with_stdio&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;cin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tie&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;cin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;cin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inputData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;push_back&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;inputData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;dp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;dp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]];&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;cout&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+</description>
+        <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2019-07-22/BOJ2293</link>
+        <guid isPermaLink="true">http://localhost:4000/2019-07-22/BOJ2293</guid>
+        
+        <category>백준 온라인 저지</category>
         
         
       </item>
@@ -2290,361 +2596,6 @@ iOS에 대해서 모르는게 많아서 발생한 문제였음.&lt;/p&gt;
         <category>Xcode9</category>
         
         <category>FSCalendar</category>
-        
-        
-      </item>
-    
-      <item>
-        <title> 자주 사용하는 콘솔 명령어 정리</title>
-        <description>&lt;h1 id=&quot;목표-콘솔을-이용해보자&quot;&gt;목표: 콘솔을 이용해보자&lt;/h1&gt;
-&lt;h2 id=&quot;환경-mac-os-high-sierra-10134&quot;&gt;환경: mac OS High Sierra 10.13.4&lt;/h2&gt;
-
-&lt;p&gt;각 OS에서 터미널을 실행한다.
-터미널이 실행된 화면을 보면
-YOSEPHui-MacBook-Pro:firstProject yosephnoh$ 라는 글자는 프롬프트 라고 부른다.
-사용자로부터 명령을 입력 받는 역할을 담당한다. 프롬프트에 적혀있는 단어들의 의미는 다음과 같다.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;사용자ID@컴퓨터명:현재디렉토리$
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;현재 디렉토리명에 물결(~)표시가 있는데 이는 관례적으로 리눅스에서 사용자의 홈 디렉토리를 나타낸다.
-마지막으로 $표시도 의미가 있다. $는 현재 사용하고 있는 계정의 권한이 일반 사용자임을 나타낸다. 일반 사용자 외에 최고 권한
-사용자도 있는데 이를 root라고 부른다. root계정을 사용하면 #표시로 바뀌게 된다. 사용자 권한에 관한 이야기는 추후에
-검색을 통해 살펴보도록하자.&lt;/p&gt;
-
-&lt;p&gt;terminal 을 종료하는 방법은&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ exit
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;특수기호 ($) 뒤쪽에 있는 글자만 키보드로 입력하면 된다.&lt;/p&gt;
-
-&lt;p&gt;지금까지 콘솔창을 사용하기 위한 기본 설명을 진행했다.&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;&lt;center&gt;명령어&lt;/center&gt;&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;&lt;center&gt;설명&lt;/center&gt;&lt;/th&gt;
-      &lt;th style=&quot;text-align: right&quot;&gt;&lt;center&gt;예제&lt;/center&gt;&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;pwd&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;center&gt;디렉토리 이동&lt;/center&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;/Users/사용자명/Documents/IOSLab/firstProject&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;cd ..&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;center&gt;현재 디렉토리의 상위 디렉토리로 이동&lt;/center&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;/Users/사용자명/Downloads/IOSLab&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;cd ~&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;center&gt;사용자의 홈 디렉토리로 이동 &lt;/center&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;/Users/사용자명&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-</description>
-        <pubDate>Tue, 05 Jun 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2018-06-05/commandsofConsole</link>
-        <guid isPermaLink="true">http://localhost:4000/2018-06-05/commandsofConsole</guid>
-        
-        <category>mac</category>
-        
-        <category>console</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>ios xcode에서 github에 소스 올리기</title>
-        <description>&lt;p&gt;#목표: xcode로 github소스올리기
-##버전 : xcode 9.3.1&lt;/p&gt;
-
-&lt;p&gt;xcode new project를 만드는 과정에서 경로지정하는 탭에서&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/2018-06-02-1.39.55.png&quot; alt=&quot;img1&quot; /&gt;
-이 부분을 체크합니다.&lt;/p&gt;
-
-&lt;p&gt;새 폴더를 만들면 활성화 됩니다.&lt;/p&gt;
-
-&lt;p&gt;깃헙 리파지토리 만들기&lt;/p&gt;
-
-&lt;p&gt;왼쪽에 보이는 네이게이션 영역에서&lt;/p&gt;
-
-&lt;p&gt;네비게이션 영역의 source control navigator에서 해당 프로젝트 우측클릭
-&lt;img src=&quot;/img/2018-06-02-1.40.10.png&quot; alt=&quot;img2&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;create &lt;프로젝트이름&gt; remote on github...&lt;/프로젝트이름&gt;&lt;/p&gt;
-
-&lt;p&gt;그러면 깃헙 계정에 리파지토리 만들어집니다.&lt;/p&gt;
-
-&lt;p&gt;깃헙 계정 설정은&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/2018-06-02-1-40-19.png&quot; alt=&quot;img3&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Preferences..  클릭후 Account탭에서 github 계정 넣고, Clone using HTTP…&lt;/p&gt;
-
-&lt;p&gt;ssh key는 자동으로 만들어주는 버튼을 클릭합니다.&lt;/p&gt;
-
-&lt;p&gt;나머지는 다른 IDE와 비슷한 방식이므로 생략합니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;추가내용&quot;&gt;추가내용&lt;/h2&gt;
-&lt;p&gt;꼭 xCode를 이용하지 않고 git을 이용하는게 더 나은 편한 방법 같음..&lt;/p&gt;
-
-&lt;p&gt;참조: https://www.youtube.com/watch?v=cVBECn2j-iQ&lt;/p&gt;
-</description>
-        <pubDate>Fri, 01 Jun 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2018-06-01/xcodeuploadingtogithub</link>
-        <guid isPermaLink="true">http://localhost:4000/2018-06-01/xcodeuploadingtogithub</guid>
-        
-        <category>xcode</category>
-        
-        <category>github</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Jekyll에 태그랑 아카이브 페이지 추가하기</title>
-        <description>&lt;h1 id=&quot;목표-jekyll-테마로-만든-깃헙블로그에-태그-기능추가하기&quot;&gt;목표: jekyll 테마로 만든 깃헙블로그에 태그 기능추가하기&lt;/h1&gt;
-&lt;h3 id=&quot;버전--mac-os-high-sierra-10134&quot;&gt;버전 : mac OS High Sierra 10.13.4&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://blog.meinside.pe.kr/Adding-tag-cloud-and-archives-page-to-Jekyll/&quot;&gt;참조&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;참조한 사이트를 그대로 따라했습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;1-로컬-깃허브블로그-페이지를-만든다&quot;&gt;1. 로컬 깃허브블로그 페이지를 만든다.&lt;/h2&gt;
-&lt;p&gt;tags.md 파일 블로그폴더 루트 디렉토리에 만듭니다.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-liquid&quot; data-lang=&quot;liquid&quot;&gt;---
-layout: page
-permalink: /tags/
----
-
-&amp;lt;ul class=&quot;tag-cloud&quot;&amp;gt;
-&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;tag&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;in&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;site.tags&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-  &amp;lt;li style=&quot;font-size: &lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;tag&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;last&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;times&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;divided_by&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;site.tags.size&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;plus&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;70&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;%&quot;&amp;gt;
-    &amp;lt;a href=&quot;#&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;tag&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;first&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;slugize&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&quot;&amp;gt;
-      &lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;tag&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;first&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;
-    &amp;lt;/a&amp;gt;
-  &amp;lt;/li&amp;gt;
-&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;endfor&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-&amp;lt;/ul&amp;gt;
-
-&amp;lt;div id=&quot;archives&quot;&amp;gt;
-&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;tag&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;in&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;site.tags&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-  &amp;lt;div class=&quot;archive-group&quot;&amp;gt;
-    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;capture&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;tag_name&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;tag&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;first&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;endcapture&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-    &amp;lt;h3 id=&quot;#&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;tag_name&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;slugize&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&quot;&amp;gt;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;tag_name&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&amp;lt;/h3&amp;gt;
-    &amp;lt;a name=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;tag_name&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;slugize&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&quot;&amp;gt;&amp;lt;/a&amp;gt;
-    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;in&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;site.tags[tag_name]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-    &amp;lt;article class=&quot;archive-item&quot;&amp;gt;
-      &amp;lt;h4&amp;gt;&amp;lt;a href=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;root_url&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&quot;&amp;gt;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&amp;lt;/a&amp;gt;&amp;lt;/h4&amp;gt;
-    &amp;lt;/article&amp;gt;
-    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;endfor&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-  &amp;lt;/div&amp;gt;
-&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;endfor&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-&amp;lt;/div&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;2-태그를-포스트에-보여주기&quot;&gt;2. 태그를 포스트에 보여주기&lt;/h2&gt;
-&lt;p&gt;포스트에 추가될 include 파일을 만듭니다.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ touch _includes/post-tags.html
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;아래의 내용으로:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-liquid&quot; data-lang=&quot;liquid&quot;&gt;&amp;lt;div class=&quot;post-tags&quot;&amp;gt;
-  Tags:
-  &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;tags&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;tags&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;tags&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;tags&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;endif&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;tag&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;in&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;tags&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-  &amp;lt;a href=&quot;/tags/#&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;tag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;slugize}}&quot;&amp;gt;{{tag}}&amp;lt;/a&amp;gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;unless&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;forloop.last&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;,&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;endunless&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;endfor&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-&amp;lt;/div&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;그리고&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;_layouts/post.html 파일을 오픈해서
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;적당한 곳에 include해줍니다.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-liquid&quot; data-lang=&quot;liquid&quot;&gt;&amp;lt;div class=&quot;post&quot;&amp;gt;
-  &amp;lt;div class=&quot;post-info&quot;&amp;gt;
-    ...
-  &amp;lt;/div&amp;gt;
-
-  &amp;lt;h1 class=&quot;post-title&quot;&amp;gt; ...
-
-  &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;include&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;post-tags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;html&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt; // &amp;lt;- here
-
-  &amp;lt;div class=&quot;post-line&quot;&amp;gt; ...
-
-&amp;lt;/div&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;3-태그-클라우드랑-아카이브를-꾸며줄-css-file-생성-기존테마-폴더에-stylescss-파일이-있으면-생성하지말고-사용하세요&quot;&gt;3. 태그 클라우드랑 아카이브를 꾸며줄 css file 생성 기존테마 폴더에 styles.css 파일이 있으면 생성하지말고 사용하세요.&lt;/h2&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$touch styles.css
-
-// 수정 할때는
-$vi styles.css
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-liquid&quot; data-lang=&quot;liquid&quot;&gt;/ for tag cloud and archives
-.tag-cloud {
-  list-style: none;
-  padding: 0;
-  text-align: justify;
-  font-size: 16px;
-  li {
-    display: inline-block;
-    margin: 0 12px 12px 0;
-  }
-}
-#archives {
-  padding: 5px;
-}
-.archive-group {
-  margin: 5px;
-  border-top: 1px solid #ddd;
-}
-.archive-item {
-  margin-left: 5px;
-}
-.post-tags {
-  text-align: right;
-}&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;4-포스팅할때-태그붙이기&quot;&gt;4. 포스팅할때 태그붙이기&lt;/h2&gt;
-&lt;p&gt;이것은 예입니다:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-liquid&quot; data-lang=&quot;liquid&quot;&gt;---
-layout: post
-title: This is an example.
-tags:  // &amp;lt;- here you go
-- jekyll
-- example
-published: true
----
-
-This is a post for an example.&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;5-메인화면에-tags-보여주기&quot;&gt;5. 메인화면에 Tags 보여주기&lt;/h2&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;_layouts/default.html 들어간 다음
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-liquid&quot; data-lang=&quot;liquid&quot;&gt;...
-  &amp;lt;body&amp;gt;
-    &amp;lt;nav class=&quot;nav&quot;&amp;gt;
-        ...
-        &amp;lt;ul&amp;gt;
-          &amp;lt;li&amp;gt;&amp;lt;a href=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&quot;&amp;gt;About&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-          &amp;lt;li&amp;gt;&amp;lt;a href=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;baseurl&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;/tags&quot;&amp;gt;Tags&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;  &amp;lt;!-- &amp;lt;-here yo go --&amp;gt;
-          &amp;lt;li&amp;gt;&amp;lt;a href=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;/&quot;&amp;gt;Posts&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-        &amp;lt;/ul&amp;gt;
-      &amp;lt;/div&amp;gt;
-    &amp;lt;/nav&amp;gt;
-
-    &amp;lt;footer&amp;gt;
-      ...
-    &amp;lt;/footer&amp;gt;
-  &amp;lt;/body&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-</description>
-        <pubDate>Fri, 01 Jun 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2018-06-01/addingtagcloudandacrhivespagetojekyll</link>
-        <guid isPermaLink="true">http://localhost:4000/2018-06-01/addingtagcloudandacrhivespagetojekyll</guid>
-        
-        <category>jeykll</category>
-        
-        <category>githubpage</category>
-        
-        <category>tags</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>텐서플로우를 주피터 노트북에서 실행</title>
-        <description>&lt;h1 id=&quot;목표-텐서플로우를-주피터-노트북에서-실행&quot;&gt;목표: 텐서플로우를 주피터 노트북에서 실행&lt;/h1&gt;
-&lt;h3 id=&quot;환경-mac-os-macos-high-sierra-10134&quot;&gt;환경: Mac OS macOS High Sierra 10.13.4&lt;/h3&gt;
-
-&lt;p&gt;결국 주피터노트북하고 파이썬3는
-아나콘다로 설치함..
-3.6버전을 인터넷으로 다운로드 받아서 설치함.&lt;/p&gt;
-
-&lt;p&gt;아나콘다 3.6 버전을 가지고
-파이썬3.6 버전 설치했고, 3.5버전이 커버된다고 사이트에 써있음..&lt;/p&gt;
-
-&lt;p&gt;터미널에서 아나콘다 설치&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ conda install -c anaconda jupyter
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;참고: https://anaconda.org/anaconda/jupyter&lt;/p&gt;
-
-&lt;p&gt;텐서플로우 설치 ( 아나콘다 3.6 설치했다는 가정하에)&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ conda create -n tensor flow python=3.6
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;텐서플로우 실행 준비&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ source activate tensorflow
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;프롬프트가 (tensorflow)로 변함&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;(tensorflow)$ condo install -c conda-forge tensorflow
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;그럼 설치된다. 설치후&lt;/p&gt;
-
-&lt;p&gt;텐서플로 환경 비활성화&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ source deactivate
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;이제 설치가 다 되었으니, 텐서플로우를 실행하려면 텐서플로 환경 활성&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ source activate tensorflow
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;주피터 노트북 설치 (기존 Jupiter notebook 제거할 필요없음)&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;(tensorflow)$ conda install jupyter
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;이제 주피터를 실행해서 tensorflow 사용하고싶으면 먼저 활성화 시키고
-Jupyter 실행하면 된다.&lt;/p&gt;
-
-&lt;p&gt;주피터노트북으로 텐서플로 실행&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ source activate tensorflow
-$ (tensorflow)$ jupyter notebook
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;종료하는 법
-주피터 파일에서 file - close and halt 클릭&lt;/p&gt;
-
-&lt;p&gt;터미널에서 Ctrl + c 해서 종료해야된다.&lt;/p&gt;
-
-&lt;p&gt;참고: http://pinkwink.kr/992&lt;/p&gt;
-</description>
-        <pubDate>Thu, 31 May 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2018-05-31/howtoinstalljupyter</link>
-        <guid isPermaLink="true">http://localhost:4000/2018-05-31/howtoinstalljupyter</guid>
-        
-        <category>jupyternotebook</category>
-        
-        <category>tensorflow</category>
-        
-        <category>anaconda</category>
         
         
       </item>

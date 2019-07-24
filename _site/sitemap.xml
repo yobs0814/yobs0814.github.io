@@ -8,7 +8,71 @@
 
   
     <url>
+      <loc>http://localhost:4000/2019-07-24/Stack</loc>
+      
+        <lastmod>2019-07-24T00:00:00+09:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/2019-07-24/Queue</loc>
+      
+        <lastmod>2019-07-24T00:00:00+09:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/2019-07-24/LinkedList</loc>
+      
+        <lastmod>2019-07-24T00:00:00+09:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
       <loc>http://localhost:4000/2019-07-22/jekyll-serve-error</loc>
+      
+        <lastmod>2019-07-22T00:00:00+09:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/2019-07-22/BOJ2293</loc>
       
         <lastmod>2019-07-22T00:00:00+09:00</lastmod>
       

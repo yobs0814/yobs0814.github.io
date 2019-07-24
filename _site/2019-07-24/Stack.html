@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      자료구조 STACK이란? &middot; leaveittogod0123's blog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+</head>
+
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">leaveittogod0123's blog</h2>
+        </a>
+        <ul>
+          <!--<li><a href="/about">About me</a></li>-->
+          <li><a href="/tags">Tags</a></li>
+          <li><a href="/">Posts</a></li>
+          <li><a href="/search/">Search</a></li>
+
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        leaveittogod0123
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2019-07-24 00:00:00 +0900">July 24, 2019</time>
+    
+  </div>
+
+  <h1 class="post-title">자료구조 STACK이란?</h1>
+
+  <div class="post-line"></div>
+
+  <div class="post-tags">
+  
+  tag:
+  
+  <a href="/tags/#Data Structure">Data Structure</a>
+  
+</div>
+
+
+  <h3 id="환경-mac-os-mojave-1014-clion">환경: mac OS Mojave 10.14, CLion</h3>
+
+<p>우리는 프로그래밍언어로 문제를 해결하거나 새로운 기능을 만들 때, 알고리즘을 설계합니다.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>알고리즘을 코드로 구현할때 구현한 프로그램이 효과적으로( 빠른시간 안에 동작</td>
+      <td> </td>
+      <td>적은 데이터를 사용하여 ) 동작할 수 있게</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>많이 알려진 자료구조를 사용하는데, 문제 상황에 맞게 자료구조를 선택하여 구현하면 됩니다.</p>
+
+<p>STACK을 설명하고, 스택을 왜 쓰는지에 대해서 그림으로 이해해보고, 스택을 이용한 알고리즘을 슈도코드로 작성하겠습니다.</p>
+
+<h2 id="스택-개념">스택 개념:</h2>
+<p>STACK은 LIFO (Last In First Out)구조의 데이터를 저장할 수 있는 공간입니다.</p>
+
+<p>데이터를 저장하고, 최근에 저장한 데이터를 확인할 수 있고, 데이터를 빼낼 때는 최근에 추가된 것을 빼냅니다.</p>
+
+<p>각 위치에서 이동할 수 있는 방향으로는 현재 위치를 (r,c) 이라할때</p>
+
+<p><img src="../img/20190724북남동서.png" alt="img1" />
+위와 같이 표현할 수 있고 각 (r,c) 남, 동, 북, 서 방향으로 순서대로 이동할 수 있다고 가정합니다. (x표시나, 배열 범위를 넘어갈 수 없음.)</p>
+
+<p><img src="../img/20190724격자판.png" alt="img2" />
+위와 같은 2차원 배열 구조의 격자판에서 x 로 되어있거나 배열 범위를 넘어가지 않은 상태에서</p>
+
+<p>(행, 열)기준으로 (0,0) -&gt; (3,3)으로 이동하는 프로그램을 스택을 통해 구현할 수 있습니다.</p>
+
+<h2 id="스택을-쓰면-좋은점">스택을 쓰면 좋은점</h2>
+<p><img src="../img/20190724push1.png" alt="img3" />
+이렇게 격자판에서 도착지점을 가기 위해 스택에 이동공간을 저장합니다.</p>
+
+<p><img src="../img/20190724push2.png" alt="img4" />
+그런데 막 다른 곳에서는 갈 곳이 없을때는 돌아와야 하는데 스택에 이동한 공간을 저장 해놓았기 때문에</p>
+
+<p>최근에 이동한 곳으로 돌아갈 수 있습니다. 이렇게 발자취를 기억해야하는 상황에서 스택은 유용하게 쓰일 수 있는 자료구조입니다.</p>
+
+<p>이렇게 스택이란 자료구조를 통해 다음과 같이 스택을 이용해서</p>
+
+<p>2차원 배열에서 (0,0) -&gt; (3,3) 시작위치와 도착위치를 정해주면 이동할 수 있는지 없는지 판단할 수 있는 프로그램을 구현할 수 있습니다.
+<img src="../img/20190724push3.png" alt="img3" /></p>
+
+<h2 id="슈도코드">슈도코드</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>스택을 생성한다.
+시작 공간을 입력받는다.
+스택에 시작 위치을 저장한다.
+
+while(true){
+    최근에 저장한 이동 위치를 확인한다.
+    
+    if(최근 이동 위치가 도착 위치면)
+        도착했음을 저장 또는 출력.
+        종료.
+    
+    for(북 남 동 서){
+        이동할 수 있는지 체크한다.
+        이동할 수 있으면 스택에 이동 위치를 저장한다.
+    }
+}
+
+</code></pre></div></div>
+
+
+  <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://leaveittogod0123blog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</div>
+
+<div class="pagination">
+  
+  
+    <a href="/2019-07-24/Queue" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2019-07-24 15:15:56 +0900">2019</time> Yoseph Noh. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+    <script id="dsq-count-scr" src="//leaveittogod0123blog.disqus.com/count.js" async></script>
+  </body>
+</html>

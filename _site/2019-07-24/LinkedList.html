@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      자료구조 LinkedList이란? &middot; leaveittogod0123's blog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+</head>
+
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">leaveittogod0123's blog</h2>
+        </a>
+        <ul>
+          <!--<li><a href="/about">About me</a></li>-->
+          <li><a href="/tags">Tags</a></li>
+          <li><a href="/">Posts</a></li>
+          <li><a href="/search/">Search</a></li>
+
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        leaveittogod0123
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2019-07-24 00:00:00 +0900">July 24, 2019</time>
+    
+  </div>
+
+  <h1 class="post-title">자료구조 LinkedList이란?</h1>
+
+  <div class="post-line"></div>
+
+  <div class="post-tags">
+  
+  tag:
+  
+  <a href="/tags/#Data Structure">Data Structure</a>
+  
+</div>
+
+
+  <h3 id="환경-mac-os-mojave-1014-clion">환경: mac OS Mojave 10.14, CLion</h3>
+
+<p>우리는 프로그래밍언어로 문제를 해결하거나 새로운 기능을 만들 때, 알고리즘을 설계합니다.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>알고리즘을 코드로 구현할때 구현한 프로그램이 효과적으로( 빠른시간 안에 동작</td>
+      <td> </td>
+      <td>적은 데이터를 사용하여 ) 동작할 수 있게</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>많이 알려진 자료구조를 사용하는데, 문제 상황에 맞게 자료구조를 선택하여 구현하면 됩니다.</p>
+
+<p>LinkedList을 설명하고, 스택을 왜 쓰는지에 대해서 그림으로 이해해보고, 스택을 이용한 알고리즘을 슈도코드로 작성하겠습니다.</p>
+
+<h2 id="linkedlist-개념">LinkedList 개념:</h2>
+<p>LinkedList은 각각의 데이터가 링크로 이어져 있는 데이터 저장 공간입니다.</p>
+
+<p>첫번째 데이터 또는 마지막 데이터의 주소를 기억해야하는 구조입니다.</p>
+
+<p>그래야 첫번째 데이터 또는 마지막 데이터를 시작으로 링크를 타고 다니면서 순회를 할 수 있습니다.</p>
+
+<p><img src="../img/20190724list1.png" alt="그림1" /></p>
+
+<p>우선순위를 통해 일을 처리하기 위해 TodoList를 구현하려고 합니다.</p>
+
+<p>자료구조로는 쌩뚱맞게 Array를 사용하겠습니다. 
+Array에 보다 LinkedList가 더 효과적인 상황을 만들어서 LinkedList를 쓰면 어떻게 좋은지 알아보겠습니다.</p>
+
+<ol>
+  <li>운동1시간</li>
+  <li>공부1분</li>
+  <li>게임1시간</li>
+  <li>TV2시간</li>
+</ol>
+
+<p>이렇게 리스트가 있을때 우선순위를 변경하고 싶어졌습니다.
+2번 위치에 잡서칭1시간을 추가하고싶은데요.</p>
+
+<p>Array는 같은 자료형을 가진 메모리 공간으로 이루어진 자료구조이고, 장점으로는 인덱스를 통해 O(1)복잡도로
+해당 데이터를 접근할 수 있는 자료구조입니다.</p>
+
+<p>첫번째 인덱스 1번~n번까지 TodoList개수만큼 순회를 합니다.
+2번을 찾았으면 이번에 잡서칭1시간을 추가하기 위해 공간을 마련해야합니다.
+공부1분을 3번으로 이동시키고, 게임1시간을 4번으로, TV2시간을 5번으로 이동시킨 후
+마련된 2번 공간에 잡서칭1시간을 저장하면 됩니다.</p>
+
+<p>Array의 단점은 중간에 값을 삽입하기 위해서는 최악의 경우 O(n) 이란 시간복잡도를 갖습니다.
+잡서칭1시간을 특정위치에 저장하기 위해서 2~4번 할일을 미뤘습니다. 총 3번의 이동이란 기회비용이 들었습니다.</p>
+
+<h2 id="linkedlist를-쓰면-좋은점">LinkedList를 쓰면 좋은점</h2>
+
+<p><img src="../img/20190724list2.png" alt="그림2" />
+LinkedList를 사용한다면 잡서칭 1시간을 1번 다음 링크에 붙이고 2번 이전 링크에 붙이면 됩니다.
+이렇게 되면 데이터를 중간에 삽입하는데 걸리는 시간복잡도는 O(1)이 됩니다.
+<img src="../img/20190724list3.png" alt="그림3" /></p>
+
+<h2 id="슈도코드">슈도코드</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>링크드 리스트를 생성합니다.
+운동 1시간을 추가합니다.
+공부 1분을 운동 1시간 뒤에 추가합니다.
+게임 1시간을 공부 1분 뒤에 추가합니다.
+TV 2시간을 게임 1시간 뒤에 추가합니다.
+잡서칭 1시간을 운동 뒤에 공부 1분 이전에 추가합니다.
+
+</code></pre></div></div>
+
+
+  <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://leaveittogod0123blog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</div>
+
+<div class="pagination">
+  
+    <a href="/2019-07-24/Queue" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2019-07-22/jekyll-serve-error" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2019-07-24 15:15:56 +0900">2019</time> Yoseph Noh. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+    <script id="dsq-count-scr" src="//leaveittogod0123blog.disqus.com/count.js" async></script>
+  </body>
+</html>
