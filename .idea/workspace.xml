@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e3d9c12-661f-4435-9408-755a4ab295d3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/_posts/2019-07-29-ES6-class-super.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2019-07-29-ES6-class-super.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2019-07-29-ES6-class-super.md" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -80,8 +80,8 @@
         <entry file="file://$PROJECT_DIR$/_posts/2019-07-29-ES6-class-super.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="372">
-                <caret line="97" lean-forward="true" selection-start-line="97" selection-end-line="97" />
+              <first_editor relative-caret-position="316">
+                <caret line="76" column="37" selection-start-line="76" selection-start-column="37" selection-end-line="76" selection-end-column="37" />
               </first_editor>
               <second_editor />
             </state>
@@ -151,6 +151,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -167,7 +168,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -224,12 +224,13 @@
       <workItem from="1563950828449" duration="816000" />
       <workItem from="1563955551085" duration="12593000" />
       <workItem from="1564377280536" duration="537000" />
-      <workItem from="1564382569646" duration="1440000" />
+      <workItem from="1564382569646" duration="1585000" />
+      <workItem from="1564384545632" duration="206000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34764000" />
+    <option name="totallyTimeSpent" value="35115000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
@@ -678,8 +679,8 @@
     <entry file="file://$PROJECT_DIR$/_posts/2019-07-29-ES6-class-super.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="372">
-            <caret line="97" lean-forward="true" selection-start-line="97" selection-end-line="97" />
+          <first_editor relative-caret-position="316">
+            <caret line="76" column="37" selection-start-line="76" selection-start-column="37" selection-end-line="76" selection-end-column="37" />
           </first_editor>
           <second_editor />
         </state>
