@@ -46,10 +46,11 @@ import {a} from '가져올파일 경로';
 
 export 하는 방법이 크게 두 가지로 나뉩니다.
 
-이름을 정해서 보내기
+1. 이름을 정해서 보내기
+2. 그냥 보내기
 
-그냥 보내기
 
+1.이름을 정해서 보내기
 ```javascript
 // my-module.js
 function cube(x) {
@@ -82,7 +83,8 @@ console.log(cube(3)); // 27
 console.log(foo);    // 4.555806215962888
 ```
 
-또 다른 방법인 그냥 내보내기
+2.그냥 보내기
+
 ```javascript
 // my-module.js
 export default function cube(x) {
