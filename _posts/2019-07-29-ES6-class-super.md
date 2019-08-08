@@ -5,9 +5,10 @@ author: "leaveittogod0123"
 comments: true
 tags:
 - javaScript
+- ES2015
 ---
 
-### 환경: mac OS Mojave 10.14, CLion
+### 환경: mac OS Mojave 10.14, Webstorm
 
 # class 키워드와 super 키워드를 이용해 객체 지향적 프로그래밍을 구현해보자!
 
